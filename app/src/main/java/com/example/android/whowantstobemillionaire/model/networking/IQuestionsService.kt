@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface IQuestionsService {
 
     @GET("amount=5&")
-    fun getTrailer(@Query("difficulty") difficulty:String): Response<QuestionsResponse>
+    fun getQuestion(@Query("difficulty") difficulty:String): Response<QuestionsResponse>
 }
