@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.model.response
+package com.example.android.whowantstobemillionaire.data.model
 
 
 import com.google.gson.annotations.SerializedName
