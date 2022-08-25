@@ -9,5 +9,5 @@ import retrofit2.http.Query
 interface IQuestionsService {
 
     @GET("amount=5&")
-    fun getQuestion(@Query("difficulty") difficulty:String): Observable<QuestionsResponse>
+    fun getQuestion(@Query("difficulty") difficulty:String): Observable<Response<QuestionsResponse>>
 }
