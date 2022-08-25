@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="button_answer" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:elevation">@dimen/dimes_small</item>
+        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">16dp</item>
+        <item name="android:layout_marginVertical" tools:ignore="NewApi">8dp</item>
+        <item name="android:fontFamily">@font/sansita</item>
+        <item name="android:gravity">start|center</item>
+        <item name="android:paddingHorizontal" tools:ignore="NewApi">16dp</item>
+        <item name="android:textSize">@dimen/font_dimes_normal</item>
+    </style>
+
+    <style name="not_answered_style" parent="button_answer">
+        <item name="android:textColor">@color/grey</item>
+        <item name="strokeColor">@color/grey</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:drawableEnd">@drawable/ic_circle</item>
+
+    </style>
+
+    <style name="right_answer_style" parent="button_answer">
+        <item name="android:textColor">@color/green</item>
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="backgroundTint">@color/light_green</item>
+        <item name="android:drawableEnd">@drawable/ic_checked_circle</item>
+    </style>
+
+    <style name="wrong_answer_style" parent="button_answer">
+        <item name="android:textColor">@color/red</item>
+        <item name="strokeColor">@color/red</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="backgroundTint">@color/light_red</item>
+        <item name="android:drawableEnd">@drawable/ic_wrong_circle</item>
+    </style>
+
+</resources>
