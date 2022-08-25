@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Programming/chance/tasks/WhoWantsToBeMillionaire/app/src/main/res/drawable/start_button_background.xml" value="0.164" />
-        <entry key="..\:/Programming/chance/tasks/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_start.xml" value="0.22" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/help_methods_bg.xml" value="0.199" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_checked_circle.xml" value="0.1455" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_quit.xml" value="0.2" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
   </component>

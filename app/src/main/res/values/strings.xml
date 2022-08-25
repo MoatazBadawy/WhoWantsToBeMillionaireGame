@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WhoWantsToBeMillionaire</string>
+    <string name="questin_holder">In 2017, which player became the leading run scorer of all tie in women\'s ODI cricket?</string>
+    <string name="question">Question</string>
+
 </resources>
