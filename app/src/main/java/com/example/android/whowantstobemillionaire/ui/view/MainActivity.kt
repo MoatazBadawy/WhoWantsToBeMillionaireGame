@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.ui
+package com.example.android.whowantstobemillionaire.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
