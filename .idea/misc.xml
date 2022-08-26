@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Abdullah/AndroidStudioProjects/who/app/src/main/res/drawable/rounded_corners.xml" value="0.1535" />
-        <entry key="..\:/Users/Abdullah/AndroidStudioProjects/who/app/src/main/res/layout/results_screen.xml" value="0.22826086956521738" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/help_methods_bg.xml" value="0.199" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_checked_circle.xml" value="0.1455" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_dollar.xml" value="0.2" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_quit.xml" value="0.2" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/results_screen.xml" value="0.1921875" />
       </map>
     </option>
   </component>
