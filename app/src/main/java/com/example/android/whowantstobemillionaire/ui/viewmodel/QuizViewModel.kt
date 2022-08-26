@@ -5,10 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
+import com.example.android.whowantstobemillionaire.util.helper.add
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class QuizViewModel : ViewModel() {
     private val repository = QuizRepository()
+    private val disposable = CompositeDisposable()
 
     private val _easyQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
     val easyQuizResponse: LiveData<NetworkState<QuizResponse?>>
@@ -27,7 +30,7 @@ class QuizViewModel : ViewModel() {
         repository.getQuiz("easy")
             .subscribe {
                 _easyQuizResponse.postValue(it)
-            }.isDisposed
+            }.add(disposable)
     }
 
     private fun getMediumQuiz() {
@@ -35,7 +38,7 @@ class QuizViewModel : ViewModel() {
         repository.getQuiz("medium")
             .subscribe {
                 _mediumQuizResponse.postValue(it)
-            }.isDisposed
+            }.add(disposable)
     }
 
     private fun getHardQuiz() {
@@ -43,12 +46,17 @@ class QuizViewModel : ViewModel() {
         repository.getQuiz("hard")
             .subscribe {
                 _hardQuizResponse.postValue(it)
-            }.isDisposed
+            }.add(disposable)
     }
 
     init {
         getEasyQuiz()
         getMediumQuiz()
         getHardQuiz()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
     }
 }
