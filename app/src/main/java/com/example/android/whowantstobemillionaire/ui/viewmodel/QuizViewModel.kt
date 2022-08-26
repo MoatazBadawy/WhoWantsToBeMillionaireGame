@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class QuizViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -27,37 +25,25 @@ class QuizViewModel : ViewModel() {
     private fun getEasyQuiz() {
         _easyQuizResponse.postValue(NetworkState.Loading)
         repository.getQuiz("easy")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
+            .subscribe {
                 _easyQuizResponse.postValue(it)
-            }, {
-                _easyQuizResponse.postValue(it.message)
-            }).isDisposed
+            }.isDisposed
     }
 
     private fun getMediumQuiz() {
         _easyQuizResponse.postValue(NetworkState.Loading)
         repository.getQuiz("medium")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
+            .subscribe {
                 _mediumQuizResponse.postValue(it)
-            }, {
-                _mediumQuizResponse.postValue(NetworkState.Error(it.message))
-            }).isDisposed
+            }.isDisposed
     }
 
     private fun getHardQuiz() {
         _easyQuizResponse.postValue(NetworkState.Loading)
         repository.getQuiz("hard")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
+            .subscribe {
                 _hardQuizResponse.postValue(it)
-            }, {
-                _hardQuizResponse.postValue(NetworkState.Error(it.message))
-            }).isDisposed
+            }.isDisposed
     }
 
     init {
