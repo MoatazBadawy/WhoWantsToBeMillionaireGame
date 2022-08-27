@@ -27,7 +27,7 @@ class QuizViewModel : ViewModel() {
 
     private fun getEasyQuiz() {
         _easyQuizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz("easy")
+        repository.getQuiz(5,"multiple","easy")
             .subscribe {
                 _easyQuizResponse.postValue(it)
             }.add(disposable)
@@ -35,7 +35,7 @@ class QuizViewModel : ViewModel() {
 
     private fun getMediumQuiz() {
         _easyQuizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz("medium")
+        repository.getQuiz(5,"multiple","medium")
             .subscribe {
                 _mediumQuizResponse.postValue(it)
             }.add(disposable)
@@ -43,7 +43,7 @@ class QuizViewModel : ViewModel() {
 
     private fun getHardQuiz() {
         _easyQuizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz("hard")
+        repository.getQuiz(5,"multiple","hard")
             .subscribe {
                 _hardQuizResponse.postValue(it)
             }.add(disposable)
