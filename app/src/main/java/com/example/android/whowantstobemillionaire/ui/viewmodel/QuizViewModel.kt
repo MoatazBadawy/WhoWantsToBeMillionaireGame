@@ -1,5 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,13 +8,17 @@ import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.util.helper.add
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.delay
+import java.util.concurrent.TimeUnit
 
 class QuizViewModel : ViewModel() {
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
 
-    private val _easyQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
+    /*private val _easyQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
     val easyQuizResponse: LiveData<NetworkState<QuizResponse?>>
         get() = _easyQuizResponse
 
@@ -23,40 +28,47 @@ class QuizViewModel : ViewModel() {
 
     private val _hardQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
     val hardQuizResponse: LiveData<NetworkState<QuizResponse?>>
-        get() = _hardQuizResponse
+        get() = _hardQuizResponse*/
+
+    private val _quizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
+    val quizResponse: LiveData<NetworkState<QuizResponse?>>
+        get() = _quizResponse
 
     private fun getEasyQuiz() {
-        _easyQuizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz(5,"multiple","easy")
-            .subscribe {
-                _easyQuizResponse.postValue(it)
-            }.add(disposable)
+            repository.getQuiz(1,"multiple","easy")
+                .subscribe {
+                    _quizResponse.postValue(it)
+                }//.add(disposable)
     }
 
     private fun getMediumQuiz() {
-        _easyQuizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz(5,"multiple","medium")
-            .subscribe {
-                _mediumQuizResponse.postValue(it)
-            }.add(disposable)
+        for(i in 0..4){
+            _quizResponse.postValue(NetworkState.Loading)
+            repository.getQuiz(1,"multiple","medium")
+                .subscribe {
+                    _quizResponse.postValue(it)
+                }.add(disposable)
+        }
     }
 
     private fun getHardQuiz() {
-        _easyQuizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz(5,"multiple","hard")
-            .subscribe {
-                _hardQuizResponse.postValue(it)
-            }.add(disposable)
+        for(i in 0..4){
+            _quizResponse.postValue(NetworkState.Loading)
+            repository.getQuiz(1,"multiple","hard")
+                .subscribe {
+                    _quizResponse.postValue(it)
+                }.add(disposable)
+        }
     }
 
     init {
         getEasyQuiz()
-        getMediumQuiz()
-        getHardQuiz()
+        //getMediumQuiz()
+        //getHardQuiz()
     }
 
-    override fun onCleared() {
+    /*override fun onCleared() {
         super.onCleared()
         disposable.dispose()
-    }
+    }*/
 }
