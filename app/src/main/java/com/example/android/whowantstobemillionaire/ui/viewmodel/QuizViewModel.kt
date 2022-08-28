@@ -13,7 +13,7 @@ class QuizViewModel : ViewModel() {
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
 
-    private val _easyQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
+    /*private val _easyQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
     val easyQuizResponse: LiveData<NetworkState<QuizResponse?>>
         get() = _easyQuizResponse
 
@@ -23,29 +23,33 @@ class QuizViewModel : ViewModel() {
 
     private val _hardQuizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
     val hardQuizResponse: LiveData<NetworkState<QuizResponse?>>
-        get() = _hardQuizResponse
+        get() = _hardQuizResponse*/
+
+    private val _quizResponse = MutableLiveData<NetworkState<QuizResponse?>>()
+    val quizResponse: LiveData<NetworkState<QuizResponse?>>
+        get() = _quizResponse
 
     private fun getEasyQuiz() {
-        _easyQuizResponse.postValue(NetworkState.Loading)
+        _quizResponse.postValue(NetworkState.Loading)
         repository.getQuiz("easy")
             .subscribe {
-                _easyQuizResponse.postValue(it)
+                _quizResponse.postValue(it)
             }.add(disposable)
     }
 
     private fun getMediumQuiz() {
-        _easyQuizResponse.postValue(NetworkState.Loading)
+        _quizResponse.postValue(NetworkState.Loading)
         repository.getQuiz("medium")
             .subscribe {
-                _mediumQuizResponse.postValue(it)
+                _quizResponse.postValue(it)
             }.add(disposable)
     }
 
     private fun getHardQuiz() {
-        _easyQuizResponse.postValue(NetworkState.Loading)
+        _quizResponse.postValue(NetworkState.Loading)
         repository.getQuiz("hard")
             .subscribe {
-                _hardQuizResponse.postValue(it)
+                _quizResponse.postValue(it)
             }.add(disposable)
     }
 

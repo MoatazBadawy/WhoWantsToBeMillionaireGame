@@ -30,10 +30,10 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures{
-        viewBinding true
+        dataBinding = true
     }
 }
-
+apply plugin: 'kotlin-kapt'
 dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
@@ -61,4 +61,9 @@ dependencies {
 
     // viewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
+    implementation "androidx.activity:activity-ktx:1.5.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
+
+    kapt "com.android.databinding:compiler:3.2.0-alpha10"
 }
