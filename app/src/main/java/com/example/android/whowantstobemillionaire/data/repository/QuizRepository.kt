@@ -16,7 +16,8 @@ class QuizRepository {
     private fun <T> getNetworkState(function: () -> Observable<Response<T>>): Observable<NetworkState<T>> {
 
         return Observable
-            .create { state ->
+            .intervalRange(0,12,0,3,TimeUnit.SECONDS)
+            .flatMap { return@flatMap Observable.create { state ->
                 state.onNext(NetworkState.Loading)
                 val result = function()
                 result.subscribe {
@@ -26,7 +27,9 @@ class QuizRepository {
                         state.onNext(NetworkState.Error(it.message()))
                     }
                 }
-            }.subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()) }
+
     }
 }

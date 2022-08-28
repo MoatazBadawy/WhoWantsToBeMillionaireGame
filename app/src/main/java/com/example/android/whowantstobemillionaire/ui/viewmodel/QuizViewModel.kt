@@ -8,7 +8,11 @@ import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.util.helper.add
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.delay
+import java.util.concurrent.TimeUnit
 
 class QuizViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -31,18 +35,21 @@ class QuizViewModel : ViewModel() {
         get() = _quizResponse
 
     private fun getEasyQuiz() {
-        val list = mutableListOf<NetworkState<QuizResponse>>()
-        for(i in 0..9){
-            _quizResponse.postValue(NetworkState.Loading)
             repository.getQuiz(1,"multiple","easy")
                 .subscribe {
                     _quizResponse.postValue(it)
-                    list.add(it)
                 }//.add(disposable)
-        }
-        Log.i("MyState","${list.size}")
     }
 
+//    fun looper(){
+//        val observable = Observable
+//            .just(getEasyQuiz())
+//            .flatMap {
+//                it.interval(5,TimeUnit.SECONDS)
+//                .take(5)
+//            }
+//    }
+//
     private fun getMediumQuiz() {
         for(i in 0..4){
             _quizResponse.postValue(NetworkState.Loading)
