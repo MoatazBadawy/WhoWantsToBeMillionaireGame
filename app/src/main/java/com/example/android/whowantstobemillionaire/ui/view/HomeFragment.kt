@@ -13,9 +13,7 @@ import com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val quizViewModel: QuizViewModel by viewModels()
-
-
     override fun setup() {
-        binding.quizViewmodel = quizViewModel
+        binding.quizViewModel = quizViewModel
     }
 }

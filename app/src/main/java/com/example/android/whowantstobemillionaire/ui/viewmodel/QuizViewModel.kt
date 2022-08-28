@@ -1,5 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,37 +31,46 @@ class QuizViewModel : ViewModel() {
         get() = _quizResponse
 
     private fun getEasyQuiz() {
-        _quizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz("easy")
-            .subscribe {
-                _quizResponse.postValue(it)
-            }.add(disposable)
+        val list = mutableListOf<NetworkState<QuizResponse>>()
+        for(i in 0..9){
+            _quizResponse.postValue(NetworkState.Loading)
+            repository.getQuiz(1,"multiple","easy")
+                .subscribe {
+                    _quizResponse.postValue(it)
+                    list.add(it)
+                }//.add(disposable)
+        }
+        Log.i("MyState","${list.size}")
     }
 
     private fun getMediumQuiz() {
-        _quizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz("medium")
-            .subscribe {
-                _quizResponse.postValue(it)
-            }.add(disposable)
+        for(i in 0..4){
+            _quizResponse.postValue(NetworkState.Loading)
+            repository.getQuiz(1,"multiple","medium")
+                .subscribe {
+                    _quizResponse.postValue(it)
+                }.add(disposable)
+        }
     }
 
     private fun getHardQuiz() {
-        _quizResponse.postValue(NetworkState.Loading)
-        repository.getQuiz("hard")
-            .subscribe {
-                _quizResponse.postValue(it)
-            }.add(disposable)
+        for(i in 0..4){
+            _quizResponse.postValue(NetworkState.Loading)
+            repository.getQuiz(1,"multiple","hard")
+                .subscribe {
+                    _quizResponse.postValue(it)
+                }.add(disposable)
+        }
     }
 
     init {
         getEasyQuiz()
-        getMediumQuiz()
-        getHardQuiz()
+        //getMediumQuiz()
+        //getHardQuiz()
     }
 
-    override fun onCleared() {
+    /*override fun onCleared() {
         super.onCleared()
         disposable.dispose()
-    }
+    }*/
 }

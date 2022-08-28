@@ -10,21 +10,23 @@ import java.util.concurrent.TimeUnit
 
 class QuizRepository {
 
-    fun getQuiz(difficulty: String) =
-        getNetworkState { QuizRequestAPI.quizService.getQuiz(difficulty) }
+    fun getQuiz(amount: Int, type: String, difficulty: String) =
+        getNetworkState { QuizRequestAPI.quizService.getQuiz(amount, type, difficulty) }
 
-    private fun <T> getNetworkState(function: () -> Response<T>): Observable<NetworkState<T>> {
+    private fun <T> getNetworkState(function: () -> Observable<Response<T>>): Observable<NetworkState<T>> {
+
         return Observable
             .create { state ->
                 state.onNext(NetworkState.Loading)
                 val result = function()
-                if (result.isSuccessful) {
-                    state.onNext(NetworkState.Success(result.body()))
-                } else {
-                    state.onNext(NetworkState.Error(result.message()))
+                result.subscribe {
+                    if (it.isSuccessful) {
+                        state.onNext(NetworkState.Success(it.body()))
+                    } else {
+                        state.onNext(NetworkState.Error(it.message()))
+                    }
                 }
-            }
-            .subscribeOn(Schedulers.io())
+            }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

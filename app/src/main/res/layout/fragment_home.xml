@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="quizViewmodel"
+            name="quizViewModel"
             type="com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel" />
     </data>
 
@@ -165,7 +165,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/card_question_answers"
             app:layout_constraintTop_toTopOf="@+id/card_question_answers"
-            app:displaySuccessState="@{quizViewmodel.quizResponse"/>
+            app:displaySuccessState="@{quizViewModel.quizResponse}"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_answer_one"
@@ -279,6 +279,6 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/icon_loding"
-            app:displayLoadingState="@{quizViewmodel.quizResponse}"/>
+            app:displayLoadingState="@{quizViewModel.quizResponse}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
