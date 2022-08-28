@@ -41,15 +41,6 @@ class QuizViewModel : ViewModel() {
                 }//.add(disposable)
     }
 
-//    fun looper(){
-//        val observable = Observable
-//            .just(getEasyQuiz())
-//            .flatMap {
-//                it.interval(5,TimeUnit.SECONDS)
-//                .take(5)
-//            }
-//    }
-//
     private fun getMediumQuiz() {
         for(i in 0..4){
             _quizResponse.postValue(NetworkState.Loading)

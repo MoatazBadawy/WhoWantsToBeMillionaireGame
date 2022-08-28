@@ -30,6 +30,5 @@ class QuizRepository {
             }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()) }
-
     }
 }
