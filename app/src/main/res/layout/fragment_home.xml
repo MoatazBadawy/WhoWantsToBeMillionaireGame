@@ -159,7 +159,7 @@
             android:fontFamily="@font/sansita"
             android:gravity="start"
             android:maxLines="4"
-            android:text="@string/questin_holder"
+            tools:text="@string/questin_holder"
             android:textSize="@dimen/font_dimes_large"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
             app:layout_constraintHorizontal_bias="0.0"

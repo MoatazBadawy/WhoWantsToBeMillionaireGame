@@ -31,21 +31,18 @@ class QuizViewModel : ViewModel() {
         get() = _quizResponse
 
     private fun getEasyQuiz() {
-        val list = mutableListOf<NetworkState<QuizResponse>>()
-        for(i in 0..9){
-            _quizResponse.postValue(NetworkState.Loading)
+        for(i in 0..5){
+            //_quizResponse.postValue(NetworkState.Loading)
             repository.getQuiz(1,"multiple","easy")
                 .subscribe {
                     _quizResponse.postValue(it)
-                    list.add(it)
-                }//.add(disposable)
+                }.add(disposable)
         }
-        Log.i("MyState","${list.size}")
     }
 
     private fun getMediumQuiz() {
         for(i in 0..4){
-            _quizResponse.postValue(NetworkState.Loading)
+            //_quizResponse.postValue(NetworkState.Loading)
             repository.getQuiz(1,"multiple","medium")
                 .subscribe {
                     _quizResponse.postValue(it)
