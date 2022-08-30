@@ -1,7 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.view
 
 import android.view.View
-import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -64,12 +63,14 @@ fun getRandomAnswers(list: List<Result>): List<String> {
     return mutableList
 }
 
-fun trueAnswer(index: Int): Boolean{
+fun trueAnswer(index: Int): Boolean {
     return checkedAnswers[index]
 }
 
+
 @BindingAdapter(value = ["app:timerSetting"])
 fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizResponse>?) {
+
     when (state) {
         is NetworkState.Success -> {
             val list = state.data?.results
@@ -80,6 +81,7 @@ fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
                 observable.subscribe {
                     progressView.progress = it.toFloat()
                     progressView.labelText = "$it sec"
+
                 }
 
             }
@@ -87,6 +89,7 @@ fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
         else -> {}
     }
 }
+
 
 
 
