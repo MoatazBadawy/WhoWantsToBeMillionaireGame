@@ -1,6 +1,7 @@
 package com.example.android.whowantstobemillionaire.ui.view
 
 import android.view.View
+import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -23,6 +24,7 @@ fun <T> displayLoadingState(view: View, state: NetworkState<T>?) {
 }
 
 var listOfAnswers = listOf<String>()
+var checkedAnswers = mutableListOf<Boolean>()
 
 @BindingAdapter(value = ["app:displaySuccessState"])
 fun displaySuccessState(view: TextView, state: NetworkState<QuizResponse>?) {
@@ -47,6 +49,7 @@ fun displayUsingRadioGroup(view: RadioGroup, state: NetworkState<QuizResponse>?)
                 for (i in 0..3) {
                     val radioButton = view.getChildAt(i) as RadioButton
                     radioButton.text = listOfAnswers[i]
+                    checkedAnswers.add(listOfAnswers[i] == list[0].correctAnswer)
                 }
             }
         }
@@ -59,6 +62,10 @@ fun getRandomAnswers(list: List<Result>): List<String> {
     mutableList.add(list[0].correctAnswer)
     mutableList.shuffle()
     return mutableList
+}
+
+fun trueAnswer(index: Int): Boolean{
+    return checkedAnswers[index]
 }
 
 @BindingAdapter(value = ["app:timerSetting"])
