@@ -8,7 +8,7 @@
     <dimen name="font_dimes_normal">16sp</dimen>
     <dimen name="font_dimes_large">20sp</dimen>
     <dimen name="font_dimes_xlarge">32sp</dimen>
-    <dimen name="dimes_card_question">420dp</dimen>
+    <dimen name="dimes_card_question">440dp</dimen>
     <dimen name="dimes_help_circle">56dp</dimen>
     <dimen name="dimes_card_score">120dp</dimen>
     <dimen name="dimes_score_dollar">28dp</dimen>

@@ -6,5 +6,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome">Let`s play and win up to 1000,000 $</string>
     <string name="start">Start Game</string>
+    <string name="submit">submit</string>
 
 </resources>
