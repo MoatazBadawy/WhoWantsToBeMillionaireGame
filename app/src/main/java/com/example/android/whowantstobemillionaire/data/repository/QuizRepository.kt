@@ -1,5 +1,7 @@
 package com.example.android.whowantstobemillionaire.data.repository
 
+import android.view.View
+import android.widget.RadioButton
 import com.example.android.whowantstobemillionaire.data.service.QuizRequestAPI
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -30,5 +32,5 @@ class QuizRepository {
             }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()) }
-    }
 
+    }

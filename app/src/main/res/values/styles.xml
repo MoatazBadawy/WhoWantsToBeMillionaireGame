@@ -15,10 +15,11 @@
 
     <style name="not_answered_style" parent="button_answer">
         <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="strokeColor">@color/grey</item>
         <item name="strokeWidth">2dp</item>
         <item name="backgroundTint">@color/white</item>
-        <item name="android:drawableEnd">@drawable/ic_circle</item>
 
     </style>
 
@@ -36,6 +37,14 @@
         <item name="strokeWidth">2dp</item>
         <item name="backgroundTint">@color/light_red</item>
         <item name="android:drawableEnd">@drawable/ic_wrong_circle</item>
+    </style>
+
+    <style name="not_answered_style_radio" parent="button_answer">
+        <item name="android:textColor">@color/grey</item>
+        <item name="strokeColor">@color/grey</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="backgroundTint">@color/light_blue_black</item>
+
     </style>
 
 </resources>
