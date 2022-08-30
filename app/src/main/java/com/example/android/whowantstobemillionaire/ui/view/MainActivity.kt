@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ViewDataBinding? = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        navigateTo(HomeFragment())
+        //navigateTo(HomeFragment())
     }
 }
 
