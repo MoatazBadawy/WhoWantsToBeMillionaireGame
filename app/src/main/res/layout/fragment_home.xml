@@ -84,6 +84,19 @@
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
+            android:id="@+id/quiz_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimes_small"
+            android:fontFamily="@font/sansita"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_dimes_xlarge"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_question"
+            app:layout_constraintTop_toTopOf="@id/text_label_question"
+            app:layout_constraintStart_toEndOf="@id/text_label_question"
+            tools:text="1"/>
+
+        <TextView
             android:id="@+id/text_question_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,9 +105,9 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/font_dimes_xlarge"
             app:layout_constraintBottom_toBottomOf="@+id/text_label_question"
-            app:layout_constraintStart_toEndOf="@id/text_label_question"
+            app:layout_constraintStart_toEndOf="@id/quiz_num"
             app:layout_constraintTop_toTopOf="@id/text_label_question"
-            tools:text=" 1/15" />
+            tools:text="/ 15" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_score_bg"

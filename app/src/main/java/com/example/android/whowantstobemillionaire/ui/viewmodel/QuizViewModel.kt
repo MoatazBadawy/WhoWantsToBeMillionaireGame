@@ -42,14 +42,14 @@ class QuizViewModel : ViewModel() {
                 }.add(disposable)
     }
 
-    private fun getMediumQuiz() {
+     fun getMediumQuiz() {
         repository.getQuiz(1,"multiple","medium")
                 .subscribe {
                     _quizResponse.postValue(it)
                 }.add(disposable)
     }
 
-    private fun getHardQuiz() {
+     fun getHardQuiz() {
             repository.getQuiz(1,"multiple","hard")
                 .subscribe {
                     _quizResponse.postValue(it)
@@ -60,7 +60,7 @@ class QuizViewModel : ViewModel() {
         repository.getQuiz(1,"multiple", difficulty)
             .subscribe {
                 _quizResponse.postValue(it)
-            }.add(disposable)
+            }
     }
 
     /*init {
