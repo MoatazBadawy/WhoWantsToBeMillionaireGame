@@ -13,6 +13,23 @@
         <item name="android:textSize">@dimen/font_dimes_normal</item>
     </style>
 
+
+    <style name="right_answer_style" parent="button_answer">
+        <item name="android:textColor">@color/green</item>
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="backgroundTint">@color/light_green</item>
+        <item name="android:drawableEnd">@drawable/ic_checked_circle</item>
+    </style>
+
+    <style name="wrong_answer_style" parent="button_answer">
+        <item name="android:textColor">@color/red</item>
+        <item name="strokeColor">@color/red</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="backgroundTint">@color/light_red</item>
+        <item name="android:drawableEnd">@drawable/ic_wrong_circle</item>
+    </style>
+
     <style name="submit_button_style" parent="button_answer">
         <item name="android:textColor">@color/grey</item>
         <item name="android:layout_width">wrap_content</item>
