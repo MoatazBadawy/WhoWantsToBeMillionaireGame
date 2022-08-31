@@ -27,11 +27,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
         binding.imageHelpReplaceQuestion.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_self)
-            binding.progressBar.progressFromPrevious
+            //binding.progressBar.progressFromPrevious
         }
 
         binding.buttonSubmit.setOnClickListener{v ->
-            binding.progressBar.progressFromPrevious
+
             checkSelectedAnswer(v)}
     }
 
@@ -59,6 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_resultFragment)
                 break
             }else if(radioButton.isChecked && trueAnswer(i)){
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_self)
                 var num = getQuizNum()
                 binding.quizNum.text = num.toString()
                 binding.textScore.text = getQuizCoins().toString()
