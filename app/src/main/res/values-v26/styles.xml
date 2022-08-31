@@ -12,4 +12,16 @@
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="radio_button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/radio_button_state</item>
+        <item name="android:backgroundTint">@color/radio_button_tint</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+        <item name="android:textColor">@color/radio_button_text</item>
+        <item name="android:layout_marginVertical">@dimen/dimes_small</item>
+        <item name="android:paddingHorizontal">@dimen/dimes_normal</item>
+    </style>
 </resources>

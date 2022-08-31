@@ -57,7 +57,7 @@ fun displayUsingRadioGroup(view: RadioGroup, state: NetworkState<QuizResponse>?)
 }
 
 fun getRandomAnswers(list: List<Result>): List<String> {
-    var mutableList = list[0].incorrectAnswers.toMutableList()
+    val mutableList = list[0].incorrectAnswers.toMutableList()
     mutableList.add(list[0].correctAnswer)
     mutableList.shuffle()
     return mutableList
@@ -69,7 +69,7 @@ fun trueAnswer(index: Int): Boolean {
 
 
 @BindingAdapter(value = ["app:timerSetting"])
-fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizResponse>?) {
+fun handleProgressBar(progressView: ProgressView, state: NetworkState<QuizResponse>?) {
 
     when (state) {
         is NetworkState.Success -> {
@@ -81,9 +81,7 @@ fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
                 observable.subscribe {
                     progressView.progress = it.toFloat()
                     progressView.labelText = "$it sec"
-
                 }
-
             }
         }
         else -> {}

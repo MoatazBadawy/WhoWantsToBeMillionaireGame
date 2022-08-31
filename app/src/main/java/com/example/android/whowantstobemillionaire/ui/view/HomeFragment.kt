@@ -26,12 +26,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     }
 
-    fun navigateToResultsFragment() {
+    private fun navigateToResultsFragment() {
         Navigation.findNavController(binding.root)
             .navigate(R.id.action_homeFragment_to_resultFragment)
     }
 
-    fun removeTwoAnswers() {
+    private fun removeTwoAnswers() {
         var count = 0
         for (i in 0..3) {
             val radioButton = binding.radioGroupAnswers.getChildAt(i) as RadioButton

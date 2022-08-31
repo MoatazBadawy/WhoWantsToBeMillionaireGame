@@ -8,9 +8,6 @@
         <variable
             name="quizViewModel"
             type="com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel" />
-        <variable
-            name="homeFragment"
-            type="com.example.android.whowantstobemillionaire.ui.view.HomeFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,6 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:elevation="@dimen/dimes_small"
+            android:checkedButton="@id/radio_answer_one"
             app:displayAnswer="@{quizViewModel.quizResponse}"
             app:layout_constraintEnd_toEndOf="@id/card_question_answers"
             app:layout_constraintStart_toStartOf="@id/card_question_answers"
@@ -184,44 +182,40 @@
 
             <RadioButton
                 android:id="@+id/radio_answer_one"
-                style="@style/not_answered_style_radio"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:text="radio answer one"
-                android:textColor="@color/black" />
+                android:layout_marginHorizontal="@dimen/dimes_normal"
+                android:layout_marginVertical="@dimen/dimes_small"
+                android:text="radio answer one"/>
 
             <RadioButton
                 android:id="@+id/radio_answer_two"
-                style="@style/not_answered_style_radio"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:text="radio answer two"
-                android:textColor="@color/black" />
+                android:layout_marginHorizontal="@dimen/dimes_normal"
+                android:layout_marginVertical="@dimen/dimes_small"
+                android:text="radio answer two"/>
 
             <RadioButton
                 android:id="@+id/radio_answer_three"
-                style="@style/not_answered_style_radio"
+                android:text="radio answer three"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:text="radio answer three"
-                android:textColor="@color/black" />
+                android:layout_marginHorizontal="@dimen/dimes_normal"
+                android:layout_marginVertical="@dimen/dimes_small"/>
 
             <RadioButton
                 android:id="@+id/radio_answer_four"
-                style="@style/not_answered_style_radio"
+                android:text="radio answer four"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:text="radio answer four"
-                android:textColor="@color/black" />
+                android:layout_marginHorizontal="@dimen/dimes_normal"
+                android:layout_marginVertical="@dimen/dimes_small" />
         </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_submit"
-            style="@style/not_answered_style"
+            style="@style/submit_button_style"
             android:text="@string/submit"
             app:cornerRadius="@dimen/dimes_normal"
             app:layout_constraintBottom_toBottomOf="@+id/card_question_answers"
@@ -295,7 +289,7 @@
             app:tint="@color/white" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationLoding"
+            android:id="@+id/animationLoading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:displayLoadingState="@{quizViewModel.quizResponse}"
@@ -305,7 +299,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/icon_loding"
+            app:lottie_rawRes="@raw/icon_loading"
             android:elevation="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
