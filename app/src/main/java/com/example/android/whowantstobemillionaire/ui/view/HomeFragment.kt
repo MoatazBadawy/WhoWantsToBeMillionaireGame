@@ -14,20 +14,32 @@ import com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val quizViewModel: QuizViewModel by viewModels()
+
     override fun setup() {
         binding.quizViewModel = quizViewModel
 
         quizViewModel.getEasyQuiz()
-        binding.imageHelpDeleteTwo.setOnClickListener { removeTwoAnswers() }
+
+
+        binding.imageHelpDeleteTwo.setOnClickListener {
+            if(countRemove < 1)  removeTwoAnswers()
+            countRemove++
+        }
+
         binding.progressBar.setOnProgressChangeListener {
             if (it >= 30f) {
                 navigateToResultsFragment()
                 binding.progressBar.progressFromPrevious
             }
         }
+
+
         binding.imageHelpReplaceQuestion.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_self)
-            //binding.progressBar.progressFromPrevious
+            if(countReplace < 1){
+                Navigation.findNavController(it).navigate(R.id.action_homeFragment_self)
+                //binding.progressBar.progressFromPrevious
+            }
+            countReplace++
         }
 
         binding.buttonSubmit.setOnClickListener{v ->
@@ -60,13 +72,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 break
             }else if(radioButton.isChecked && trueAnswer(i)){
                 Navigation.findNavController(view).navigate(R.id.action_homeFragment_self)
-                var num = getQuizNum()
-                binding.quizNum.text = num.toString()
-                binding.textScore.text = getQuizCoins().toString()
-                when(num){
+                //var num = getQuizNum()
+                //binding.quizNum.text = num.toString()
+                //binding.textScore.text = getQuizCoins().toString()
+
+                when(getQuizNum()){
                     in 1..5 -> quizViewModel.getEasyQuiz()
                     in 6..10 -> quizViewModel.getMediumQuiz()
-                    in 11..15 -> quizViewModel.getHardQuiz()
+                    in 11..14 -> quizViewModel.getHardQuiz()
+                    15 -> Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_resultFragment)
                 }
                 break
             }else{
