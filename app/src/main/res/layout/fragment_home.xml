@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="homeFragment"
+    type="com.example.android.whowantstobemillionaire.ui.view.HomeFragment" />
         <variable
             name="quizViewModel"
             type="com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel" />

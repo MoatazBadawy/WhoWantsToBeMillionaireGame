@@ -8,9 +8,9 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.example.android.whowantstobemillionaire.R
 
-abstract class BaseFragment<DB: ViewDataBinding>(@LayoutRes private val layoutResId: Int) : Fragment() {
+abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
+    Fragment() {
     abstract fun setup()
 
     private lateinit var _binding: DB
@@ -20,7 +20,7 @@ abstract class BaseFragment<DB: ViewDataBinding>(@LayoutRes private val layoutRe
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
         setup()
