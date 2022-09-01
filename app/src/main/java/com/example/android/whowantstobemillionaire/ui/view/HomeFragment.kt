@@ -1,6 +1,7 @@
 package com.example.android.whowantstobemillionaire.ui.view
 
 import android.view.View
+import android.widget.ImageButton
 import android.widget.RadioButton
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -9,51 +10,70 @@ import com.example.android.whowantstobemillionaire.databinding.FragmentHomeBindi
 import com.example.android.whowantstobemillionaire.ui.view.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel
 import com.example.android.whowantstobemillionaire.util.helper.Constants
+import com.example.android.whowantstobemillionaire.util.helper.disable
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val quizViewModel: QuizViewModel by viewModels()
 
     override fun setup() {
         binding.quizViewModel = quizViewModel
-        getQuestion()
         setHelpMethodsButtons()
+        getQuestion()
+
     }
 
     private fun setHelpMethodsButtons() {
-        binding.removeButton.alpha = removebuttonAlpha
-        binding.removeButton.isEnabled = isRemoveButtonEnabled
+        if (isRemoved) {
+            binding.removeButton.disable()
+        }
+
+        if (isReplaced){
+            binding.replaceButton.disable()
+        }
     }
 
     override fun callback() {
         binding.removeButton.setOnClickListener {
-            if(countRemove < 1) {
-                removeTwoAnswers()
-                removebuttonAlpha = .5f
-                isRemoveButtonEnabled = false
-                it.alpha = removebuttonAlpha
-                it.isEnabled = isRemoveButtonEnabled
-            }
-            countRemove++
+            onRemove()
         }
 
         binding.progressBar.setOnProgressChangeListener { progress ->
-            if (progress == binding.progressBar.max) {
-                navigateToResultsFragment()
-                binding.progressBar.progressFromPrevious
-            }
+            onProgress(progress)
         }
 
         binding.replaceButton.setOnClickListener {
-            if(countReplace < 1){
-                count--
-                navigateToHomeFragment()
-            }
-            countReplace++
+            onReplace()
         }
 
-        binding.buttonSubmit.setOnClickListener{
+        binding.buttonSubmit.setOnClickListener {
             checkSelectedAnswer()
         }
+    }
+
+    private fun onReplace() {
+        if (countReplace < 1) {
+            count--
+            navigateToHomeFragment()
+            binding.replaceButton.disable()
+            isReplaced = true
+        }
+        countReplace++
+    }
+
+    private fun onProgress(progress: Float) {
+        if (progress == binding.progressBar.max) {
+            navigateToResultsFragment()
+            binding.progressBar.progressFromPrevious
+        }
+    }
+
+    private fun onRemove() {
+        if (countRemove < 1) {
+            removeTwoAnswers()
+            binding.removeButton.disable()
+            isRemoved = true
+        }
+        countRemove++
     }
 
     private fun navigateToResultsFragment() {
@@ -93,7 +113,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private fun getQuestion() {
-        when(getQuizNum()){
+        when (getQuizNum()) {
             in 1..5 -> quizViewModel.getQuiz(Constants.EASY)
             in 6..10 -> quizViewModel.getQuiz(Constants.MEDIUM)
             in 11..15 -> quizViewModel.getQuiz(Constants.HARD)
