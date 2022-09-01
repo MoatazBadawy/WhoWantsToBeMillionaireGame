@@ -113,6 +113,8 @@ fun increaseCoins(view: TextView, state: NetworkState<QuizResponse>?){
 
 var countReplace = 0
 var countRemove = 0
+var removebuttonAlpha = 1f
+var isRemoveButtonEnabled = true
 
 
 

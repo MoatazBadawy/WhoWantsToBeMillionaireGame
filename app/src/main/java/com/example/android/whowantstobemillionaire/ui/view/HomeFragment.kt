@@ -16,11 +16,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun setup() {
         binding.quizViewModel = quizViewModel
         getQuestion()
+        setHelpMethodsButtons()
+    }
 
-        binding.imageHelpDeleteTwo.setOnClickListener {
+    private fun setHelpMethodsButtons() {
+        binding.removeButton.alpha = removebuttonAlpha
+        binding.removeButton.isEnabled = isRemoveButtonEnabled
+    }
+
+    override fun callback() {
+        binding.removeButton.setOnClickListener {
             if(countRemove < 1) {
                 removeTwoAnswers()
-//                it.alpha = .5f
+                removebuttonAlpha = .5f
+                isRemoveButtonEnabled = false
+                it.alpha = removebuttonAlpha
+                it.isEnabled = isRemoveButtonEnabled
             }
             countRemove++
         }
@@ -32,10 +43,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
         }
 
-        binding.imageHelpReplaceQuestion.setOnClickListener {
+        binding.replaceButton.setOnClickListener {
             if(countReplace < 1){
                 count--
-                Navigation.findNavController(it).navigate(R.id.action_homeFragment_self)
+                navigateToHomeFragment()
             }
             countReplace++
         }
@@ -67,20 +78,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
     }
 
-    fun checkSelectedAnswer() {
-        for(i in 0..3){
-            val radioButton = binding.radioGroupAnswers.getChildAt(i) as RadioButton
-            when {
-                radioButton.isChecked && !correctAnswer(i) -> {
-                    navigateToResultsFragment()
-                    break
-                }
-                radioButton.isChecked && correctAnswer(i) -> {
-                    navigateToHomeFragment()
-                    getQuestion()
-                    break
-                }
-                else ->  continue
+    private fun checkSelectedAnswer() {
+        val selectedAnswer = binding.radioGroupAnswers.checkedRadioButtonId
+        if (selectedAnswer != -1) {
+            val radioButton = binding.radioGroupAnswers.findViewById<RadioButton>(selectedAnswer)
+            val index = binding.radioGroupAnswers.indexOfChild(radioButton)
+            if (correctAnswer(index)) {
+                navigateToHomeFragment()
+                getQuestion()
+            } else {
+                navigateToResultsFragment()
             }
         }
     }
@@ -93,6 +100,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             16 -> navigateToResultsFragment()
         }
     }
-
 
 }
