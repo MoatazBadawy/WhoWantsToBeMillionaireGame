@@ -13,15 +13,6 @@
         <item name="android:textSize">@dimen/font_dimes_normal</item>
     </style>
 
-    <style name="not_answered_style" parent="button_answer">
-        <item name="android:textColor">@color/grey</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="strokeColor">@color/grey</item>
-        <item name="strokeWidth">2dp</item>
-        <item name="backgroundTint">@color/white</item>
-
-    </style>
 
     <style name="right_answer_style" parent="button_answer">
         <item name="android:textColor">@color/green</item>
@@ -39,12 +30,28 @@
         <item name="android:drawableEnd">@drawable/ic_wrong_circle</item>
     </style>
 
-    <style name="not_answered_style_radio" parent="button_answer">
+    <style name="submit_button_style" parent="button_answer">
         <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="strokeColor">@color/grey</item>
         <item name="strokeWidth">2dp</item>
-        <item name="backgroundTint">@color/light_blue_black</item>
+        <item name="backgroundTint">@color/white</item>
 
     </style>
 
+    <style name="Widget.App.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButton</item>
+        <item name="android:background">@drawable/radio_button_state</item>
+        <item name="android:textColor">@color/radio_button_text</item>
+        <item name="android:paddingStart">@dimen/dimes_normal</item>
+        <item name="android:paddingEnd">@dimen/dimes_normal</item>
+        <item name="android:button">@android:color/transparent</item>
+
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButton" parent="">
+        <item name="colorOnSurface">@color/light_green</item>
+        <item name="colorSecondary">@color/green</item>
+    </style>
 </resources>

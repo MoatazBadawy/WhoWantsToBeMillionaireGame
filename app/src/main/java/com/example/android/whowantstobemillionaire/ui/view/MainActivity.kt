@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 private fun FragmentActivity.navigateTo(to: Fragment, bundle: Bundle? = null){
     to.arguments = bundle
     changeNavigation(this, NavigationType.Add, to)
+
 }
 
 private fun changeNavigation(activity: FragmentActivity, state: NavigationType, to: Fragment){
