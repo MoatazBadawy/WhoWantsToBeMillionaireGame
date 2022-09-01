@@ -88,7 +88,7 @@ fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
                     progressView.progress = it.toFloat()
                     progressView.labelText = "$it sec"
                 },{
-                    e -> e.message
+                        e -> e.message
                 })
 
             }
@@ -96,7 +96,6 @@ fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
         else -> {}
     }
 }
-
 
 
 
