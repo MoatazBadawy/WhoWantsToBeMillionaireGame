@@ -26,9 +26,9 @@ fun <T> displayLoadingState(view: View, state: NetworkState<T>?) {
 
 var listOfAnswers = listOf<String>()
 var checkedAnswers = mutableListOf<Boolean>()
-var count = 1
-var quizCoins = listOf<Int>(500,1000,2000,30000,5000,7500,10000,12500,15000,25000,50000,100000,250000,500000,1000000)
-fun getQuizNum() = count++
+var count = 0
+var quizCoins = listOf<Int>(500,1000,2000,3000,5000,7500,10000,12500,15000,25000,50000,100000,250000,500000,1000000)
+fun getQuizNum() = count
 fun getQuizCoins() = quizCoins[getQuizNum()]
 
 @BindingAdapter(value = ["app:displaySuccessState"])
@@ -65,7 +65,7 @@ fun displayUsingRadioGroup(view: RadioGroup, state: NetworkState<QuizResponse>?)
 fun getRandomAnswers(list: List<Result>): List<String> {
     var mutableList = list[0].incorrectAnswers.toMutableList()
     mutableList.add(list[0].correctAnswer)
-    mutableList.shuffle()
+    //mutableList.shuffle()
     return mutableList
 }
 
@@ -96,6 +96,27 @@ fun handelProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
         else -> {}
     }
 }
+
+@BindingAdapter(value = ["app:quizCounter"])
+fun increaseQuizCounter(view: TextView, state: NetworkState<QuizResponse>?){
+    when(state){
+        is NetworkState.Success -> view.text = (++count).toString()
+        else -> {}
+    }
+}
+
+@BindingAdapter(value = ["app:coinsCounter"])
+fun increaseCoins(view: TextView, state: NetworkState<QuizResponse>?){
+    when(state){
+        is NetworkState.Success -> view.text = quizCoins[count - 1].toString()
+        else -> {}
+    }
+}
+
+var countReplace = 0
+var countRemove = 0
+
+
 
 
 
