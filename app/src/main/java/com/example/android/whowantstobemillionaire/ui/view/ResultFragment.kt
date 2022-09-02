@@ -1,4 +1,5 @@
 package com.example.android.whowantstobemillionaire.ui.view
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentResultBinding
@@ -13,6 +14,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setData()
         binding.playAgain.setOnClickListener{
             navigateToStartFragment()
+            (requireActivity()as AppCompatActivity).supportActionBar?.hide()
         }
     }
     private fun navigateToStartFragment() {

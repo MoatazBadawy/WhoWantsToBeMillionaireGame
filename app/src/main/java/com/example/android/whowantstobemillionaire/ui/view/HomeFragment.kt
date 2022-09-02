@@ -2,6 +2,7 @@ package com.example.android.whowantstobemillionaire.ui.view
 
 import android.view.View
 import android.widget.RadioButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
@@ -19,6 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.quizViewModel = quizViewModel
         setHelpMethodsButtons()
         getQuestion()
+        (requireActivity()as AppCompatActivity).supportActionBar?.hide()
 
     }
 
