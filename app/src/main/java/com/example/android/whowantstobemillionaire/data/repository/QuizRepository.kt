@@ -1,25 +1,20 @@
 package com.example.android.whowantstobemillionaire.data.repository
 
-import com.example.android.whowantstobemillionaire.data.service.QuizRequestAPI
+import com.example.android.whowantstobemillionaire.data.request.QuizRequest
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.Response
-import java.util.concurrent.TimeUnit
 
 class QuizRepository {
+    fun getQuiz(difficulty: String) =
+        getNetworkState { QuizRequest.apiQuizService.getQuiz(difficulty = difficulty) }
 
-    fun getQuiz(amount: Int, type: String, difficulty: String) =
-        getNetworkState { QuizRequestAPI.quizService.getQuiz(amount, type, difficulty) }
-
-    private fun <T> getNetworkState(function: () -> Observable<Response<T>>): Observable<NetworkState<T>> {
-
-        return Observable
-            /*.intervalRange(0,5,0,2,TimeUnit.SECONDS)
-            .flatMap { return@flatMap Observable*/.create { state ->
+    private fun <T> getNetworkState(getResponse: () -> Observable<Response<T>>): Observable<NetworkState<T>> {
+        return Observable.create { state ->
                 state.onNext(NetworkState.Loading)
-                val result = function()
+                val result = getResponse()
                 result.subscribe {
                     if (it.isSuccessful) {
                         state.onNext(NetworkState.Success(it.body()))
@@ -28,7 +23,7 @@ class QuizRepository {
                     }
                 }
             }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
     }
-
+}
