@@ -7,5 +7,6 @@
     <string name="welcome">Let`s play and win up to 1000,000 $</string>
     <string name="start">Start Game</string>
     <string name="submit">submit</string>
+    <string name="unfortunately">Unfortunately!</string>
 
 </resources>

@@ -92,11 +92,11 @@
             android:layout_marginHorizontal="@dimen/dimes_small"
             android:fontFamily="@font/sansita"
             android:textColor="@color/grey"
-            android:textSize="@dimen/font_dimes_xlarge"
+            android:textSize="@dimen/font_dimes_large"
             app:layout_constraintBottom_toBottomOf="@+id/text_label_question"
             app:layout_constraintTop_toTopOf="@id/text_label_question"
             app:layout_constraintStart_toEndOf="@id/text_label_question"
-            android:text="1"
+            tools:text="1"
             app:quizCounter="@{quizViewModel.quizResponse}"/>
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_marginHorizontal="@dimen/dimes_small"
             android:fontFamily="@font/sansita"
             android:textColor="@color/grey"
-            android:textSize="@dimen/font_dimes_xlarge"
+            android:textSize="@dimen/font_dimes_large"
             app:layout_constraintBottom_toBottomOf="@+id/text_label_question"
             app:layout_constraintStart_toEndOf="@id/quiz_num"
             app:layout_constraintTop_toTopOf="@id/text_label_question"
@@ -178,7 +178,7 @@
             android:gravity="start"
             android:maxLines="4"
             android:textSize="@dimen/font_dimes_large"
-            app:displaySuccessState="@{quizViewModel.quizResponse}"
+            app:displayQuestion="@{quizViewModel.quizResponse}"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/card_question_answers"
@@ -242,7 +242,7 @@
 
         <ImageButton
             android:id="@+id/remove_button"
-            android:layout_width="@dimen/dimes_help_circle"
+            android:layout_width="@dimen/dimes_help_circle_width"
             android:layout_height="@dimen/dimes_help_circle"
             android:layout_marginHorizontal="@dimen/dimes_normal"
             android:layout_marginVertical="@dimen/dimes_normal"
@@ -250,7 +250,7 @@
             android:padding="@dimen/dimes_small"
             android:src="@drawable/ic_delete_two_wrong_answers"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/image_help_public_help"
+            app:layout_constraintEnd_toStartOf="@+id/replace_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_question_answers"
@@ -258,24 +258,8 @@
             />
 
         <ImageButton
-            android:id="@+id/image_help_public_help"
-            android:layout_width="@dimen/dimes_help_circle"
-            android:layout_height="@dimen/dimes_help_circle"
-            android:layout_marginHorizontal="@dimen/dimes_normal"
-            android:layout_marginVertical="@dimen/dimes_normal"
-            android:background="@drawable/help_methods_bg"
-            android:padding="@dimen/dimes_small"
-            android:src="@drawable/ic_public_help"
-            app:layout_constraintBottom_toBottomOf="@+id/remove_button"
-            app:layout_constraintEnd_toStartOf="@+id/replace_button"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/remove_button"
-            app:layout_constraintTop_toTopOf="@+id/remove_button"
-            app:tint="@color/white" />
-
-        <ImageButton
             android:id="@+id/replace_button"
-            android:layout_width="@dimen/dimes_help_circle"
+            android:layout_width="@dimen/dimes_help_circle_width"
             android:layout_height="@dimen/dimes_help_circle"
             android:layout_marginHorizontal="@dimen/dimes_normal"
             android:layout_marginVertical="@dimen/dimes_normal"
@@ -283,25 +267,9 @@
             android:padding="@dimen/dimes_small"
             android:src="@drawable/ic_replace_question"
             app:layout_constraintBottom_toBottomOf="@+id/remove_button"
-            app:layout_constraintEnd_toStartOf="@+id/image_help_friend_helps"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/image_help_public_help"
-            app:layout_constraintTop_toTopOf="@+id/remove_button"
-            app:tint="@color/white" />
-
-        <ImageButton
-            android:id="@+id/image_help_friend_helps"
-            android:layout_width="@dimen/dimes_help_circle"
-            android:layout_height="@dimen/dimes_help_circle"
-            android:layout_marginHorizontal="@dimen/dimes_normal"
-            android:layout_marginVertical="@dimen/dimes_normal"
-            android:background="@drawable/help_methods_bg"
-            android:padding="@dimen/dimes_small"
-            android:src="@drawable/ic_friend_helps"
-            app:layout_constraintBottom_toBottomOf="@+id/remove_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/replace_button"
+            app:layout_constraintStart_toEndOf="@+id/remove_button"
             app:layout_constraintTop_toTopOf="@+id/remove_button"
             app:tint="@color/white" />
 

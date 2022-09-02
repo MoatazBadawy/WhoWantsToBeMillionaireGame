@@ -8,6 +8,7 @@ import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentHomeBinding
 import com.example.android.whowantstobemillionaire.ui.view.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel
+import com.example.android.whowantstobemillionaire.util.*
 import com.example.android.whowantstobemillionaire.util.helper.Constants
 import com.example.android.whowantstobemillionaire.util.helper.disable
 
@@ -47,6 +48,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.buttonSubmit.setOnClickListener {
             checkSelectedAnswer()
         }
+
+        binding.imageQuit.setOnClickListener{
+            navigateToStartFragment()
+        }
+
+        binding.imageLevels.setOnClickListener{
+            navigateToResultsFragment()
+        }
+
+    }
+
+    private fun navigateToStartFragment() {
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_homeFragment_to_startFragment)
     }
 
     private fun onReplace() {
