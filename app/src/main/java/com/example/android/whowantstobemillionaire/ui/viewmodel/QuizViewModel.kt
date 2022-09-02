@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
-import com.example.android.whowantstobemillionaire.util.helper.add
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
@@ -18,10 +17,21 @@ class QuizViewModel : ViewModel() {
         get() = _quizResponse
 
     fun getQuiz(difficulty: String) {
-        repository.getQuiz(difficulty)
-            .subscribe {
-                _quizResponse.postValue(it)
-            }.add(disposable)
+        _quizResponse.postValue(NetworkState.Loading)
+        disposable.add(
+            repository.executeQuizApi(difficulty)
+                .subscribe(
+                    { response ->
+                        _quizResponse.postValue(NetworkState.Success(response))
+                    },
+                    { error ->
+                        _quizResponse.postValue(
+                            NetworkState.Error(
+                                error.message ?: "Error While Fetching Data"
+                            )
+                        )
+                    }
+                ))
     }
 
     override fun onCleared() {
