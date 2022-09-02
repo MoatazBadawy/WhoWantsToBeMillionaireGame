@@ -9,4 +9,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
     }
 
+    override fun callback() {
+
+    }
+
 }

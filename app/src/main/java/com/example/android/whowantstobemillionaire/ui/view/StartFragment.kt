@@ -7,6 +7,10 @@ import com.example.android.whowantstobemillionaire.ui.view.base.BaseFragment
 
 class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start){
     override fun setup() {
+
+    }
+
+    override fun callback() {
         binding.startBtn.setOnClickListener{ v ->
             Navigation.findNavController(v).navigate(R.id.action_startFragment_to_homeFragment)
         }

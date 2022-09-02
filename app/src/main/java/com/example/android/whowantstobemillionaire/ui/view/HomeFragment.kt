@@ -1,50 +1,79 @@
 package com.example.android.whowantstobemillionaire.ui.view
 
-import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.RadioButton
-import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentHomeBinding
 import com.example.android.whowantstobemillionaire.ui.view.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel
+import com.example.android.whowantstobemillionaire.util.helper.Constants
+import com.example.android.whowantstobemillionaire.util.helper.disable
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val quizViewModel: QuizViewModel by viewModels()
 
     override fun setup() {
         binding.quizViewModel = quizViewModel
+        setHelpMethodsButtons()
+        getQuestion()
 
-        quizViewModel.getEasyQuiz()
+    }
 
-
-        binding.imageHelpDeleteTwo.setOnClickListener {
-            if(countRemove < 1)  removeTwoAnswers()
-            countRemove++
+    private fun setHelpMethodsButtons() {
+        if (isRemoved) {
+            binding.removeButton.disable()
         }
 
-        binding.progressBar.setOnProgressChangeListener {
-            if (it >= 30f) {
-                navigateToResultsFragment()
-                binding.progressBar.progressFromPrevious
-            }
+        if (isReplaced){
+            binding.replaceButton.disable()
+        }
+    }
+
+    override fun callback() {
+        binding.removeButton.setOnClickListener {
+            onRemove()
         }
 
-
-        binding.imageHelpReplaceQuestion.setOnClickListener {
-            if(countReplace < 1){
-                Navigation.findNavController(it).navigate(R.id.action_homeFragment_self)
-                //binding.progressBar.progressFromPrevious
-            }
-            countReplace++
+        binding.progressBar.setOnProgressChangeListener { progress ->
+            onProgress(progress)
         }
 
-        binding.buttonSubmit.setOnClickListener{v ->
+        binding.replaceButton.setOnClickListener {
+            onReplace()
+        }
 
-            checkSelectedAnswer(v)}
+        binding.buttonSubmit.setOnClickListener {
+            checkSelectedAnswer()
+        }
+    }
+
+    private fun onReplace() {
+        if (countReplace < 1) {
+            count--
+            navigateToHomeFragment()
+            binding.replaceButton.disable()
+            isReplaced = true
+        }
+        countReplace++
+    }
+
+    private fun onProgress(progress: Float) {
+        if (progress == binding.progressBar.max) {
+            navigateToResultsFragment()
+            binding.progressBar.progressFromPrevious
+        }
+    }
+
+    private fun onRemove() {
+        if (countRemove < 1) {
+            removeTwoAnswers()
+            binding.removeButton.disable()
+            isRemoved = true
+        }
+        countRemove++
     }
 
     private fun navigateToResultsFragment() {
@@ -52,11 +81,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             .navigate(R.id.action_homeFragment_to_resultFragment)
     }
 
+    private fun navigateToHomeFragment() {
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_homeFragment_self)
+    }
+
     private fun removeTwoAnswers() {
         var count = 0
         for (i in 0..3) {
             val radioButton = binding.radioGroupAnswers.getChildAt(i) as RadioButton
-            if (!trueAnswer(i)) {
+            if (!correctAnswer(i)) {
                 radioButton.visibility = View.INVISIBLE
                 count++
                 if (count == 2) break
@@ -64,30 +98,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
     }
 
-    fun checkSelectedAnswer(view: View){
-        for(i in 0..3){
-            val radioButton = binding.radioGroupAnswers.getChildAt(i) as RadioButton
-            if(radioButton.isChecked && !trueAnswer(i)) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_resultFragment)
-                break
-            }else if(radioButton.isChecked && trueAnswer(i)){
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_self)
-                //var num = getQuizNum()
-                //binding.quizNum.text = num.toString()
-                //binding.textScore.text = getQuizCoins().toString()
-
-                when(getQuizNum()){
-                    in 1..5 -> quizViewModel.getEasyQuiz()
-                    in 6..10 -> quizViewModel.getMediumQuiz()
-                    in 11..14 -> quizViewModel.getHardQuiz()
-                    15 -> Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_resultFragment)
-                }
-                break
-            }else{
-                continue
+    private fun checkSelectedAnswer() {
+        val selectedAnswer = binding.radioGroupAnswers.checkedRadioButtonId
+        if (selectedAnswer != -1) {
+            val radioButton = binding.radioGroupAnswers.findViewById<RadioButton>(selectedAnswer)
+            val index = binding.radioGroupAnswers.indexOfChild(radioButton)
+            if (correctAnswer(index)) {
+                navigateToHomeFragment()
+                getQuestion()
+            } else {
+                navigateToResultsFragment()
             }
         }
     }
 
+    private fun getQuestion() {
+        when (getQuizNum()) {
+            in 1..5 -> quizViewModel.getQuiz(Constants.EASY)
+            in 6..10 -> quizViewModel.getQuiz(Constants.MEDIUM)
+            in 11..15 -> quizViewModel.getQuiz(Constants.HARD)
+            16 -> navigateToResultsFragment()
+        }
+    }
 
 }

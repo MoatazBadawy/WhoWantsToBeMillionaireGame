@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="homeFragment"
+    type="com.example.android.whowantstobemillionaire.ui.view.HomeFragment" />
         <variable
             name="quizViewModel"
             type="com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel" />
@@ -158,7 +160,7 @@
             android:background="@color/white"
             android:elevation="0dp"
             app:cardCornerRadius="@dimen/dimes_normal"
-            app:layout_constraintBottom_toBottomOf="@id/image_help_delete_two"
+            app:layout_constraintBottom_toBottomOf="@id/remove_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -239,7 +241,7 @@
             app:layout_constraintTop_toBottomOf="@+id/radio_group_answers" />
 
         <ImageButton
-            android:id="@+id/image_help_delete_two"
+            android:id="@+id/remove_button"
             android:layout_width="@dimen/dimes_help_circle"
             android:layout_height="@dimen/dimes_help_circle"
             android:layout_marginHorizontal="@dimen/dimes_normal"
@@ -264,15 +266,15 @@
             android:background="@drawable/help_methods_bg"
             android:padding="@dimen/dimes_small"
             android:src="@drawable/ic_public_help"
-            app:layout_constraintBottom_toBottomOf="@+id/image_help_delete_two"
-            app:layout_constraintEnd_toStartOf="@+id/image_help_replace_question"
+            app:layout_constraintBottom_toBottomOf="@+id/remove_button"
+            app:layout_constraintEnd_toStartOf="@+id/replace_button"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/image_help_delete_two"
-            app:layout_constraintTop_toTopOf="@+id/image_help_delete_two"
+            app:layout_constraintStart_toEndOf="@+id/remove_button"
+            app:layout_constraintTop_toTopOf="@+id/remove_button"
             app:tint="@color/white" />
 
         <ImageButton
-            android:id="@+id/image_help_replace_question"
+            android:id="@+id/replace_button"
             android:layout_width="@dimen/dimes_help_circle"
             android:layout_height="@dimen/dimes_help_circle"
             android:layout_marginHorizontal="@dimen/dimes_normal"
@@ -280,11 +282,11 @@
             android:background="@drawable/help_methods_bg"
             android:padding="@dimen/dimes_small"
             android:src="@drawable/ic_replace_question"
-            app:layout_constraintBottom_toBottomOf="@+id/image_help_delete_two"
+            app:layout_constraintBottom_toBottomOf="@+id/remove_button"
             app:layout_constraintEnd_toStartOf="@+id/image_help_friend_helps"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/image_help_public_help"
-            app:layout_constraintTop_toTopOf="@+id/image_help_delete_two"
+            app:layout_constraintTop_toTopOf="@+id/remove_button"
             app:tint="@color/white" />
 
         <ImageButton
@@ -296,11 +298,11 @@
             android:background="@drawable/help_methods_bg"
             android:padding="@dimen/dimes_small"
             android:src="@drawable/ic_friend_helps"
-            app:layout_constraintBottom_toBottomOf="@+id/image_help_delete_two"
+            app:layout_constraintBottom_toBottomOf="@+id/remove_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/image_help_replace_question"
-            app:layout_constraintTop_toTopOf="@+id/image_help_delete_two"
+            app:layout_constraintStart_toEndOf="@+id/replace_button"
+            app:layout_constraintTop_toTopOf="@+id/remove_button"
             app:tint="@color/white" />
 
         <com.airbnb.lottie.LottieAnimationView
