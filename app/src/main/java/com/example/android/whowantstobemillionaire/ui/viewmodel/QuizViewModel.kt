@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
-import com.example.android.whowantstobemillionaire.util.helper.add
 import com.example.android.whowantstobemillionaire.util.statue.NetworkState
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
@@ -20,7 +19,7 @@ class QuizViewModel : ViewModel() {
     fun getQuiz(difficulty: String) {
         _quizResponse.postValue(NetworkState.Loading)
         disposable.add(
-            repository.getQuizResult(difficulty)
+            repository.executeQuizApi(difficulty)
                 .subscribe(
                     { response ->
                         _quizResponse.postValue(NetworkState.Success(response))

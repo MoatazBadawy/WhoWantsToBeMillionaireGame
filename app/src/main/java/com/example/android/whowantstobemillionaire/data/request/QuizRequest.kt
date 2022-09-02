@@ -1,6 +1,6 @@
 package com.example.android.whowantstobemillionaire.data.request
 
-import com.example.android.whowantstobemillionaire.data.api.QuizServiceAPI
+import com.example.android.whowantstobemillionaire.data.api.QuizAPIService
 import com.example.android.whowantstobemillionaire.util.helper.Constants
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
@@ -25,7 +25,7 @@ object QuizRequest {
         .client(myHttpClient())
         .build()
 
-    val apiQuizService: QuizServiceAPI by lazy {
-        request.create(QuizServiceAPI::class.java)
+    val apiQuizService: QuizAPIService by lazy {
+        request.create(QuizAPIService::class.java)
     }
 }
