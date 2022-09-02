@@ -1,7 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.view
 
 import android.view.View
-import android.widget.ImageButton
 import android.widget.RadioButton
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation

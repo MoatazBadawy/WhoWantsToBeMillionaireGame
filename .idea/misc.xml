@@ -7,17 +7,15 @@
         <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_checked_circle.xml" value="0.1455" />
         <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_dollar.xml" value="0.2" />
         <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/ic_quit.xml" value="0.2" />
-        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/radio_button_checked.xml" value="0.146" />
-        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/radio_button_state.xml" value="0.146" />
-        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/drawable/radio_button_unchecked.xml" value="0.146" />
         <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_start.xml" value="0.1921875" />
         <entry key="..\:/Kotlin/Bareq_course/WhoWantsToBeMillionaire/app/src/main/res/layout/results_screen.xml" value="0.1921875" />
         <entry key="..\:/Programming/chance/tasks/WhoWantsToBeMillionaire/app/src/main/res/layout/activity_main.xml" value="0.22119037568594344" />
         <entry key="..\:/Programming/chance/tasks/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_home.xml" value="0.22119037568594344" />
         <entry key="..\:/Programming/chance/tasks/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_result.xml" value="0.22119037568594344" />
         <entry key="..\:/Programming/chance/tasks/WhoWantsToBeMillionaire/app/src/main/res/layout/fragment_start.xml" value="0.22119037568594344" />
+        <entry key="..\:/Users/Abdullah/AndroidStudioProjects/game_task/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/Abdullah/AndroidStudioProjects/game_task/app/src/main/res/layout/fragment_result.xml" value="0.2" />
       </map>
     </option>
   </component>
