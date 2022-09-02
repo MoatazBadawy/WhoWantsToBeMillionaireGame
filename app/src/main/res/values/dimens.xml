@@ -10,6 +10,7 @@
     <dimen name="font_dimes_xlarge">32sp</dimen>
     <dimen name="dimes_card_question">440dp</dimen>
     <dimen name="dimes_help_circle">56dp</dimen>
+    <dimen name="dimes_help_circle_width">128dp</dimen>
     <dimen name="dimes_card_score">120dp</dimen>
     <dimen name="dimes_score_dollar">28dp</dimen>
     <dimen name="dimes_question_height">108dp</dimen>
