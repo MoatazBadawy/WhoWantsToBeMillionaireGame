@@ -18,10 +18,21 @@ class QuizViewModel : ViewModel() {
         get() = _quizResponse
 
     fun getQuiz(difficulty: String) {
-        repository.getQuiz(difficulty)
-            .subscribe {
-                _quizResponse.postValue(it)
-            }.add(disposable)
+        _quizResponse.postValue(NetworkState.Loading)
+        disposable.add(
+            repository.getQuizResult(difficulty)
+                .subscribe(
+                    { response ->
+                        _quizResponse.postValue(NetworkState.Success(response))
+                    },
+                    { error ->
+                        _quizResponse.postValue(
+                            NetworkState.Error(
+                                error.message ?: "Error While Fetching Data"
+                            )
+                        )
+                    }
+                ))
     }
 
     override fun onCleared() {

@@ -11,5 +11,5 @@ interface QuizServiceAPI {
     fun getQuiz(@Query("amount") amount: Int = 1,
                 @Query("type") type: String = "multiple",
                 @Query("difficulty") difficulty: String
-    ): Observable<Response<QuizResponse>>
+    ): Observable<QuizResponse>
 }
