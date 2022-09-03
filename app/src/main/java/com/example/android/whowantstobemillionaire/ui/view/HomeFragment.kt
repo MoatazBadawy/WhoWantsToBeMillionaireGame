@@ -31,7 +31,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 }
                 is Resource.Success -> {
                     binding.animationLoading.visibility = View.GONE
-                    it.data?.let { data -> setQuestion(data) }
+                    it.data?.let { data ->
+                        setQuestion(data)
+                    }
+
                 }
                 is Resource.Error -> {
                     binding.animationLoading.visibility = View.GONE
