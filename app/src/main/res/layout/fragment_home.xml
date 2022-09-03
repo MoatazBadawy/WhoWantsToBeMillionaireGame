@@ -172,45 +172,53 @@
             app:layout_constraintTop_toTopOf="@+id/card_question_answers"
             tools:text="@string/questin_holder" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/radio_answer_one"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="58dp"
             android:layout_marginHorizontal="@dimen/dimes_normal"
             android:layout_marginVertical="@dimen/dimes_small"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/button_background"
             android:text="radio answer one"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
             app:layout_constraintStart_toStartOf="@+id/card_question_answers"
             app:layout_constraintTop_toBottomOf="@+id/text_question" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/radio_answer_two"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="58dp"
             android:layout_marginVertical="@dimen/dimes_small"
+            android:background="@drawable/button_background"
             android:text="radio answer two"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/radio_answer_one"
             app:layout_constraintStart_toStartOf="@+id/radio_answer_one"
             app:layout_constraintTop_toBottomOf="@+id/radio_answer_one" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/radio_answer_three"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="58dp"
             android:layout_marginVertical="@dimen/dimes_small"
+            android:background="@drawable/button_background"
             android:text="radio answer three"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/radio_answer_two"
             app:layout_constraintStart_toStartOf="@+id/radio_answer_two"
             app:layout_constraintTop_toBottomOf="@+id/radio_answer_two" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/radio_answer_four"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="58dp"
             android:layout_marginVertical="@dimen/dimes_small"
+            android:background="@drawable/button_background"
             android:text="radio answer four"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/radio_answer_three"
             app:layout_constraintStart_toStartOf="@+id/radio_answer_three"
             app:layout_constraintTop_toBottomOf="@+id/radio_answer_three" />
