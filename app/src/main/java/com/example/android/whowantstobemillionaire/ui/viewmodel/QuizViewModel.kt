@@ -14,8 +14,10 @@ class QuizViewModel : ViewModel() {
     private val disposable = CompositeDisposable()
 
     private val _quizResponse = MutableLiveData<Resource<QuizResponse?>>()
+    val quizResponse: LiveData<Resource<QuizResponse?>>
+        get() = _quizResponse
 
-    fun getQuiz(difficulty: String): LiveData<Resource<QuizResponse?>> {
+    fun getQuiz(difficulty: String) {
         _quizResponse.postValue(Resource.Loading)
         disposable.add(
             repository.executeQuizApi(difficulty)
@@ -31,7 +33,6 @@ class QuizViewModel : ViewModel() {
                         )
                     }
                 ))
-        return _quizResponse
     }
 
     override fun onCleared() {

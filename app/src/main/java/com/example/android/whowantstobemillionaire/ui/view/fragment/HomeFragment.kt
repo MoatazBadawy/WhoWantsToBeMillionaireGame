@@ -2,6 +2,7 @@ package com.example.android.whowantstobemillionaire.ui.view.fragment
 
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
@@ -14,13 +15,14 @@ import com.example.android.whowantstobemillionaire.util.statue.Resource
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val quizViewModel: QuizViewModel by viewModels()
-
+    var count = 1
     override fun onCreateView() {
         getQuestion()
+        getNewQuestion()
     }
 
     private fun getQuestion() {
-        quizViewModel.getQuiz(Constants.EASY).observe(viewLifecycleOwner) {
+        quizViewModel.quizResponse.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
                     binding.animationLoading.visibility = View.VISIBLE
@@ -28,6 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 is Resource.Success -> {
                     binding.animationLoading.visibility = View.GONE
                     it.data?.let { data ->
+                        count++
                         setQuestion(data)
                     }
 
@@ -57,6 +60,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         return mutableList!!
     }
 
+    private fun getNewQuestion() {
+        when (count) {
+            in 1..5 -> quizViewModel.getQuiz(Constants.EASY)
+            in 6..10 -> quizViewModel.getQuiz(Constants.MEDIUM)
+            in 11..15 -> quizViewModel.getQuiz(Constants.HARD)
+            16 -> navigateToHomeFragment()
+        }
+    }
+
+    private fun navigateToHomeFragment() =
+        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_self)
+
     override fun callback() {
+        binding.buttonSubmit.setOnClickListener {
+            navigateToHomeFragment()
+        }
     }
 }
