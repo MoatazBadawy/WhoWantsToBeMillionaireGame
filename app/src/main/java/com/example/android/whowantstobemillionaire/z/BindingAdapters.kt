@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
-import com.example.android.whowantstobemillionaire.util.statue.NetworkState
+import com.example.android.whowantstobemillionaire.util.statue.Resource
 import com.skydoves.progressview.ProgressView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
@@ -15,16 +15,16 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 @BindingAdapter(value = ["app:displayLoadingState"])
-fun <T> displayLoadingState(view: View, state: NetworkState<T>?) {
+fun <T> displayLoadingState(view: View, state: Resource<T>?) {
     when (state) {
-        is NetworkState.Loading -> view.visibility = View.VISIBLE
+        is Resource.Loading -> view.visibility = View.VISIBLE
         else -> view.visibility = View.GONE
     }
 }
 
 var listOfAnswers = listOf<String>()
 var checkedAnswers = mutableListOf<Boolean>()
-var count = 1
+var     count = 1
 var quizCoins = listOf(0,
     500,
     1000,
@@ -42,12 +42,10 @@ var quizCoins = listOf(0,
     500000,
     1000000)
 
-fun getQuizNum() = count
-
 @BindingAdapter(value = ["app:displayQuestion"])
-fun displayQuestion(view: TextView, state: NetworkState<QuizResponse>?) {
+fun displayQuestion(view: TextView, state: Resource<QuizResponse>?) {
     when (state) {
-        is NetworkState.Success -> {
+        is Resource.Success -> {
             view.visibility = View.VISIBLE
             val list = state.data?.quizzes
             if (list != null) {
@@ -59,9 +57,9 @@ fun displayQuestion(view: TextView, state: NetworkState<QuizResponse>?) {
 }
 
 @BindingAdapter(value = ["app:displayAnswer"])
-fun displayUsingRadioGroup(view: RadioGroup, state: NetworkState<QuizResponse>?) {
+fun displayUsingRadioGroup(view: RadioGroup, state: Resource<QuizResponse>?) {
     when (state) {
-        is NetworkState.Success -> {
+        is Resource.Success -> {
             view.visibility = View.VISIBLE
             val list = state.data?.quizzes
             if (list != null) {
@@ -89,10 +87,10 @@ fun correctAnswer(index: Int): Boolean {
 }
 
 @BindingAdapter(value = ["app:timerSetting"])
-fun handleProgressBar(progressView: ProgressView, state: NetworkState<QuizResponse>?) {
+fun handleProgressBar(progressView: ProgressView, state: Resource<QuizResponse>?) {
 
     when (state) {
-        is NetworkState.Success -> {
+        is Resource.Success -> {
             progressView.visibility = View.VISIBLE
             val list = state.data?.quizzes
             if (list != null) {
@@ -113,9 +111,9 @@ fun handleProgressBar(progressView: ProgressView, state: NetworkState<QuizRespon
 }
 
 @BindingAdapter(value = ["app:quizCounter"])
-fun increaseQuizCounter(view: TextView, state: NetworkState<QuizResponse>?) {
+fun increaseQuizCounter(view: TextView, state: Resource<QuizResponse>?) {
     when (state) {
-        is NetworkState.Success -> {
+        is Resource.Success -> {
             view.visibility = View.VISIBLE
             view.text = (count++).toString()
         }
@@ -124,9 +122,9 @@ fun increaseQuizCounter(view: TextView, state: NetworkState<QuizResponse>?) {
 }
 
 @BindingAdapter(value = ["app:coinsCounter"])
-fun increaseCoins(view: TextView, state: NetworkState<QuizResponse>?) {
+fun increaseCoins(view: TextView, state: Resource<QuizResponse>?) {
     when (state) {
-        is NetworkState.Success -> {
+        is Resource.Success -> {
             view.visibility = View.VISIBLE
             view.text = quizCoins[count - 2].toString()
         }

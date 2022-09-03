@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
     Fragment() {
-    abstract fun setup()
+    abstract fun onCreateView()
     abstract fun callback()
 
     private lateinit var _binding: DB
@@ -24,7 +24,7 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutR
         savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-        setup()
+        onCreateView()
         callback()
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root

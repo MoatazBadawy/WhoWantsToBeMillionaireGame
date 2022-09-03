@@ -6,7 +6,7 @@ import com.example.android.whowantstobemillionaire.databinding.FragmentStartBind
 import com.example.android.whowantstobemillionaire.ui.view.base.BaseFragment
 
 class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start){
-    override fun setup() {
+    override fun onCreateView() {
 
     }
 

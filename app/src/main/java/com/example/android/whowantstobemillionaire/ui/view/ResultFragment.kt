@@ -9,7 +9,7 @@ import com.example.android.whowantstobemillionaire.util.quizCoins
 class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_result) {
     val totalCorrectAnswers = count - 2
     val totalMoney = quizCoins[totalCorrectAnswers]
-    override fun setup() {
+    override fun onCreateView() {
         setData()
         binding.playAgain.setOnClickListener{
             navigateToStartFragment()
