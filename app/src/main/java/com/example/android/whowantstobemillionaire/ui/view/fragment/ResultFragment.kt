@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.ui.view
+package com.example.android.whowantstobemillionaire.ui.view.fragment
 import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentResultBinding

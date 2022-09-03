@@ -1,10 +1,7 @@
-package com.example.android.whowantstobemillionaire.ui.view
+package com.example.android.whowantstobemillionaire.ui.view.fragment
 
 import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
@@ -13,7 +10,6 @@ import com.example.android.whowantstobemillionaire.ui.view.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.viewmodel.QuizViewModel
 import com.example.android.whowantstobemillionaire.util.*
 import com.example.android.whowantstobemillionaire.util.helper.Constants
-import com.example.android.whowantstobemillionaire.util.helper.disable
 import com.example.android.whowantstobemillionaire.util.statue.Resource
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {

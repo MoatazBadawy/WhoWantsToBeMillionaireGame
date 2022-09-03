@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.android.whowantstobemillionaire.ui.view.StartFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.StartFragment"
         android:label="StartFragment"
         tools:layout="@layout/fragment_start">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.android.whowantstobemillionaire.ui.view.HomeFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.android.whowantstobemillionaire.ui.view.ResultFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.ResultFragment"
         android:label="ResultFragment" >
         <action
             android:id="@+id/action_resultFragment_to_startFragment"
