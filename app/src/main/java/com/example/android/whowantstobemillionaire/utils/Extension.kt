@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.util.helper
+package com.example.android.whowantstobemillionaire.utils
 
 import android.widget.ImageButton
 import io.reactivex.rxjava3.disposables.CompositeDisposable
