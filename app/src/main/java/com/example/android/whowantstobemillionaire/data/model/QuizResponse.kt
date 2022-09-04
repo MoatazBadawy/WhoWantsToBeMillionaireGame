@@ -6,5 +6,5 @@ data class QuizResponse(
     @SerializedName("response_code")
     var responseCode: Int?,
     @SerializedName("results")
-    var quizzes: List<Quiz>?,
+    var quizzes: MutableList<Quiz>?,
 )

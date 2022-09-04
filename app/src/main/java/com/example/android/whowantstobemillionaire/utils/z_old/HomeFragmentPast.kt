@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.util.z_old
+package com.example.android.whowantstobemillionaire.utils.z_old
 
 class HomeFragmentPast
 //    private fun getNewQuestion() {
