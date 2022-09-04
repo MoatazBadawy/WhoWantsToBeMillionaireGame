@@ -17,7 +17,8 @@
             android:src="@drawable/qustion_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/exit_button"
@@ -28,7 +29,8 @@
             android:background="@drawable/leave_rectangle"
             android:src="@drawable/ic_quit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/timer_button"
@@ -42,34 +44,140 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/timer_text"
+            android:id="@+id/num_question_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:elevation="4dp"
-            android:text="1/15"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/timer_button"
             app:layout_constraintEnd_toEndOf="@+id/timer_button"
             app:layout_constraintStart_toStartOf="@+id/timer_button"
-            app:layout_constraintTop_toTopOf="@+id/timer_button" />
+            app:layout_constraintTop_toTopOf="@+id/timer_button"
+            tools:text="1/15" />
+
+        <ImageView
+            android:id="@+id/sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-22dp"
+            android:background="@drawable/ciricle_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/question_text"
+            app:layout_constraintTop_toTopOf="@+id/question_text"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/timer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:elevation="1dp"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/sound"
+            app:layout_constraintStart_toStartOf="@+id/sound"
+            app:layout_constraintTop_toTopOf="@+id/sound"
+            tools:text="25" />
 
         <TextView
             android:id="@+id/question_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:background="@drawable/ic_qustion"
+            android:elevation="1dp"
             android:gravity="center"
             android:padding="@dimen/_12sdp"
-            android:text="What is the first letter in the English language?"
             android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.35000002"
+            tools:text="What is the first letter in the English language?" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/answer1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/background_with_radious"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:padding="@dimen/_12sdp"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/question_text"
+            tools:text="A" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/answer2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/background_with_radious"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:padding="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer1"
+            tools:text="B" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/answer3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/background_with_radious"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:padding="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer2"
+            tools:text="C" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/answer4"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/background_with_radious"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:padding="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer3"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="D" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
