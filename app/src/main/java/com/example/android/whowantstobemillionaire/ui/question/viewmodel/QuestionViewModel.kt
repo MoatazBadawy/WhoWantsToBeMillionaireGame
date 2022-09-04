@@ -8,7 +8,7 @@ import com.example.android.whowantstobemillionaire.data.repository.QuizRepositor
 import com.example.android.whowantstobemillionaire.util.statue.Resource
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
-class QuizViewModel : ViewModel() {
+class QuestionViewModel : ViewModel() {
 
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
