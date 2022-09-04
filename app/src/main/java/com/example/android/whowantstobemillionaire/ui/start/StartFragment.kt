@@ -14,9 +14,5 @@ class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start
         binding.aboutBtn.setOnClickListener { v ->
             Navigation.findNavController(v).navigate(R.id.action_startFragment_to_aboutFragment)
         }
-
-        binding.exitBtn.setOnClickListener {
-            requireActivity().finish()
-        }
     }
 }

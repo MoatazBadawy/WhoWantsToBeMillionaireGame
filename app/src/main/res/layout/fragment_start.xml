@@ -61,10 +61,9 @@
             android:layout_width="190dp"
             android:layout_height="65dp"
             android:layout_marginTop="25dp"
-            android:textColor="@drawable/change_text_color"
             android:background="@drawable/change_background"
             android:text="@string/start"
-
+            android:textColor="@drawable/change_text_color"
             android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
@@ -72,13 +71,13 @@
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/about_btn"
+            android:id="@+id/result_btn"
             android:layout_width="190dp"
             android:layout_height="65dp"
             android:layout_marginTop="15dp"
-            android:textColor="@drawable/change_text_color"
             android:background="@drawable/change_background"
-            android:text="@string/about_us"
+            android:text="@string/results"
+            android:textColor="@drawable/change_text_color"
             android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
@@ -86,18 +85,18 @@
             app:layout_constraintTop_toBottomOf="@+id/start_btn" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/exit_btn"
+            android:id="@+id/about_btn"
             android:layout_width="190dp"
             android:layout_height="65dp"
             android:layout_marginTop="15dp"
-            android:textColor="@drawable/change_text_color"
             android:background="@drawable/change_background"
-            android:text="@string/exit_text"
+            android:text="@string/about_us"
+            android:textColor="@drawable/change_text_color"
             android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
             app:layout_constraintStart_toStartOf="@+id/card_question_answers"
-            app:layout_constraintTop_toBottomOf="@+id/about_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/result_btn" />
 
         <ImageButton
             android:id="@+id/sound"
@@ -109,7 +108,7 @@
             android:src="@drawable/ic_audio_on"
             app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
             app:layout_constraintStart_toStartOf="@+id/card_question_answers"
-            app:layout_constraintTop_toBottomOf="@+id/exit_btn"
+            app:layout_constraintTop_toBottomOf="@+id/about_btn"
             tools:ignore="ContentDescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
