@@ -20,4 +20,5 @@
     <string name="exit_text">Exit</string>
     <string name="about_us">About us</string>
     <string name="results">Last Result</string>
+    <string name="developed_by">Developed By :</string>
 </resources>
