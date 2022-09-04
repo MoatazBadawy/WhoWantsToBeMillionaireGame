@@ -10,5 +10,7 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
     private val quizViewModel: QuestionViewModel by viewModels()
 
     override fun onCreateView() {
+        binding.questionViewModel = quizViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }

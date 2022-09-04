@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="questionViewModel"
+            type="com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -76,7 +83,7 @@
             android:layout_marginTop="8dp"
             android:elevation="1dp"
             android:textColor="@color/white"
-            android:textSize="17sp"
+            android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/sound"
             app:layout_constraintStart_toStartOf="@+id/sound"
@@ -90,10 +97,11 @@
             android:background="@drawable/ic_qustion"
             android:elevation="1dp"
             android:gravity="center"
-            android:padding="16dp"
+            android:padding="18dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
+            android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
