@@ -27,7 +27,7 @@ class QuestionViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _questionsList.postValue(State.Success(it.toData()?.quizzes))
-                Log.v("QuestionViewModel", it.toData().toString())
+                Log.d("TAG", "getQuiz: ${it.toData()?.quizzes}")
             }, {
                 _questionsList.postValue(State.Error(it.message ?: "Error while fetching data"))
             }).add(disposable)
@@ -36,7 +36,6 @@ class QuestionViewModel : ViewModel() {
     init {
         getQuiz()
     }
-
 
     override fun onCleared() {
         super.onCleared()
