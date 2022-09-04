@@ -1,38 +1,41 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android.whowantstobemillionaire.data.model.QuizResponse
+import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.state.State
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class QuestionViewModel : ViewModel() {
 
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
 
-    private val _quizResponse = MutableLiveData<State<QuizResponse?>>()
-    val quizResponse: LiveData<State<QuizResponse?>>
-        get() = _quizResponse
+    private val _questionsList = MutableLiveData<State<List<Quiz>?>>()
+    val questionsList: LiveData<State<List<Quiz>?>> = _questionsList
 
-    fun getQuiz() {
-        _quizResponse.postValue(State.Loading)
+    private fun getQuiz() {
+        _questionsList.postValue(State.Loading)
         disposable.add(
             repository.getAllQuestions()
-                .subscribe(
-                    { response ->
-                        _quizResponse.postValue(State.Success(response.toData()))
-                    },
-                    { error ->
-                        _quizResponse.postValue(
-                            State.Error(
-                                error.message ?: "Error While Fetching Data"
-                            )
-                        )
-                    }
-                ))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _questionsList.postValue(State.Success(it.toData()?.quizzes))
+                    Log.v("QuestionViewModel", it.toData().toString())
+                }, {
+                    _questionsList.postValue(State.Error(it.message ?: "Error while fetching data"))
+                })
+        )
+    }
+
+    init {
+        getQuiz()
     }
 
     override fun onCleared() {
