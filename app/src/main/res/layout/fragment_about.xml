@@ -78,7 +78,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/sansita"
             android:gravity="center"
-            android:text="Moataz \nMorsy \nBahaa \nRasha \nAmeer \nNajm \nSalah \nMohamed "
+            android:text="@string/names"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:flow_verticalAlign="top"
