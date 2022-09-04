@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,6 +11,55 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="182dp"
+            android:layout_height="185dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="114dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton"
+            app:layout_constraintVertical_bias="0.041" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="345dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="18dp"
+            android:background="@drawable/leave_rectangle"
+            android:src="@drawable/ic_quit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.898"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="367dp"
+            android:layout_height="133dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="414dp"
+            android:fontFamily="@font/sansita"
+            android:gravity="center"
+            android:text="@string/about_text"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:flow_verticalAlign="top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.142"
+            app:lineHeight="19.36sp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

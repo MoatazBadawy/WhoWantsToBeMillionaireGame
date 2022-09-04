@@ -8,5 +8,7 @@
     <string name="start">Start Game</string>
     <string name="submit">submit</string>
     <string name="unfortunately">Unfortunately!</string>
-
+    <string name="about_text">This game is a simulation of one of the famous TV shows in the world (The Millionaire). We hope that you like this simulation in all its details except for the million dollars. We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. I hope you enjoy with us.</string>
+    <string name="play_again">PLAY AGAIN</string>
+    <string name="exit">EXIT</string>
 </resources>
