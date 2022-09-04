@@ -7,34 +7,50 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.StartFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.start.StartFragment"
         android:label="StartFragment"
         tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.HomeFragment"
+        android:id="@+id/questionFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.question.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_qustion">
         <action
             android:id="@+id/action_homeFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
         <action
-            android:id="@+id/action_homeFragment_self"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            android:id="@+id/action_homeFragment_to_losingFragment"
+            app:destination="@id/losingFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.ResultFragment"
-        android:label="ResultFragment" >
+        android:name="com.example.android.whowantstobemillionaire.ui.result.ResultFragment"
+        android:label="ResultFragment"
+        tools:layout="@layout/fragment_result">
         <action
-            android:id="@+id/action_resultFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            android:id="@+id/action_resultFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.about.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about"/>
+    <fragment
+        android:id="@+id/losingFragment"
+        android:name="com.example.android.whowantstobemillionaire.ui.losing.LosingFragment"
+        android:label="LosingFragment"
+        tools:layout="@layout/fragment_losing">
+        <action
+            android:id="@+id/action_losingFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+
 </navigation>

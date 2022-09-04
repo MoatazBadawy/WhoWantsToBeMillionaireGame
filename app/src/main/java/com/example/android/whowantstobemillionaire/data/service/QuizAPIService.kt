@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.data.api
+package com.example.android.whowantstobemillionaire.data.service
 
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import io.reactivex.rxjava3.core.Observable

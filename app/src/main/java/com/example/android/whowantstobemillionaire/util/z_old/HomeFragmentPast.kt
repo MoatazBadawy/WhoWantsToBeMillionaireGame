@@ -1,7 +1,4 @@
-package com.example.android.whowantstobemillionaire.z
-
-import androidx.navigation.Navigation
-import com.example.android.whowantstobemillionaire.R
+package com.example.android.whowantstobemillionaire.util.z_old
 
 class HomeFragmentPast
 //    private fun getNewQuestion() {

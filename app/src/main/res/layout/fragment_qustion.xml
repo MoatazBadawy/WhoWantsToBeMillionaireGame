@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/qustion_background"
-        tools:context=".ui.view.activity.MainActivity">
+        tools:context=".ui.main.MainActivity">
 
         <ImageView
             android:id="@+id/imageView"

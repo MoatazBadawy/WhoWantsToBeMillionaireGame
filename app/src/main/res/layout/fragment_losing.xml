@@ -13,7 +13,7 @@
         android:background="@drawable/background">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -87,7 +87,8 @@
             app:lineHeight="29sp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="216dp"
+            android:id="@+id/play_again_button"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginStart="98dp"
             android:layout_marginEnd="98dp"

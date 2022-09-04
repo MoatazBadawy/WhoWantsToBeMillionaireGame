@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.ui.view.base
+package com.example.android.whowantstobemillionaire.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
     Fragment() {
     abstract fun onCreateView()
-    abstract fun callback()
 
     private lateinit var _binding: DB
     protected val binding: DB
@@ -25,7 +24,6 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutR
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
         onCreateView()
-        callback()
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }

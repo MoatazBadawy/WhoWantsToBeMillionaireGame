@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.ui.viewmodel
+package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
