@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.utils
+package com.example.android.whowantstobemillionaire.utils.state
 
 sealed class State<out T>{
     data class Success<T>(val data :T?): State<T>()

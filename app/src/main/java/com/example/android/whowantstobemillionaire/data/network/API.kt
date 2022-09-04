@@ -1,6 +1,6 @@
 package com.example.android.whowantstobemillionaire.data.network
 
-import com.example.android.whowantstobemillionaire.utils.Constants
+import com.example.android.whowantstobemillionaire.utils.helper.Constants
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

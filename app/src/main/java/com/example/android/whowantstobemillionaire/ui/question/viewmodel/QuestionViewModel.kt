@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
-import com.example.android.whowantstobemillionaire.utils.State
+import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class QuestionViewModel : ViewModel() {

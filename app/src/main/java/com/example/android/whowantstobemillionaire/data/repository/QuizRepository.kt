@@ -2,8 +2,8 @@ package com.example.android.whowantstobemillionaire.data.repository
 
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.network.API
-import com.example.android.whowantstobemillionaire.utils.DifficultyLevels
-import com.example.android.whowantstobemillionaire.utils.State
+import com.example.android.whowantstobemillionaire.utils.helper.DifficultyLevels
+import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.functions.BiFunction

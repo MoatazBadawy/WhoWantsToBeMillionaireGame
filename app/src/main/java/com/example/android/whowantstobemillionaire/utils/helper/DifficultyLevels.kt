@@ -1,4 +1,4 @@
-package com.example.android.whowantstobemillionaire.utils
+package com.example.android.whowantstobemillionaire.utils.helper
 
 enum class DifficultyLevels(val level: String) {
     EASY("easy"),

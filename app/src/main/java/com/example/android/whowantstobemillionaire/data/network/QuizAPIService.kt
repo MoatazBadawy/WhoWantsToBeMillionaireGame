@@ -1,7 +1,7 @@
 package com.example.android.whowantstobemillionaire.data.network
 
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
-import com.example.android.whowantstobemillionaire.utils.Constants.QUESTION_TYPE
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.QUESTION_TYPE
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.GET
