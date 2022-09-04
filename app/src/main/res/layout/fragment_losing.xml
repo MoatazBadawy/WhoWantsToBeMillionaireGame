@@ -12,17 +12,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/background">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/greenmoneyfalling"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
@@ -32,29 +21,30 @@
             android:background="@drawable/leave_rectangle"
             android:src="@drawable/ic_quit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="328dp"
-            android:layout_height="298dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/win_logo"
+            android:layout_width="411dp"
+            android:layout_height="270dp"
+            android:layout_marginBottom="94dp"
+            android:src="@drawable/lose_image"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.117"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
             android:fontFamily="@font/sansita"
-            android:text="@string/congratulations"
+            android:text="@string/oooops_bad_news"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -65,12 +55,12 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="307dp"
+            android:layout_height="29dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/now_you_have_1_000_000"
+            android:text="@string/now_you_loss_1_000_000"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -81,19 +71,20 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="370dp"
+            android:layout_height="87dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:text="@string/now_you_can_call_yourself_a_millionaire"
+            android:text="@string/this_means_that_you_will_remain_broke_for_the_rest_of_your_life"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:lineHeight="29sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="216dp"

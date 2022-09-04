@@ -46,7 +46,7 @@
         <item name="android:background">@drawable/radio_button_state</item>
         <item name="android:textColor">@color/radio_button_text</item>
         <item name="android:paddingStart">@dimen/dimes_normal</item>
-        <item name="android:paddingEnd">@dimen/dimes_normal</item>
+        <item name="android:paddingEnd">@dime2n/dimes_normal</item>
         <item name="android:button">@android:color/transparent</item>
 
     </style>

@@ -13,7 +13,7 @@ import com.example.android.whowantstobemillionaire.util.*
 import com.example.android.whowantstobemillionaire.util.helper.Constants
 import com.example.android.whowantstobemillionaire.util.statue.Resource
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_qustion) {
     private val quizViewModel: QuizViewModel by viewModels()
     var count = 1
     override fun onCreateView() {
