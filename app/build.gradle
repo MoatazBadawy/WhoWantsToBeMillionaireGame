@@ -61,8 +61,4 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.5.2"
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
-    // sdp library for support all sizes on the screen
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
-    // ssp library for support all sizes on the screen
-    implementation 'com.intuit.ssp:ssp-android:1.0.6'
 }
