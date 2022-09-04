@@ -18,7 +18,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.android.whowantstobemillionaire.ui.view.fragment.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_qustion">
         <action
             android:id="@+id/action_homeFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
