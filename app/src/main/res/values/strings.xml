@@ -17,4 +17,6 @@
     <string name="now_you_can_call_yourself_a_millionaire">Now you can call yourself a millionaire</string>
     <string name="now_you_have_1_000_000">Now you have $1,000,000</string>
     <string name="congratulations">Congratulations</string>
+    <string name="exit_text">Exit</string>
+    <string name="about_us">About us</string>
 </resources>
