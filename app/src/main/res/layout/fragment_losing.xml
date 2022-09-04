@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,15 +16,13 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="345dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="18dp"
             android:background="@drawable/leave_rectangle"
             android:src="@drawable/ic_quit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.898"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -36,22 +35,20 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.117" />
+            app:layout_constraintVertical_bias="0.117"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="186dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="113dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="113dp"
             android:fontFamily="@font/sansita"
-            android:text="Congratulations"
+            android:text="@string/oooops_bad_news"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:lineHeight="29sp" />
@@ -60,15 +57,14 @@
             android:id="@+id/textView2"
             android:layout_width="307dp"
             android:layout_height="29dp"
-            android:layout_marginStart="52dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="52dp"
-            android:text="Now you loss $1,000,000"
+            android:layout_marginEnd="16dp"
+            android:text="@string/now_you_loss_1_000_000"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:lineHeight="29sp" />
@@ -77,54 +73,33 @@
             android:id="@+id/textView3"
             android:layout_width="370dp"
             android:layout_height="87dp"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="21dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:text="This means that you will remain broke for the rest of your life"
+            android:text="@string/this_means_that_you_will_remain_broke_for_the_rest_of_your_life"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:lineHeight="29sp" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="216dp"
             android:layout_height="60dp"
             android:layout_marginStart="98dp"
             android:layout_marginEnd="98dp"
             android:background="@drawable/button_background"
-            android:clickable="true"
             android:text="@string/play_again"
             android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.42"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:layout_constraintVertical_bias="0.157" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="216dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="98dp"
-            android:layout_marginEnd="98dp"
-            android:background="@drawable/button_background"
-            android:text="@string/exit"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.42"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:layout_constraintVertical_bias="0.72" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

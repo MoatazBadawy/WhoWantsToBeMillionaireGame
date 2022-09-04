@@ -11,4 +11,10 @@
     <string name="about_text">This game is a simulation of one of the famous TV shows in the world (The Millionaire). We hope that you like this simulation in all its details except for the million dollars. We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. I hope you enjoy with us.</string>
     <string name="play_again">PLAY AGAIN</string>
     <string name="exit">EXIT</string>
+    <string name="oooops_bad_news">Oooops, Bad News</string>
+    <string name="now_you_loss_1_000_000">Now you loss $1,000,000</string>
+    <string name="this_means_that_you_will_remain_broke_for_the_rest_of_your_life">This means that you will remain broke for the rest of your life</string>
+    <string name="now_you_can_call_yourself_a_millionaire">Now you can call yourself a millionaire</string>
+    <string name="now_you_have_1_000_000">Now you have $1,000,000</string>
+    <string name="congratulations">Congratulations</string>
 </resources>
