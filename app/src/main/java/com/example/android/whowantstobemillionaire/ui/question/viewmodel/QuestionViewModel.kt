@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
+import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -21,17 +22,15 @@ class QuestionViewModel : ViewModel() {
 
     private fun getQuiz() {
         _questionsList.postValue(State.Loading)
-        disposable.add(
-            repository.getAllQuestions()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    _questionsList.postValue(State.Success(it.toData()?.quizzes))
-                    Log.v("QuestionViewModel", it.toData().toString())
-                }, {
-                    _questionsList.postValue(State.Error(it.message ?: "Error while fetching data"))
-                })
-        )
+        repository.getAllQuestions()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _questionsList.postValue(State.Success(it.toData()?.quizzes))
+                Log.v("QuestionViewModel", it.toData().toString())
+            }, {
+                _questionsList.postValue(State.Error(it.message ?: "Error while fetching data"))
+            }).add(disposable)
     }
 
     init {
