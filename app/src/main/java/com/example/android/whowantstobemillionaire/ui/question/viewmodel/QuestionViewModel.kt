@@ -38,6 +38,7 @@ class QuestionViewModel : ViewModel() {
         getQuiz()
     }
 
+
     override fun onCleared() {
         super.onCleared()
         disposable.dispose()
