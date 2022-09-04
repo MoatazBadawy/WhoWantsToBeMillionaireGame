@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -9,33 +10,105 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:background="@drawable/start_background">
 
-        <TextView
-            android:id="@+id/welcome_txt"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="182dp"
+            android:layout_height="185dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.137" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
-            android:text="@string/welcome"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="28sp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintGuide_percent="0.50" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_question_answers"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="50dp"
+            android:background="@color/white"
+            android:elevation="0dp"
+            app:cardCornerRadius="@dimen/dimes_normal"
+            app:layout_constraintBottom_toBottomOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintGuide_percent="0.90" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_btn"
             android:layout_width="190dp"
             android:layout_height="65dp"
-            android:layout_marginBottom="60dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/start_background1"
             android:text="@string/start"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/about_btn"
+            android:layout_width="190dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/background_with_radious"
+            android:text="About us"
             android:textColor="@color/white"
             android:textSize="19sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toBottomOf="@+id/start_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/exit_btn"
+            android:layout_width="190dp"
+            android:layout_height="65dp"
+            android:background="@drawable/background_with_radious"
+            android:text="Exit"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toBottomOf="@+id/about_btn" />
+
+        <ImageButton
+            android:id="@+id/sound"
+            android:layout_width="70dp"
+            android:layout_height="65dp"
+            android:background="@drawable/ciricle_button"
+            android:elevation="2dp"
+            android:src="@drawable/ic_audio_off"
+         android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toBottomOf="@+id/exit_btn" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

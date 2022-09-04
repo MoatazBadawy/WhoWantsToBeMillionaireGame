@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dimes_large">32dp</dimen>
-    <dimen name="dimes_normal">16dp</dimen>
+    <dimen name="dimes_normal">22dp</dimen>
     <dimen name="dimes_small">8dp</dimen>
 
     <dimen name="font_dimes_small">12sp</dimen>
