@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_losingFragment"
             app:destination="@id/losingFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
