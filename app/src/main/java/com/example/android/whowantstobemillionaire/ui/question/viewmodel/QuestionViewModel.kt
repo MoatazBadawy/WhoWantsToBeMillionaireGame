@@ -1,5 +1,7 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,9 +20,33 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
+    private var counter=1
 
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
-    val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
+    val questionResponse: LiveData<State<QuizResponse>>
+    get() = _questionResponse
+
+    private val _numberOfQuestion = MutableLiveData(counter)
+    val numberOfQuestion: LiveData<Int>
+        get() = _numberOfQuestion
+
+    private val _losingNavigate = MutableLiveData(false)
+    val losingNavigate: LiveData<Boolean>
+    get() = _losingNavigate
+
+    private val allQuestion = mutableListOf<Quiz>()
+    private val questionToReplace = mutableListOf<Quiz>()
+
+
+    private val _currentQuestion = MutableLiveData<Quiz>()
+    val currentQuestion: LiveData<Quiz>
+    get() = _currentQuestion
+    private var questionIndex = 0
+
+
+    private val _answers = MutableLiveData<List<Answer?>>()
+    val answers: LiveData<List<Answer?>>
+    get() = _answers
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -44,8 +70,7 @@ class QuestionViewModel : ViewModel() {
         _questionResponse.postValue(State.Error(throwable.message.toString()))
     }
 
-    private val allQuestion = mutableListOf<Quiz>()
-    private val questionToReplace = mutableListOf<Quiz>()
+
 
     private fun sortQuestions(list: List<Quiz>) {
         list.forEachIndexed { index, quiz ->
@@ -57,18 +82,19 @@ class QuestionViewModel : ViewModel() {
         setCurrentQuestion(list[0])
     }
 
-    private val _currentQuestion = MutableLiveData<Quiz>()
-    val currentQuestion: LiveData<Quiz> get() = _currentQuestion
-    private var questionIndex = 0
+
 
     private fun setCurrentQuestion(quiz: Quiz) {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
+        increaseCounter(counter++)
         setShuffledAnswers(quiz)
     }
 
-    private val _answers = MutableLiveData<List<Answer?>>()
-    val answers: LiveData<List<Answer?>> get() = _answers
+    fun increaseCounter(counter:Int){
+        _numberOfQuestion.postValue(counter)
+    }
+
 
     private fun setShuffledAnswers(quiz: Quiz) {
         val listOfAnswers = quiz.incorrectAnswers?.map {
@@ -79,8 +105,7 @@ class QuestionViewModel : ViewModel() {
         Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
-    private val _losingNavigate = MutableLiveData(false)
-    val losingNavigate: LiveData<Boolean> get() = _losingNavigate
+
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect) {
@@ -90,6 +115,7 @@ class QuestionViewModel : ViewModel() {
         }
     }
 
+
     init {
         getQuiz()
     }
@@ -98,4 +124,6 @@ class QuestionViewModel : ViewModel() {
         super.onCleared()
         disposable.dispose()
     }
+
+
 }
