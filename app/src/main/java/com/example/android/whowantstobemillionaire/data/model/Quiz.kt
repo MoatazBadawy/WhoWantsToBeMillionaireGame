@@ -10,7 +10,7 @@ data class Quiz(
     @SerializedName("difficulty")
     var difficulty: String?,
     @SerializedName("incorrect_answers")
-    var incorrectAnswers: List<String>?,
+    var incorrectAnswers: MutableList<String>?,
     @SerializedName("question")
     var question: String?,
     @SerializedName("type")

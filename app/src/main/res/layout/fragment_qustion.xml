@@ -16,176 +16,217 @@
         android:background="@drawable/qustion_background"
         tools:context=".ui.main.MainActivity">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="93dp"
-            android:src="@drawable/qustion_logo"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:successState="@{questionViewModel.requestState}">
 
-        <ImageButton
-            android:id="@+id/exit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="18dp"
-            android:background="@drawable/leave_rectangle"
-            android:src="@drawable/ic_quit"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="93dp"
+                android:src="@drawable/qustion_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/exit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/leave_rectangle"
+                android:src="@drawable/ic_quit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/timer_button"
+                android:layout_width="55dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/leave_rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/num_question_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:elevation="4dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/timer_button"
+                app:layout_constraintEnd_toEndOf="@+id/timer_button"
+                app:layout_constraintStart_toStartOf="@+id/timer_button"
+                app:layout_constraintTop_toTopOf="@+id/timer_button"
+                tools:text="1/15" />
+
+            <ImageView
+                android:id="@+id/sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-22dp"
+                android:background="@drawable/ciricle_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/question_text"
+                app:layout_constraintTop_toTopOf="@+id/question_text"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/timer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:elevation="1dp"
+                android:textColor="@color/white"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/sound"
+                app:layout_constraintStart_toStartOf="@+id/sound"
+                app:layout_constraintTop_toTopOf="@+id/sound"
+                tools:text="25" />
+
+            <TextView
+                android:id="@+id/question_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_qustion"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="@{questionViewModel.currentQuestion.question}"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.35000002"
+                tools:text="What is the first letter in the English language?" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/answer1"
+                android:layout_width="0dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="42dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[0])}"
+                android:padding="16dp"
+                android:text="@{questionViewModel.answers[0].answer}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/question_text"
+                tools:text="A" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/answer2"
+                android:layout_width="0dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="42dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[1])}"
+                android:padding="16dp"
+                android:text="@{questionViewModel.answers[1].answer}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/answer1"
+                tools:text="B" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/answer3"
+                android:layout_width="0dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="42dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[2])}"
+                android:padding="16dp"
+                android:text="@{questionViewModel.answers[2].answer}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/answer2"
+                tools:text="C" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/answer4"
+                android:layout_width="0dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="42dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
+                android:padding="16dp"
+                android:text="@{questionViewModel.answers[3].answer}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/answer3"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="D" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/loading_layout"
+            layout="@layout/layout_statue_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:loadingState="@{questionViewModel.requestState}" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/timer_button"
-            android:layout_width="55dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/leave_rectangle"
-            android:src="@drawable/ic_timer"
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/layout_statue_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:errorState="@{questionViewModel.requestState}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/num_question_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:elevation="4dp"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/timer_button"
-            app:layout_constraintEnd_toEndOf="@+id/timer_button"
-            app:layout_constraintStart_toStartOf="@+id/timer_button"
-            app:layout_constraintTop_toTopOf="@+id/timer_button"
-            tools:text="1/15" />
-
-        <ImageView
-            android:id="@+id/sound"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-22dp"
-            android:background="@drawable/ciricle_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/question_text"
-            app:layout_constraintTop_toTopOf="@+id/question_text"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/timer_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:elevation="1dp"
-            android:textColor="@color/white"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/sound"
-            app:layout_constraintStart_toStartOf="@+id/sound"
-            app:layout_constraintTop_toTopOf="@+id/sound"
-            tools:text="25" />
-
-        <TextView
-            android:id="@+id/question_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_qustion"
-            android:elevation="1dp"
-            android:gravity="center"
-            android:padding="18dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text=""
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.35000002"
-            tools:text="What is the first letter in the English language?" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/answer1"
-            android:layout_width="0dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="42dp"
-            android:background="@drawable/background_with_radious"
-            android:elevation="1dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_text"
-            tools:text="A" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/answer2"
-            android:layout_width="0dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="42dp"
-            android:background="@drawable/background_with_radious"
-            android:elevation="1dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answer1"
-            tools:text="B" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/answer3"
-            android:layout_width="0dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="42dp"
-            android:background="@drawable/background_with_radious"
-            android:elevation="1dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answer2"
-            tools:text="C" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/answer4"
-            android:layout_width="0dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/background_with_radious"
-            android:elevation="1dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answer3"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="D" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

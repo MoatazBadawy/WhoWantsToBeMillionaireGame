@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_losingFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_losingFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
 
 </navigation>
