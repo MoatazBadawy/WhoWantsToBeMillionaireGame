@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:successState="@{questionViewModel.requestState}">
+            app:successState="@{questionViewModel.questionResponse}">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -215,7 +215,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:loadingState="@{questionViewModel.requestState}" />
+            app:loadingState="@{questionViewModel.questionResponse}" />
 
         <include
             android:id="@+id/error_layout"
@@ -223,7 +223,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            app:errorState="@{questionViewModel.requestState}"
+            app:errorState="@{questionViewModel.questionResponse}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

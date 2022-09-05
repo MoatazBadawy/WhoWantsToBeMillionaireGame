@@ -18,8 +18,8 @@ class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
 
-    private val _requestState = MutableLiveData<State<QuizResponse>>(State.Loading)
-    val requestState: LiveData<State<QuizResponse>> get() = _requestState
+    private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
+    val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -30,17 +30,17 @@ class QuestionViewModel : ViewModel() {
 
     private fun onGetQuestionsSuccess(state: State<QuizResponse>) {
         if (state is State.Success) {
-            _requestState.postValue(state)
+            _questionResponse.postValue(state)
             state.data?.quizzes.let { result ->
                 sortQuestions(result as List<Quiz>)
             }
         } else {
-            _requestState.postValue(State.Error(ERROR))
+            _questionResponse.postValue(State.Error(ERROR))
         }
     }
 
     private fun onGetQuestionsFailed(throwable: Throwable) {
-        _requestState.postValue(State.Error(throwable.message.toString()))
+        _questionResponse.postValue(State.Error(throwable.message.toString()))
     }
 
     private val allQuestion = mutableListOf<Quiz>()
