@@ -1,5 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -74,6 +75,8 @@ class QuestionViewModel : ViewModel() {
             Answer(it, false)
         }?.plus(Answer(quiz.correctAnswer!!, true))?.shuffled()
         _answers.postValue(listOfAnswers!!)
+
+        Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
     private val _losingNavigate = MutableLiveData(false)
