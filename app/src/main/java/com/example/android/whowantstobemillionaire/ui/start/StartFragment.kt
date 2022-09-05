@@ -11,33 +11,41 @@ import com.example.android.whowantstobemillionaire.utils.Audio
 
 class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start) {
     val audio = Audio()
+    lateinit var mediaPlayer: MediaPlayer
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView() {
-        audio.runAudio(MediaPlayer.create(context, R.raw.home_audio))
+        mediaPlayer = MediaPlayer.create(this.context, R.raw.home_audio)
+        audio.runAudio(mediaPlayer)
+
         binding.startBtn.setOnClickListener { v ->
+            audio.pauseAudio(mediaPlayer)
             Navigation.findNavController(v).navigate(R.id.action_startFragment_to_homeFragment)
         }
 
         binding.aboutBtn.setOnClickListener { v ->
+            audio.pauseAudio(mediaPlayer)
             Navigation.findNavController(v).navigate(R.id.action_startFragment_to_aboutFragment)
         }
         binding.sound.setOnClickListener {
-            if(audio.muteState ==100)
+            sound()
+        }
+    }
+        @RequiresApi(Build.VERSION_CODES.M)
+        fun sound(){
+
+            if(audio.muteState ==0)
             {
+                audio.pauseAudio(mediaPlayer)
                 audio.muteAudio(requireContext())
-                audio.muteState =0
+                audio.muteState = 100
                 binding.sound.setImageResource(R.drawable.ic_audio_on)
             }
             else{
-                audio.runAudio(MediaPlayer.create(context, R.raw.home_audio))
+                audio.runAudio(mediaPlayer)
                 audio.unmuteAudio(requireContext())
-                audio.muteState =100
+                audio.muteState = 0
                 binding.sound.setImageResource(R.drawable.ic_audio_off)
             }
 
-
-
-
-        }
     }
 }
