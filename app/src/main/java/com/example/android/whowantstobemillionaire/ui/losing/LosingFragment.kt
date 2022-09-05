@@ -8,8 +8,7 @@ import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 class LosingFragment : BaseFragment<FragmentLosingBinding>(R.layout.fragment_losing) {
     override fun onCreateView() {
         binding.backButton.setOnClickListener { v ->
-            findNavController(v).navigateUp()
-            findNavController(v).popBackStack(R.id.questionFragment, false)
+            findNavController(v).navigate(R.id.action_losingFragment_to_startFragment)
         }
 
         binding.playAgainButton.setOnClickListener { v ->
