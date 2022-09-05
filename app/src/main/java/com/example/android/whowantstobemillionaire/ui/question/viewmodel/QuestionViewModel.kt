@@ -1,8 +1,11 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
+import android.os.CountDownTimer
 import android.util.Log
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
@@ -12,8 +15,10 @@ import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
 import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -21,6 +26,9 @@ class QuestionViewModel : ViewModel() {
 
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
+    val _timer  = MutableLiveData<String>("30")
+    val timer:LiveData<String> = _timer
+
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -65,6 +73,7 @@ class QuestionViewModel : ViewModel() {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
         setShuffledAnswers(quiz)
+        prepareTimer()
     }
 
     private val _answers = MutableLiveData<List<Answer?>>()
@@ -92,10 +101,69 @@ class QuestionViewModel : ViewModel() {
 
     init {
         getQuiz()
+
     }
 
     override fun onCleared() {
         super.onCleared()
         disposable.dispose()
     }
+    private fun prepareTimer() {
+        val observable = Observable.intervalRange(0, 11, 2, 1, TimeUnit.SECONDS)
+            .map { 10- it}
+
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+        observable.subscribe({
+            Log.d("tag", it.toString())
+            _timer.postValue(it.toString())
+
+        }, { e ->
+            e.message
+        }).add(disposable)
+
+//        object : CountDownTimer(1000,30000){
+//            override fun onTick(p0: Long) {
+//                _timer.postValue(p0.toString())
+//            }
+//
+//            override fun onFinish() {
+//                TODO("Not yet implemented")
+//
+//
+//
+//
+//            }
+//var i = 0
+//Observable.interval(1000L, TimeUnit.MILLISECONDS)
+//    .timeInterval()
+//    .observeOn(AndroidSchedulers.mainThread())
+//    .subscribe {
+//        Log.v("tag", (i++).toString())
+//    }
+//
+
+// Observable.interval(10,1, TimeUnit.SECONDS)
+//     .take(10)
+//
+//            .timeInterval()
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeOn(Schedulers.io())
+//            .subscribe {
+//                Log.d("tag", it.value().toString())
+//            }
+//        Observable.range(1,25)
+//            .map { 25 - it}.
+//            timeInterval(TimeUnit.SECONDS)
+//            .subscribe {
+//                Log.d("tag", it.toString())
+//            }
+
+    }
+
+
+
+
 }
+
