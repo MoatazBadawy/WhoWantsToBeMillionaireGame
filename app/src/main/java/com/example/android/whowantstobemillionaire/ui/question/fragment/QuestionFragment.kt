@@ -23,9 +23,23 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         ) {
             if (it) navigateToLosingFragment()
         }
+
+        quizViewModel.resultNavigate.observe(
+            viewLifecycleOwner
+        ) {
+            if (it) navigateToResultFragment()
+        }
+
+
     }
 
     fun navigateToLosingFragment() {
-        requireView().findNavController().navigate(R.id.action_homeFragment_to_losingFragment)
+        requireView().findNavController().navigate(R.id.action_questionFragment_to_losingFragment)
     }
+
+    fun navigateToResultFragment() {
+        requireView().findNavController().navigate(R.id.action_questionFragment_to_resultFragment)
+    }
+
+
 }

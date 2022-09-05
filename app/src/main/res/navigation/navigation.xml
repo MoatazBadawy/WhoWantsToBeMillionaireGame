@@ -23,10 +23,10 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_qustion">
         <action
-            android:id="@+id/action_homeFragment_to_resultFragment"
+            android:id="@+id/action_questionFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_losingFragment"
+            android:id="@+id/action_questionFragment_to_losingFragment"
             app:destination="@id/losingFragment"
             app:popUpToInclusive="false" />
         <action

@@ -51,6 +51,7 @@ class QuestionViewModel : ViewModel() {
         list.forEachIndexed { index, quiz ->
             when (index) {
                 5, 11, 17 -> questionToReplace.add(quiz)
+
                 else -> allQuestion.add(quiz)
             }
         }
@@ -79,12 +80,19 @@ class QuestionViewModel : ViewModel() {
         Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
+
     private val _losingNavigate = MutableLiveData(false)
     val losingNavigate: LiveData<Boolean> get() = _losingNavigate
 
+    private val _resultNavigate = MutableLiveData(false)
+    val resultNavigate: LiveData<Boolean> get() = _resultNavigate
+
     fun onAnswerClickListener(answer: Answer) {
-        if (answer.isCorrect) {
+        if (answer.isCorrect && questionIndex < 15) {
             setCurrentQuestion(allQuestion[questionIndex])
+
+        } else if (questionIndex == 15) {
+            _resultNavigate.postValue(true)
         } else {
             _losingNavigate.postValue(true)
         }
