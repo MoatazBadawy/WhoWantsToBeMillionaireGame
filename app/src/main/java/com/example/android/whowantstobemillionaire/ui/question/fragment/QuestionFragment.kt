@@ -1,6 +1,7 @@
 package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBinding
@@ -13,6 +14,9 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.exitButton.setOnClickListener { v ->
+            Navigation.findNavController(v).popBackStack()
+        }
 
         quizViewModel.losingNavigate.observe(
             viewLifecycleOwner
