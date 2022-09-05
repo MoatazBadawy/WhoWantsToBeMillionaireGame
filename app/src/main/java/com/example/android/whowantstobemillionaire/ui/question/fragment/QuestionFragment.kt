@@ -1,5 +1,8 @@
 package com.example.android.whowantstobemillionaire.ui.question.fragment
 
+import android.app.AlertDialog
+import android.content.Context
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
@@ -19,9 +22,28 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         ) {
             if (it) navigateToLosingFragment()
         }
+
     }
+
 
     fun navigateToLosingFragment() {
         requireView().findNavController().navigate(R.id.action_homeFragment_to_losingFragment)
     }
+
+
+    fun backQuizAlertDialog(context: Context){
+        val dialog = AlertDialog.Builder(context)
+        dialog.apply {
+            setTitle("انسحاب")
+            setMessage("تاكيد الانسحاب")
+            setPositiveButton("yes") { _, _ ->
+                requireView().findNavController().navigate(R.id.action_homeFragment_to_resultFragment)
+            }
+            setNegativeButton("No") { it, _ ->
+                it.cancel()
+            }
+        }
+        dialog.show()
+    }
+
 }
