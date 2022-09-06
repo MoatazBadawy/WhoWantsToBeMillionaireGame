@@ -8,7 +8,8 @@ import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_result) {
     override fun onCreateView() {
         binding.backButton.setOnClickListener { v ->
-            findNavController(v).navigateUp()
+            findNavController(v).navigate(R.id.action_resultFragment_to_startFragment)
+            findNavController(v).popBackStack(R.id.startFragment, false)
         }
 
         binding.playAgainButton.setOnClickListener { v ->

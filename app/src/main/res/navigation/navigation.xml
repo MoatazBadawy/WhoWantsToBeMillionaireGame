@@ -23,11 +23,12 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_qustion">
         <action
-            android:id="@+id/action_homeFragment_to_resultFragment"
+            android:id="@+id/action_questionFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_losingFragment"
-            app:destination="@id/losingFragment" />
+            android:id="@+id/action_questionFragment_to_losingFragment"
+            app:destination="@id/losingFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_questionFragment_to_startFragment"
             app:destination="@id/startFragment" />
@@ -40,12 +41,17 @@
         <action
             android:id="@+id/action_resultFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.android.whowantstobemillionaire.ui.about.AboutFragment"
         android:label="AboutFragment"
-        tools:layout="@layout/fragment_about"/>
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/losingFragment"
         android:name="com.example.android.whowantstobemillionaire.ui.losing.LosingFragment"
@@ -56,7 +62,9 @@
             app:destination="@id/questionFragment" />
         <action
             android:id="@+id/action_losingFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>
