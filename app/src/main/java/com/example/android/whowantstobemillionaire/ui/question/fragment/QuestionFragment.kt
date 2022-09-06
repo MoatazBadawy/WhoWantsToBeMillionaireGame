@@ -14,6 +14,7 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
         binding.exitButton.setOnClickListener { v ->
             Navigation.findNavController(v).popBackStack()
         }
@@ -29,17 +30,13 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         ) {
             if (it) navigateToResultFragment()
         }
-
-
     }
 
-    fun navigateToLosingFragment() {
+    private fun navigateToLosingFragment() {
         requireView().findNavController().navigate(R.id.action_questionFragment_to_losingFragment)
     }
 
-    fun navigateToResultFragment() {
+    private fun navigateToResultFragment() {
         requireView().findNavController().navigate(R.id.action_questionFragment_to_resultFragment)
     }
-
-
 }
