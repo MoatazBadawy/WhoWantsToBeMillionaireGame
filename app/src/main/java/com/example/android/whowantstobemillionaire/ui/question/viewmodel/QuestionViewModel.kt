@@ -85,6 +85,7 @@ class QuestionViewModel : ViewModel() {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
         setShuffledAnswers(quiz)
+
         prepareTimer()
 
 
@@ -102,13 +103,13 @@ class QuestionViewModel : ViewModel() {
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect) {
+            disposableTimer.dispose()
             setCurrentQuestion(allQuestion[questionIndex])
-            disposable.dispose()
         } else {
+            disposableTimer.dispose()
             _losingNavigate.postValue(true)
         }
     }
-
 
     private fun onTimeIsFinished() {
         if (_timer.value == STOP_TIMER) _losingNavigate.postValue(true)
@@ -116,8 +117,10 @@ class QuestionViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        disposable.dispose()
+//        disposable.dispose()
     }
+
+
 
     private fun prepareTimer() {
         disposableTimer = Observable.intervalRange(
