@@ -8,12 +8,16 @@ import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
+import com.example.android.whowantstobemillionaire.utils.helper.AnswerState
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
 import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -21,6 +25,10 @@ class QuestionViewModel : ViewModel() {
 
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
+
+    private var _answerState = MutableLiveData<AnswerState>()
+    val answerState: LiveData<AnswerState>
+        get() = _answerState
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -84,9 +92,16 @@ class QuestionViewModel : ViewModel() {
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect) {
-            setCurrentQuestion(allQuestion[questionIndex])
+            _answerState.postValue(AnswerState.CORRECT_ANSWER)
+            Observable.timer(1, TimeUnit.SECONDS).subscribe {
+                setCurrentQuestion(allQuestion[questionIndex])
+                _answerState.postValue(AnswerState.DEFAULT)
+            }.add(disposable)
         } else {
-            _losingNavigate.postValue(true)
+            _answerState.postValue(AnswerState.WRONG_ANSWER)
+            Observable.timer(1, TimeUnit.SECONDS).subscribe {
+                _losingNavigate.postValue(true)
+            }.add(disposable)
         }
     }
 

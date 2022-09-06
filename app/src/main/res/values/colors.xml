@@ -18,4 +18,7 @@
     <color name="light_blue_black">#221a4d</color>
     <color name="golden">#af7f39</color>
     <color name="turquoise">#00000000</color>
+
+    <color name="wrong_answer">#CF282C</color>
+    <color name="success_answer">#6BBC62</color>
 </resources>

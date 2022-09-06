@@ -12,8 +12,8 @@ class LosingFragment : BaseFragment<FragmentLosingBinding>(R.layout.fragment_los
         }
 
         binding.playAgainButton.setOnClickListener { v ->
-            findNavController(v).navigate(R.id.action_losingFragment_to_questionFragment)
-            findNavController(v).popBackStack(R.id.questionFragment, false)
+            findNavController(v).navigate(R.id.questionFragment)
+//            findNavController(v).popBackStack(R.id.questionFragment, false)
         }
     }
 }

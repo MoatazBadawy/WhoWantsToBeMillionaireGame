@@ -6,6 +6,6 @@
         android:drawable="@drawable/background_with_radious" />
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/start_background1" />
+        android:drawable="@drawable/ic_qustion" />
 
 </selector>

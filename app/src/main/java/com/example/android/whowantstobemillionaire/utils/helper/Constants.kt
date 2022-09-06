@@ -4,4 +4,5 @@ object Constants {
     const val BASE_URL="https://opentdb.com/"
     const val QUESTION_TYPE = "multiple"
     const val ERROR = "Error while fetching data"
+    const val MAX_QUESTION_NUMBER = 6
 }
