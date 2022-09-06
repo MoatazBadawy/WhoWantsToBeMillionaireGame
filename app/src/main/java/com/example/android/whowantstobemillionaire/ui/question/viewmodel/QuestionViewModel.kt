@@ -86,7 +86,6 @@ class QuestionViewModel : ViewModel() {
         }
         setCurrentQuestion(list[0])
     }
-
     private fun setCurrentQuestion(quiz: Quiz) {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
