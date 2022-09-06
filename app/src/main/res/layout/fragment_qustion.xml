@@ -74,10 +74,10 @@
                 tools:text="1/15" />
 
             <ImageView
-                android:id="@+id/sound"
+                android:id="@+id/timer_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-22dp"
+                android:layout_marginTop="-30dp"
                 android:background="@drawable/ciricle_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/question_text"
@@ -92,11 +92,11 @@
                 android:elevation="1dp"
                 android:text="@{questionViewModel.timer}"
                 android:textColor="@color/white"
-                android:textSize="19sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/sound"
-                app:layout_constraintStart_toStartOf="@+id/sound"
-                app:layout_constraintTop_toTopOf="@+id/sound"
+                app:layout_constraintEnd_toEndOf="@+id/timer_background"
+                app:layout_constraintStart_toStartOf="@+id/timer_background"
+                app:layout_constraintTop_toTopOf="@+id/timer_background"
                 tools:text="25" />
 
             <TextView
@@ -106,7 +106,7 @@
                 android:background="@drawable/ic_qustion"
                 android:elevation="1dp"
                 android:gravity="center"
-                android:padding="24dp"
+                android:padding="@dimen/question_text_padding"
                 android:text="@{questionViewModel.currentQuestion.question}"
                 android:textColor="@color/black"
                 android:textSize="17sp"

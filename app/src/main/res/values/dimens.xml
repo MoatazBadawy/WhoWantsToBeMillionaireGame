@@ -14,6 +14,7 @@
     <dimen name="dimes_card_score">120dp</dimen>
     <dimen name="dimes_score_dollar">28dp</dimen>
     <dimen name="dimes_question_height">108dp</dimen>
+    <dimen name="question_text_padding">24dp</dimen>
 
 
 </resources>

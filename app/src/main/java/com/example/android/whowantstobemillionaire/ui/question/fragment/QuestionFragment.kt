@@ -19,25 +19,19 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        quizViewModel.losingNavigate.observe(
-            viewLifecycleOwner
-        ) {
-            if (it) navigateToLosingFragment()
-        }
+        goToLosingFragment()
     }
 
     fun navigateToLosingFragment() {
         requireView().findNavController().navigate(R.id.action_homeFragment_to_losingFragment)
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        quizViewModel.timer.observe(viewLifecycleOwner){
-            Log.v("timer",it)
+    fun goToLosingFragment(){
+        quizViewModel.losingNavigate.observe(viewLifecycleOwner)
+        {
+            if (it) navigateToLosingFragment()
         }
-        return super.onCreateView(inflater, container, savedInstanceState)
+
     }
+
+
 }

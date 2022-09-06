@@ -12,6 +12,8 @@ import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_TIMER
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -26,8 +28,29 @@ class QuestionViewModel : ViewModel() {
 
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
-    val _timer  = MutableLiveData<String>("30")
-    val timer:LiveData<String> = _timer
+
+    private val _timer = MutableLiveData<String>("30")
+    val timer: LiveData<String> = _timer
+
+    private val _losingNavigate = MutableLiveData(false)
+    val losingNavigate: LiveData<Boolean> get() = _losingNavigate
+
+    private val allQuestion = mutableListOf<Quiz>()
+    private val questionToReplace = mutableListOf<Quiz>()
+
+    private val _currentQuestion = MutableLiveData<Quiz>()
+    val currentQuestion: LiveData<Quiz> get() = _currentQuestion
+    private var questionIndex = 0
+
+    private val _answers = MutableLiveData<List<Answer?>>()
+    val answers: LiveData<List<Answer?>> get() = _answers
+
+
+    init {
+        getQuiz()
+        onTimeIsFinished()
+
+    }
 
 
     private fun getQuiz() {
@@ -52,8 +75,6 @@ class QuestionViewModel : ViewModel() {
         _questionResponse.postValue(State.Error(throwable.message.toString()))
     }
 
-    private val allQuestion = mutableListOf<Quiz>()
-    private val questionToReplace = mutableListOf<Quiz>()
 
     private fun sortQuestions(list: List<Quiz>) {
         list.forEachIndexed { index, quiz ->
@@ -65,19 +86,14 @@ class QuestionViewModel : ViewModel() {
         setCurrentQuestion(list[0])
     }
 
-    private val _currentQuestion = MutableLiveData<Quiz>()
-    val currentQuestion: LiveData<Quiz> get() = _currentQuestion
-    private var questionIndex = 0
-
     private fun setCurrentQuestion(quiz: Quiz) {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
         setShuffledAnswers(quiz)
         prepareTimer()
+
     }
 
-    private val _answers = MutableLiveData<List<Answer?>>()
-    val answers: LiveData<List<Answer?>> get() = _answers
 
     private fun setShuffledAnswers(quiz: Quiz) {
         val listOfAnswers = quiz.incorrectAnswers?.map {
@@ -88,8 +104,6 @@ class QuestionViewModel : ViewModel() {
         Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
-    private val _losingNavigate = MutableLiveData(false)
-    val losingNavigate: LiveData<Boolean> get() = _losingNavigate
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect) {
@@ -99,70 +113,33 @@ class QuestionViewModel : ViewModel() {
         }
     }
 
-    init {
-        getQuiz()
 
+    fun onTimeIsFinished() {
+        if (_timer.value == STOP_TIMER) _losingNavigate.postValue(true)
     }
 
     override fun onCleared() {
         super.onCleared()
         disposable.dispose()
     }
-    private fun prepareTimer() {
-        val observable = Observable.intervalRange(0, 11, 2, 1, TimeUnit.SECONDS)
-            .map { 10- it}
 
+    private fun prepareTimer() {
+        val observable = Observable.intervalRange(
+            0, 31, 1, 1, TimeUnit.SECONDS
+        ).map { TIMER - it }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
         observable.subscribe({
             Log.d("tag", it.toString())
             _timer.postValue(it.toString())
+            onTimeIsFinished()
 
         }, { e ->
             e.message
-        }).add(disposable)
-
-//        object : CountDownTimer(1000,30000){
-//            override fun onTick(p0: Long) {
-//                _timer.postValue(p0.toString())
-//            }
-//
-//            override fun onFinish() {
-//                TODO("Not yet implemented")
-//
-//
-//
-//
-//            }
-//var i = 0
-//Observable.interval(1000L, TimeUnit.MILLISECONDS)
-//    .timeInterval()
-//    .observeOn(AndroidSchedulers.mainThread())
-//    .subscribe {
-//        Log.v("tag", (i++).toString())
-//    }
-//
-
-// Observable.interval(10,1, TimeUnit.SECONDS)
-//     .take(10)
-//
-//            .timeInterval()
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe {
-//                Log.d("tag", it.value().toString())
-//            }
-//        Observable.range(1,25)
-//            .map { 25 - it}.
-//            timeInterval(TimeUnit.SECONDS)
-//            .subscribe {
-//                Log.d("tag", it.toString())
-//            }
+        })
 
     }
-
-
 
 
 }
