@@ -1,11 +1,8 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
-import android.os.CountDownTimer
 import android.util.Log
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
@@ -13,7 +10,6 @@ import com.example.android.whowantstobemillionaire.data.repository.QuizRepositor
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_TIMER
-import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -44,13 +40,6 @@ class QuestionViewModel : ViewModel() {
 
     private val _answers = MutableLiveData<List<Answer?>>()
     val answers: LiveData<List<Answer?>> get() = _answers
-
-
-    init {
-        getQuiz()
-        onTimeIsFinished()
-
-    }
 
 
     private fun getQuiz() {
@@ -113,34 +102,38 @@ class QuestionViewModel : ViewModel() {
         }
     }
 
+    private val time = 30L
 
-    fun onTimeIsFinished() {
-        if (_timer.value == STOP_TIMER) _losingNavigate.postValue(true)
+    // stop timer and repeat it when user click on answer
+    private fun prepareTimer() {
+        disposable.add(
+            Observable.interval(0, 1, TimeUnit.SECONDS)
+                .take(time + 1)
+                .map { time - it }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _timer.postValue(it.toString())
+                    onTimeIsFinished()
+                }, {
+                    _timer.postValue(ERROR)
+                })
+        )
+    }
+
+    private fun onTimeIsFinished() {
+        if (_timer.value == STOP_TIMER) {
+            _losingNavigate.postValue(true)
+        }
+    }
+
+    init {
+        getQuiz()
+        onTimeIsFinished()
     }
 
     override fun onCleared() {
         super.onCleared()
         disposable.dispose()
     }
-
-    private fun prepareTimer() {
-        val observable = Observable.intervalRange(
-            0, 31, 1, 1, TimeUnit.SECONDS
-        ).map { TIMER - it }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-
-        observable.subscribe({
-            Log.d("tag", it.toString())
-            _timer.postValue(it.toString())
-            onTimeIsFinished()
-
-        }, { e ->
-            e.message
-        })
-
-    }
-
-
 }
-
