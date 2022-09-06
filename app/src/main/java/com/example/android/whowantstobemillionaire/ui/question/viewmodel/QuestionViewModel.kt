@@ -19,13 +19,14 @@ import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
-
+    lateinit var disposableTimer:Disposable
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
 
@@ -92,6 +93,7 @@ class QuestionViewModel : ViewModel() {
         setShuffledAnswers(quiz)
         prepareTimer()
 
+
     }
 
 
@@ -108,13 +110,14 @@ class QuestionViewModel : ViewModel() {
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect) {
             setCurrentQuestion(allQuestion[questionIndex])
+            disposable?.dispose()
         } else {
             _losingNavigate.postValue(true)
         }
     }
 
 
-    fun onTimeIsFinished() {
+    private fun onTimeIsFinished() {
         if (_timer.value == STOP_TIMER) _losingNavigate.postValue(true)
     }
 
@@ -124,13 +127,12 @@ class QuestionViewModel : ViewModel() {
     }
 
     private fun prepareTimer() {
-        val observable = Observable.intervalRange(
+        disposableTimer = Observable.intervalRange(
             0, 31, 1, 1, TimeUnit.SECONDS
         ).map { TIMER - it }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-
-        observable.subscribe({
+        .subscribe({
             Log.d("tag", it.toString())
             _timer.postValue(it.toString())
             onTimeIsFinished()
