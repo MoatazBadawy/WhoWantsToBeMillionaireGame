@@ -9,11 +9,16 @@ import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_TIMER
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -21,6 +26,8 @@ class QuestionViewModel : ViewModel() {
 
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
+
+    lateinit var disposableTimer: Disposable
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -65,6 +72,7 @@ class QuestionViewModel : ViewModel() {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
         setShuffledAnswers(quiz)
+        prepareTimer()
         increaseCounter(counter++)
     }
 
@@ -96,14 +104,39 @@ class QuestionViewModel : ViewModel() {
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect && questionIndex < 15) {
+            disposableTimer.dispose()
             setCurrentQuestion(allQuestion[questionIndex])
-
         } else if (questionIndex == 15) {
+            disposableTimer.dispose()
             _resultNavigate.postValue(true)
 
         } else {
+            disposableTimer.dispose()
             _losingNavigate.postValue(true)
         }
+    }
+
+    private val _timer = MutableLiveData<String>("30")
+    val timer: LiveData<String> = _timer
+
+    private fun prepareTimer() {
+        disposableTimer = Observable.intervalRange(
+            0, 31, 1, 1, TimeUnit.SECONDS
+        ).map { TIMER - it }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                Log.d("tag", it.toString())
+                _timer.postValue(it.toString())
+                onTimeIsFinished()
+
+            }, { e ->
+                e.message
+            })
+    }
+
+    private fun onTimeIsFinished() {
+        if (_timer.value == STOP_TIMER) _losingNavigate.postValue(true)
     }
 
     private val _leaveQuestion = MutableLiveData(false)
@@ -115,6 +148,7 @@ class QuestionViewModel : ViewModel() {
 
     init {
         getQuiz()
+        onTimeIsFinished()
     }
 
     override fun onCleared() {
