@@ -32,7 +32,7 @@ class QuestionViewModel : ViewModel() {
     private fun onGetQuestionsSuccess(state: State<QuizResponse>) {
         if (state is State.Success) {
             _questionResponse.postValue(state)
-            state.data?.quizzes.let { result ->
+            state.toData()?.quizzes.let { result ->
                 sortQuestions(result as List<Quiz>)
             }
         } else {
