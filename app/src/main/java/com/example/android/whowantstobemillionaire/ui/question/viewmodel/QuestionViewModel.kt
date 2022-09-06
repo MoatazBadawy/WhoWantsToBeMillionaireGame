@@ -27,7 +27,37 @@ class QuestionViewModel : ViewModel() {
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
 
-    lateinit var disposableTimer: Disposable
+    private val allQuestion = mutableListOf<Quiz>()
+    private val questionToReplace = mutableListOf<Quiz>()
+
+    private val _currentQuestion = MutableLiveData<Quiz>()
+    val currentQuestion: LiveData<Quiz> get() = _currentQuestion
+    private var questionIndex = 0
+
+    private val _answers = MutableLiveData<List<Answer?>>()
+    val answers: LiveData<List<Answer?>> get() = _answers
+
+    private var counter = 1
+    private val _numberOfQuestion = MutableLiveData(counter)
+    val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
+
+    private lateinit var disposableTimer: Disposable
+    private val _timer = MutableLiveData("30")
+    val timer: LiveData<String> = _timer
+
+    private val _losingNavigate = MutableLiveData(false)
+    val losingNavigate: LiveData<Boolean> get() = _losingNavigate
+
+    private val _resultNavigate = MutableLiveData(false)
+    val resultNavigate: LiveData<Boolean> get() = _resultNavigate
+
+    private val _leaveQuestion = MutableLiveData(false)
+    val leaveQuestion: LiveData<Boolean> get() = _losingNavigate
+
+    init {
+        getQuiz()
+        onTimeIsFinished()
+    }
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -51,9 +81,6 @@ class QuestionViewModel : ViewModel() {
         _questionResponse.postValue(State.Error(throwable.message.toString()))
     }
 
-    private val allQuestion = mutableListOf<Quiz>()
-    private val questionToReplace = mutableListOf<Quiz>()
-
     private fun sortQuestions(list: List<Quiz>) {
         list.forEachIndexed { index, quiz ->
             when (index) {
@@ -64,10 +91,6 @@ class QuestionViewModel : ViewModel() {
         setCurrentQuestion(list[0])
     }
 
-    private val _currentQuestion = MutableLiveData<Quiz>()
-    val currentQuestion: LiveData<Quiz> get() = _currentQuestion
-    private var questionIndex = 0
-
     private fun setCurrentQuestion(quiz: Quiz) {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
@@ -75,9 +98,6 @@ class QuestionViewModel : ViewModel() {
         prepareTimer()
         increaseCounter(counter++)
     }
-
-    private val _answers = MutableLiveData<List<Answer?>>()
-    val answers: LiveData<List<Answer?>> get() = _answers
 
     private fun setShuffledAnswers(quiz: Quiz) {
         val listOfAnswers = quiz.incorrectAnswers?.map {
@@ -88,19 +108,9 @@ class QuestionViewModel : ViewModel() {
         Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
-    private var counter = 1
-    private val _numberOfQuestion = MutableLiveData(counter)
-    val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
-
     private fun increaseCounter(counter: Int) {
         _numberOfQuestion.postValue(counter)
     }
-
-    private val _losingNavigate = MutableLiveData(false)
-    val losingNavigate: LiveData<Boolean> get() = _losingNavigate
-
-    private val _resultNavigate = MutableLiveData(false)
-    val resultNavigate: LiveData<Boolean> get() = _resultNavigate
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect && questionIndex < 15) {
@@ -116,9 +126,6 @@ class QuestionViewModel : ViewModel() {
         }
     }
 
-    private val _timer = MutableLiveData<String>("30")
-    val timer: LiveData<String> = _timer
-
     private fun prepareTimer() {
         disposableTimer = Observable.intervalRange(
             0, 31, 1, 1, TimeUnit.SECONDS
@@ -126,7 +133,7 @@ class QuestionViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Log.d("tag", it.toString())
+                Log.d("time", it.toString())
                 _timer.postValue(it.toString())
                 onTimeIsFinished()
 
@@ -139,16 +146,8 @@ class QuestionViewModel : ViewModel() {
         if (_timer.value == STOP_TIMER) _losingNavigate.postValue(true)
     }
 
-    private val _leaveQuestion = MutableLiveData(false)
-    val leaveQuestion: LiveData<Boolean> get() = _losingNavigate
-
     fun onLeaveClickListener() {
         _leaveQuestion.postValue(true)
-    }
-
-    init {
-        getQuiz()
-        onTimeIsFinished()
     }
 
     override fun onCleared() {

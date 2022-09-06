@@ -15,7 +15,7 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.exitButton.setOnClickListener { v ->
+        binding.exitButton.setOnClickListener {
             backQuizAlertDialog()
         }
 

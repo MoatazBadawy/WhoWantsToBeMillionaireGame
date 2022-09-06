@@ -10,7 +10,6 @@
             type="com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -89,7 +88,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:lineHeight="29sp" />
-
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/play_again_button"
