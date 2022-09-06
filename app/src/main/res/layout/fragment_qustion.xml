@@ -35,6 +35,7 @@
                 android:layout_marginEnd="18dp"
                 android:background="@drawable/leave_rectangle"
                 android:src="@drawable/ic_quit"
+                android:onClick="@{() -> questionViewModel.onLeaveClickListener()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
@@ -226,6 +227,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/answer3"
                 app:layout_constraintVertical_bias="0.0"
                 tools:text="D" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/change_question"
+                android:layout_width="44dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="42dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.changeQuestionByDifficulty()}"
+                android:padding="16dp"
+                android:text="C"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/answer4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include

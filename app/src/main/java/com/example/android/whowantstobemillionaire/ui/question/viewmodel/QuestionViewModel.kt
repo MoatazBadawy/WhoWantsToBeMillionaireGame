@@ -52,7 +52,10 @@ class QuestionViewModel : ViewModel() {
     val resultNavigate: LiveData<Boolean> get() = _resultNavigate
 
     private val _leaveQuestion = MutableLiveData(false)
-    val leaveQuestion: LiveData<Boolean> get() = _losingNavigate
+    val leaveQuestion: LiveData<Boolean> get() = _leaveQuestion
+
+    private val _clickOnce = MutableLiveData(false)
+    val clickOnce: LiveData<Boolean> get() = _clickOnce
 
     init {
         getQuiz()
@@ -148,6 +151,35 @@ class QuestionViewModel : ViewModel() {
 
     fun onLeaveClickListener() {
         _leaveQuestion.postValue(true)
+    }
+
+    fun changeQuestionByDifficulty() {
+        when (questionIndex) {
+            in 0..4 -> {
+                allQuestion.removeAt(questionIndex)
+                allQuestion.add(questionToReplace[0])
+                questionToReplace.removeAt(0)
+                disposableTimer.dispose()
+                _clickOnce.postValue(true)
+                setCurrentQuestion(allQuestion[questionIndex])
+            }
+            in 6..10 -> {
+                allQuestion.removeAt(questionIndex)
+                allQuestion.add(questionToReplace[1])
+                questionToReplace.removeAt(1)
+                disposableTimer.dispose()
+                _clickOnce.postValue(true)
+                setCurrentQuestion(allQuestion[questionIndex])
+            }
+            in 12..16 -> {
+                allQuestion.removeAt(questionIndex)
+                allQuestion.add(questionToReplace[2])
+                questionToReplace.removeAt(2)
+                disposableTimer.dispose()
+                _clickOnce.postValue(true)
+                setCurrentQuestion(allQuestion[questionIndex])
+            }
+        }
     }
 
     override fun onCleared() {
