@@ -51,7 +51,6 @@ class QuestionViewModel : ViewModel() {
         list.forEachIndexed { index, quiz ->
             when (index) {
                 5, 11, 17 -> questionToReplace.add(quiz)
-
                 else -> allQuestion.add(quiz)
             }
         }
@@ -66,6 +65,7 @@ class QuestionViewModel : ViewModel() {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
         setShuffledAnswers(quiz)
+        increaseCounter(counter++)
     }
 
     private val _answers = MutableLiveData<List<Answer?>>()
@@ -80,6 +80,13 @@ class QuestionViewModel : ViewModel() {
         Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
+    private var counter = 1
+    private val _numberOfQuestion = MutableLiveData(counter)
+    val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
+
+    private fun increaseCounter(counter: Int) {
+        _numberOfQuestion.postValue(counter)
+    }
 
     private val _losingNavigate = MutableLiveData(false)
     val losingNavigate: LiveData<Boolean> get() = _losingNavigate
@@ -93,6 +100,7 @@ class QuestionViewModel : ViewModel() {
 
         } else if (questionIndex == 15) {
             _resultNavigate.postValue(true)
+
         } else {
             _losingNavigate.postValue(true)
         }
