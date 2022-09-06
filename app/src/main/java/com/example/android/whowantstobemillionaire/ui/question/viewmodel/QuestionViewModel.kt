@@ -1,11 +1,8 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
-import android.os.CountDownTimer
 import android.util.Log
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
@@ -26,7 +23,7 @@ import java.util.concurrent.TimeUnit
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
     private val disposable = CompositeDisposable()
-    lateinit var disposableTimer:Disposable
+    lateinit var disposableTimer: Disposable
     private val _questionResponse = MutableLiveData<State<QuizResponse>>(State.Loading)
     val questionResponse: LiveData<State<QuizResponse>> get() = _questionResponse
 
@@ -46,13 +43,11 @@ class QuestionViewModel : ViewModel() {
     private val _answers = MutableLiveData<List<Answer?>>()
     val answers: LiveData<List<Answer?>> get() = _answers
 
-
     init {
         getQuiz()
         onTimeIsFinished()
 
     }
-
 
     private fun getQuiz() {
         repository.getAllQuestions()
@@ -76,7 +71,6 @@ class QuestionViewModel : ViewModel() {
         _questionResponse.postValue(State.Error(throwable.message.toString()))
     }
 
-
     private fun sortQuestions(list: List<Quiz>) {
         list.forEachIndexed { index, quiz ->
             when (index) {
@@ -96,7 +90,6 @@ class QuestionViewModel : ViewModel() {
 
     }
 
-
     private fun setShuffledAnswers(quiz: Quiz) {
         val listOfAnswers = quiz.incorrectAnswers?.map {
             Answer(it, false)
@@ -110,7 +103,7 @@ class QuestionViewModel : ViewModel() {
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect) {
             setCurrentQuestion(allQuestion[questionIndex])
-            disposable?.dispose()
+            disposable.dispose()
         } else {
             _losingNavigate.postValue(true)
         }
@@ -132,17 +125,15 @@ class QuestionViewModel : ViewModel() {
         ).map { TIMER - it }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
-            Log.d("tag", it.toString())
-            _timer.postValue(it.toString())
-            onTimeIsFinished()
+            .subscribe({
+                Log.d("tag", it.toString())
+                _timer.postValue(it.toString())
+                onTimeIsFinished()
 
-        }, { e ->
-            e.message
-        })
+            }, { e ->
+                e.message
+            })
 
     }
-
-
 }
 
