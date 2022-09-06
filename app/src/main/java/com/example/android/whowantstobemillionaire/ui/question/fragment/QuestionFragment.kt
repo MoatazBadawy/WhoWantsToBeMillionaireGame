@@ -1,10 +1,7 @@
 package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
-import android.content.Context
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBinding
@@ -19,7 +16,7 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.exitButton.setOnClickListener { v ->
-            Navigation.findNavController(v).popBackStack()
+            backQuizAlertDialog()
         }
 
         quizViewModel.losingNavigate.observe(
@@ -43,14 +40,13 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         requireView().findNavController().navigate(R.id.action_questionFragment_to_resultFragment)
     }
 
-
-    fun backQuizAlertDialog(context: Context){
-        val dialog = AlertDialog.Builder(context)
+    private fun backQuizAlertDialog() {
+        val dialog = AlertDialog.Builder(requireContext())
         dialog.apply {
-            setTitle("انسحاب")
-            setMessage("تاكيد الانسحاب")
+            setTitle("Exit")
+            setMessage("Do you really want to withdraw from the competition?")
             setPositiveButton("yes") { _, _ ->
-                requireView().findNavController().navigate(R.id.action_homeFragment_to_resultFragment)
+                requireView().findNavController().popBackStack()
             }
             setNegativeButton("No") { it, _ ->
                 it.cancel()
@@ -58,5 +54,4 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         }
         dialog.show()
     }
-
 }
