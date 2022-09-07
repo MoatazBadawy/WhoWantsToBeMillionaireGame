@@ -200,6 +200,24 @@ class QuestionViewModel : ViewModel() {
         setCurrentQuestion(questionIndex, true)
     }
 
+    fun remove2Answers() {
+        val indices = listOf(0, 1, 2, 3).shuffled()
+        var count = 0
+        var index = 0
+        _answers.value?.let {
+            val listOfAnswers = it
+            while (count < 2) {
+                if (listOfAnswers[indices[index]]?.isCorrect == false) {
+                    listOfAnswers[indices[index]]?.answer = ""
+                    count++
+                }
+                index++
+            }
+            _removeClickOnce.postValue(true)
+            _answers.postValue(listOfAnswers)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposable.dispose()
