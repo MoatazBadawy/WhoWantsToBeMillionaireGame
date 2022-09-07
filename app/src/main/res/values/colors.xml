@@ -17,5 +17,6 @@
     <color name="main_color">#0f1c3c</color>
     <color name="light_blue_black">#221a4d</color>
     <color name="golden">#af7f39</color>
+    <color name="golden_light">#D1B000</color>
     <color name="turquoise">#00000000</color>
 </resources>

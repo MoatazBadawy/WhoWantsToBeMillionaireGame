@@ -6,4 +6,5 @@ object Constants {
     const val ERROR = "Error while fetching data"
     const val STOP_TIMER = "1"
     const val TIMER = 30
+    const val MAX_QUESTION_NUMBER = 6
 }

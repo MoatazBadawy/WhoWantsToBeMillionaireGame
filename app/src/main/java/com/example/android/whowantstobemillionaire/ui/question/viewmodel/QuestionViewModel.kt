@@ -8,6 +8,7 @@ import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
+import com.example.android.whowantstobemillionaire.utils.helper.AnswerState
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
@@ -36,6 +37,10 @@ class QuestionViewModel : ViewModel() {
 
     private val _answers = MutableLiveData<List<Answer?>>()
     val answers: LiveData<List<Answer?>> get() = _answers
+
+    private var _answerState = MutableLiveData<AnswerState>()
+    val answerState: LiveData<AnswerState>
+        get() = _answerState
 
     private var counter = 1
     private val _numberOfQuestion = MutableLiveData(counter)
@@ -117,15 +122,24 @@ class QuestionViewModel : ViewModel() {
 
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect && questionIndex < 15) {
-            disposableTimer.dispose()
-            setCurrentQuestion(allQuestion[questionIndex])
+            _answerState.postValue(AnswerState.CORRECT_ANSWER)
+
+            Observable.timer(1, TimeUnit.SECONDS).subscribe {
+                _answerState.postValue(AnswerState.DEFAULT)
+                disposableTimer.dispose()
+                setCurrentQuestion(allQuestion[questionIndex])
+            }.add(disposable)
+
         } else if (questionIndex == 15) {
             disposableTimer.dispose()
             _resultNavigate.postValue(true)
 
         } else {
-            disposableTimer.dispose()
-            _losingNavigate.postValue(true)
+            _answerState.postValue(AnswerState.WRONG_ANSWER)
+            Observable.timer(1, TimeUnit.SECONDS).subscribe {
+                disposableTimer.dispose()
+                _losingNavigate.postValue(true)
+            }.add(disposable)
         }
     }
 

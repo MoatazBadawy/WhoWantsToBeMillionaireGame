@@ -2,6 +2,7 @@ package com.example.android.whowantstobemillionaire.data.repository
 
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.network.APIClient
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.MAX_QUESTION_NUMBER
 import com.example.android.whowantstobemillionaire.utils.helper.DifficultyLevels
 import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.core.Observable
@@ -29,7 +30,10 @@ class QuizRepository {
     }
 
     private fun callQuestion(difficulty: String): Single<Response<QuizResponse>> {
-        return APIClient.apiQuizService.getQuiz(amount = 6, difficulty = difficulty)
+        return APIClient.apiQuizService.getQuiz(
+            amount = MAX_QUESTION_NUMBER,
+            difficulty = difficulty
+        )
     }
 
     private fun combineResult(

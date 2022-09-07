@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.example.android.whowantstobemillionaire.ui.question.adapter.Binding_AdapterKt" />
+
         <variable
             name="questionViewModel"
             type="com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel" />
@@ -34,8 +36,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:background="@drawable/leave_rectangle"
-                android:src="@drawable/ic_quit"
                 android:onClick="@{() -> questionViewModel.onLeaveClickListener()}"
+                android:src="@drawable/ic_quit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
@@ -137,96 +139,107 @@
                 app:layout_constraintEnd_toEndOf="@+id/timer_button"
                 app:layout_constraintTop_toTopOf="@+id/timer_button" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/answer1"
-                android:layout_width="0dp"
-                android:layout_height="59dp"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="42dp"
-                android:layout_marginTop="6dp"
                 android:layout_marginEnd="42dp"
-                android:background="@drawable/background_with_radious"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[0])}"
-                android:padding="16dp"
-                android:text="@{questionViewModel.answers[0].answer}"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                app:changeBackgroundColor="@{questionViewModel.answerState}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/question_text"
-                tools:text="A" />
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/answer2"
-                android:layout_width="0dp"
-                android:layout_height="59dp"
-                android:layout_marginStart="42dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="42dp"
-                android:background="@drawable/background_with_radious"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[1])}"
-                android:padding="16dp"
-                android:text="@{questionViewModel.answers[1].answer}"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/answer1"
-                tools:text="B" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="6dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[0])}"
+                    android:padding="16dp"
+                    android:text="@{questionViewModel.answers[0].answer}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    tools:text="A" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/answer3"
-                android:layout_width="0dp"
-                android:layout_height="59dp"
-                android:layout_marginStart="42dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="42dp"
-                android:background="@drawable/background_with_radious"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[2])}"
-                android:padding="16dp"
-                android:text="@{questionViewModel.answers[2].answer}"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/answer2"
-                tools:text="C" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[1])}"
+                    android:padding="16dp"
+                    android:text="@{questionViewModel.answers[1].answer}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    tools:text="B" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/answer4"
-                android:layout_width="0dp"
-                android:layout_height="59dp"
-                android:layout_marginStart="42dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="42dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/background_with_radious"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
-                android:padding="16dp"
-                android:text="@{questionViewModel.answers[3].answer}"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/answer3"
-                app:layout_constraintVertical_bias="0.0"
-                tools:text="D" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[2])}"
+                    android:padding="16dp"
+                    android:text="@{questionViewModel.answers[2].answer}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    tools:text="C" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
+                    android:padding="16dp"
+                    android:text="@{questionViewModel.answers[3].answer}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    tools:text="D" />
+            </com.google.android.material.chip.ChipGroup>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/change_question"
@@ -245,7 +258,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/answer4" />
+                app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
