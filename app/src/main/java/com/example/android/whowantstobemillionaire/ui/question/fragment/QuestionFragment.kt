@@ -1,24 +1,32 @@
 package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
+import android.content.Context
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBinding
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel
+import com.example.android.whowantstobemillionaire.utils.helper.PrefForLastCoinsYouWin
 import com.example.android.whowantstobemillionaire.utils.helper.disable
 
 class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_qustion) {
     private val quizViewModel: QuestionViewModel by viewModels()
-
+    var shared= PrefForLastCoinsYouWin()
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        quizViewModel.coins.observe(viewLifecycleOwner){coins ->
+            shared.saveLastResult(requireActivity(),coins)
+        }
+
         quizViewModel.leaveQuestion.observe(
             viewLifecycleOwner
-        ) {
+
+        )
+        {
             if (it) backQuizAlertDialog()
         }
 
@@ -67,4 +75,6 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         }
         dialog.show()
     }
+
+
 }
