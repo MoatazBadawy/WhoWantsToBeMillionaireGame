@@ -1,7 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.start
 
 import android.annotation.SuppressLint
-import android.content.Context
 import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentStartBinding
@@ -20,9 +19,10 @@ class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start
         binding.aboutBtn.setOnClickListener { v ->
             Navigation.findNavController(v).navigate(R.id.action_startFragment_to_aboutFragment)
         }
-        binding.resultBtn.setOnClickListener {
-           val result= shared.loadLastResult(requireActivity())
-            binding.resultBtn.text ="Last Coins You Won is ${result} $"
+        binding.resultBtn.setOnClickListener {v ->
+//           val result= shared.loadLastResult(requireActivity())
+//            binding.resultBtn.text ="Last Coins You Won is ${result} $"
+            Navigation.findNavController(v).navigate(R.id.action_startFragment_to_lastResultFragment)
         }
 
 
