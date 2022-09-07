@@ -9,6 +9,7 @@ import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.AnswerState
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.COINS
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
@@ -46,8 +47,8 @@ class QuestionViewModel : ViewModel() {
     private val _numberOfQuestion = MutableLiveData(counter)
     val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
 
-    var currentCoin=0
-    var coinsCount=listOf(0, 500, 1000, 2000, 3000, 5000, 7500, 10000, 12500, 15000, 25000, 50000, 100000, 250000, 500000, 1000000)
+    var currentCoin = 0
+    private var coinsCount = COINS
     private val _coins = MutableLiveData(coinsCount[0])
     val coins: LiveData<Int> get() = _coins
 
@@ -110,7 +111,7 @@ class QuestionViewModel : ViewModel() {
         setShuffledAnswers(quiz)
         prepareTimer()
         increaseCounter(counter++)
-        increasCoins(currentCoin++)
+        increaseCoins(currentCoin++)
     }
 
     private fun setShuffledAnswers(quiz: Quiz) {
@@ -126,8 +127,8 @@ class QuestionViewModel : ViewModel() {
         _numberOfQuestion.postValue(counter)
     }
 
-    private fun increasCoins(index: Int) {
-        _coins.postValue(coinsCount[index])
+    private fun increaseCoins(currentCoins: Int) {
+        _coins.postValue(coinsCount[currentCoins])
     }
 
     fun onAnswerClickListener(answer: Answer) {
@@ -143,6 +144,13 @@ class QuestionViewModel : ViewModel() {
         } else if (questionIndex == 15) {
             disposableTimer.dispose()
             _resultNavigate.postValue(true)
+
+        } else if (!answer.isCorrect && questionIndex in 5..15) {
+            _answerState.postValue(AnswerState.WRONG_ANSWER)
+            Observable.timer(1, TimeUnit.SECONDS).subscribe {
+                disposableTimer.dispose()
+                _resultNavigate.postValue(true)
+            }.add(disposable)
 
         } else {
             _answerState.postValue(AnswerState.WRONG_ANSWER)

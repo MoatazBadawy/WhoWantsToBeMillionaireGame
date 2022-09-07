@@ -122,12 +122,11 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_dollar"
                 android:layout_marginTop="25dp"
-                android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@+id/coins"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_dollar"
+                app:layout_constraintEnd_toStartOf="@+id/coins"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/num_question_text"
@@ -247,6 +246,7 @@
                     android:layout_marginBottom="16dp"
                     android:elevation="1dp"
                     android:focusable="false"
+                    android:checkable="true"
                     android:gravity="center"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
                     android:padding="16dp"
