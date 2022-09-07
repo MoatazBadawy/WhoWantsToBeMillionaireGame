@@ -9,7 +9,14 @@ fun Disposable.add(compositeDisposable: CompositeDisposable) {
     compositeDisposable.add(this)
 }
 
-fun ImageButton.disable(){
+fun ImageButton.disable() {
+    this.apply {
+        alpha = 0.5f
+        isEnabled = false
+    }
+}
+
+fun Button.disable() {
     this.apply {
         alpha = 0.5f
         isEnabled = false
