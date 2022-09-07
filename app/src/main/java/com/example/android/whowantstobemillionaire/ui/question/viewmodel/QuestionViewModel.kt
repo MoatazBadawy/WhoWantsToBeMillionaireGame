@@ -62,6 +62,9 @@ class QuestionViewModel : ViewModel() {
     private val _clickOnce = MutableLiveData(false)
     val clickOnce: LiveData<Boolean> get() = _clickOnce
 
+    private val _removeClickOnce = MutableLiveData(false)
+    val removeClickOnce: LiveData<Boolean> get() = _removeClickOnce
+
     init {
         getQuiz()
         onTimeIsFinished()
@@ -96,15 +99,17 @@ class QuestionViewModel : ViewModel() {
                 else -> allQuestion.add(quiz)
             }
         }
-        setCurrentQuestion(list[0])
+        setCurrentQuestion(0, false)
     }
 
-    private fun setCurrentQuestion(quiz: Quiz) {
+    private fun setCurrentQuestion(index: Int, isReplaced: Boolean) {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
-        setShuffledAnswers(quiz)
+        setShuffledAnswers(allQuestion[index])
         prepareTimer()
-        increaseCounter(counter++)
+        if (!isReplaced) {
+            increaseCounter(counter++)
+        }
     }
 
     private fun setShuffledAnswers(quiz: Quiz) {
@@ -135,7 +140,7 @@ class QuestionViewModel : ViewModel() {
         Observable.timer(1, TimeUnit.SECONDS).subscribe {
             _answerState.postValue(AnswerState.DEFAULT)
             disposableTimer.dispose()
-            setCurrentQuestion(allQuestion[questionIndex])
+            setCurrentQuestion(questionIndex, false)
         }.add(disposable)
     }
 
@@ -192,7 +197,7 @@ class QuestionViewModel : ViewModel() {
         questionToReplace.removeAt(index)
         disposableTimer.dispose()
         _clickOnce.postValue(true)
-        setCurrentQuestion(allQuestion[questionIndex])
+        setCurrentQuestion(questionIndex, true)
     }
 
     override fun onCleared() {
