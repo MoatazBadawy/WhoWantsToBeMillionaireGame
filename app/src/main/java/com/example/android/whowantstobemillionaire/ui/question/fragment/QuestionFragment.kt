@@ -39,6 +39,12 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
         ) {
             if (it) changeQuestionHelperOnClick()
         }
+
+        quizViewModel.removeClickOnce.observe(
+            viewLifecycleOwner
+        ) {
+            if (it) remove2AnswersOnClick()
+        }
     }
 
     private fun navigateToLosingFragment() {
@@ -51,6 +57,10 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
 
     private fun changeQuestionHelperOnClick() {
         binding.changeQuestion.disable()
+    }
+
+    private fun remove2AnswersOnClick() {
+        binding.removeTwoAnswers.disable()
     }
 
     private fun backQuizAlertDialog() {

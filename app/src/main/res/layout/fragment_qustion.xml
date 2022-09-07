@@ -23,10 +23,10 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"
             app:successState="@{questionViewModel.questionResponse}">
 
             <ImageButton
@@ -46,9 +46,10 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="93dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/qustion_logo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
@@ -167,6 +168,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[0].answer}"
                     app:checkedIconVisible="false"
                     app:chipBackgroundColor="@color/light_blue_black"
                     app:chipCornerRadius="16dp"
@@ -177,6 +179,7 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/answer2"
                     android:layout_width="match_parent"
+
                     android:layout_height="70dp"
                     android:layout_marginTop="12dp"
                     android:checkable="true"
@@ -189,6 +192,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[1].answer}"
                     app:checkedIconVisible="false"
                     app:chipBackgroundColor="@color/light_blue_black"
                     app:chipCornerRadius="16dp"
@@ -211,6 +215,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[2].answer}"
                     app:checkedIconVisible="false"
                     app:chipBackgroundColor="@color/light_blue_black"
                     app:chipCornerRadius="16dp"
@@ -224,6 +229,7 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="16dp"
+                    android:checkable="true"
                     android:elevation="1dp"
                     android:focusable="false"
                     android:gravity="center"
@@ -233,6 +239,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[3].answer}"
                     app:checkedIconVisible="false"
                     app:chipBackgroundColor="@color/light_blue_black"
                     app:chipCornerRadius="16dp"
@@ -241,24 +248,44 @@
                     tools:text="D" />
             </com.google.android.material.chip.ChipGroup>
 
-            <androidx.appcompat.widget.AppCompatButton
+
+            <ImageButton
                 android:id="@+id/change_question"
-                android:layout_width="44dp"
-                android:layout_height="37dp"
-                android:layout_marginStart="42dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="4dp"
                 android:background="@drawable/background_with_radious"
                 android:elevation="1dp"
                 android:gravity="center"
                 android:onClick="@{() -> questionViewModel.changeQuestionByDifficulty()}"
                 android:padding="16dp"
-                android:text="C"
+                android:src="@drawable/ic__next_plan"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+                app:layout_constraintEnd_toStartOf="@+id/remove_two_answers"
+                app:layout_constraintHorizontal_bias="0.309"
+                app:layout_constraintStart_toStartOf="@+id/chipGroup"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/remove_two_answers"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.remove2Answers()}"
+                android:padding="16dp"
+                android:src="@drawable/ic_exposure_neg_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/chipGroup"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include

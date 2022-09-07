@@ -20,6 +20,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -62,6 +63,9 @@ class QuestionViewModel : ViewModel() {
     private val _clickOnce = MutableLiveData(false)
     val clickOnce: LiveData<Boolean> get() = _clickOnce
 
+    private val _removeClickOnce = MutableLiveData(false)
+    val removeClickOnce: LiveData<Boolean> get() = _removeClickOnce
+
     init {
         getQuiz()
         onTimeIsFinished()
@@ -96,15 +100,17 @@ class QuestionViewModel : ViewModel() {
                 else -> allQuestion.add(quiz)
             }
         }
-        setCurrentQuestion(list[0])
+        setCurrentQuestion(0, false)
     }
 
-    private fun setCurrentQuestion(quiz: Quiz) {
+    private fun setCurrentQuestion(index: Int, isReplaced: Boolean) {
         _currentQuestion.postValue(allQuestion[questionIndex])
         questionIndex++
-        setShuffledAnswers(quiz)
+        setShuffledAnswers(allQuestion[index])
         prepareTimer()
-        increaseCounter(counter++)
+        if (!isReplaced) {
+            increaseCounter(counter++)
+        }
     }
 
     private fun setShuffledAnswers(quiz: Quiz) {
@@ -127,7 +133,7 @@ class QuestionViewModel : ViewModel() {
             Observable.timer(1, TimeUnit.SECONDS).subscribe {
                 _answerState.postValue(AnswerState.DEFAULT)
                 disposableTimer.dispose()
-                setCurrentQuestion(allQuestion[questionIndex])
+                setCurrentQuestion(questionIndex, false)
             }.add(disposable)
 
         } else if (questionIndex == 15) {
@@ -175,7 +181,7 @@ class QuestionViewModel : ViewModel() {
                 questionToReplace.removeAt(0)
                 disposableTimer.dispose()
                 _clickOnce.postValue(true)
-                setCurrentQuestion(allQuestion[questionIndex])
+                setCurrentQuestion(questionIndex, true)
             }
             in 6..10 -> {
                 allQuestion.removeAt(questionIndex)
@@ -183,7 +189,7 @@ class QuestionViewModel : ViewModel() {
                 questionToReplace.removeAt(1)
                 disposableTimer.dispose()
                 _clickOnce.postValue(true)
-                setCurrentQuestion(allQuestion[questionIndex])
+                setCurrentQuestion(questionIndex, true)
             }
             in 12..16 -> {
                 allQuestion.removeAt(questionIndex)
@@ -191,9 +197,29 @@ class QuestionViewModel : ViewModel() {
                 questionToReplace.removeAt(2)
                 disposableTimer.dispose()
                 _clickOnce.postValue(true)
-                setCurrentQuestion(allQuestion[questionIndex])
+                setCurrentQuestion(questionIndex, true)
             }
         }
+    }
+
+    fun remove2Answers() {
+
+        val indices = listOf(0, 1, 2, 3).shuffled()
+        var count = 0
+        var index = 0
+        _answers.value?.let {
+            val listOfAnswers = it
+            while (count < 2) {
+                if (listOfAnswers[indices[index]]?.isCorrect == false) {
+                    listOfAnswers[indices[index]]?.answer = ""
+                    count++
+                }
+                index++
+            }
+            _removeClickOnce.postValue(true)
+            _answers.postValue(listOfAnswers)
+        }
+
     }
 
     override fun onCleared() {
