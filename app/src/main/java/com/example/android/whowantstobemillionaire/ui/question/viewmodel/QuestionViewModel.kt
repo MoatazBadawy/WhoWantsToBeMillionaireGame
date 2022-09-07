@@ -20,7 +20,6 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
-import kotlin.random.Random
 
 class QuestionViewModel : ViewModel() {
     private val repository = QuizRepository()
@@ -203,7 +202,6 @@ class QuestionViewModel : ViewModel() {
     }
 
     fun remove2Answers() {
-
         val indices = listOf(0, 1, 2, 3).shuffled()
         var count = 0
         var index = 0
@@ -219,7 +217,6 @@ class QuestionViewModel : ViewModel() {
             _removeClickOnce.postValue(true)
             _answers.postValue(listOfAnswers)
         }
-
     }
 
     override fun onCleared() {

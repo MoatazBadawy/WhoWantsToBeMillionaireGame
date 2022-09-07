@@ -251,9 +251,9 @@
 
             <ImageButton
                 android:id="@+id/change_question"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/background_with_radious"
                 android:elevation="1dp"
                 android:gravity="center"
@@ -266,15 +266,16 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/remove_two_answers"
-                app:layout_constraintHorizontal_bias="0.309"
-                app:layout_constraintStart_toStartOf="@+id/chipGroup"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/chipGroup"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
                 android:id="@+id/remove_two_answers"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/background_with_radious"
                 android:elevation="1dp"
@@ -283,7 +284,9 @@
                 android:padding="16dp"
                 android:src="@drawable/ic_exposure_neg_2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/chipGroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/change_question"
                 app:layout_constraintTop_toBottomOf="@+id/chipGroup"
                 app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
