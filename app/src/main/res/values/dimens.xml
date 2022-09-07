@@ -15,6 +15,12 @@
     <dimen name="dimes_score_dollar">28dp</dimen>
     <dimen name="dimes_question_height">108dp</dimen>
     <dimen name="question_text_padding">24dp</dimen>
+    <dimen name="medium_space">16dp</dimen>
+    <dimen name="small_space">8dp</dimen>
+    <dimen name="height_logo">185dp</dimen>
+    <dimen name="large_space">24dp</dimen>
+    <dimen name="font_size">16sp</dimen>
+    <dimen name="header_font_size">24sp</dimen>
 
 
 </resources>
