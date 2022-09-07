@@ -2,7 +2,6 @@ package com.example.android.whowantstobemillionaire.ui.start
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -18,11 +17,12 @@ class StartFragment : BaseFragment<FragmentStartBinding>
     private val audio = Audio()
     private lateinit var mediaPlayer: MediaPlayer
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         mediaPlayer = MediaPlayer.create(this.context, R.raw.home_audio)
-        firstRunAudio(mediaPlayer, requireContext())
+        firstRunAudio(mediaPlayer)
 
         binding.startBtn.setOnClickListener { v ->
             audio.pauseAudio(mediaPlayer)
@@ -43,7 +43,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun firstRunAudio(mediaPlayer: MediaPlayer, context: Context) {
+    fun firstRunAudio(mediaPlayer: MediaPlayer) {
         audio.runAudio(mediaPlayer)
         binding.sound.setImageResource(R.drawable.ic_audio_on)
     }
@@ -61,8 +61,13 @@ class StartFragment : BaseFragment<FragmentStartBinding>
 
     @SuppressLint("SetTextI18n")
     private fun loadLastResult() {
-        val SharedPref = requireActivity().getSharedPreferences("SaveResult", Context.MODE_PRIVATE)
-        val result = SharedPref.getInt("number", 0)
-        binding.resultBtn.text = "last result = ${result}"
+        val sharedPref = requireActivity().getSharedPreferences("SaveResult", Context.MODE_PRIVATE)
+        val result = sharedPref.getInt("number", 0)
+        binding.resultBtn.text = "last result = $result"
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.pauseAudio(mediaPlayer)
     }
 }

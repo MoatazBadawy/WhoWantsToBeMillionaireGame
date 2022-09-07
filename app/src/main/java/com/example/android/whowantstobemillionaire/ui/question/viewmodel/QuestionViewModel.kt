@@ -187,7 +187,7 @@ class QuestionViewModel : ViewModel() {
 
             in 6..10 -> onChangeQuestion(1)
 
-            in 12..16 -> onChangeQuestion(2)
+            in 11..16 -> onChangeQuestion(2)
         }
     }
 

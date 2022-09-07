@@ -2,18 +2,14 @@ package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
 import android.media.MediaPlayer
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBinding
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel
-import com.example.android.whowantstobemillionaire.utils.helper.disable
 import com.example.android.whowantstobemillionaire.utils.Audio
+import com.example.android.whowantstobemillionaire.utils.helper.disable
 
 class QuestionFragment :
     BaseFragment<FragmentQustionBinding>
@@ -43,23 +39,6 @@ class QuestionFragment :
     private fun errorSound() {
         audio.pauseAudio(mediaPlayer)
         audio.runAudio(MediaPlayer.create(requireContext(), R.raw.error_audio))
-    }
-
-    private fun onClick() {
-        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.home_audio)
-        binding.answer1.setOnClickListener {
-            audio.runAudio(mediaPlayer)
-        }
-        binding.answer2.setOnClickListener {
-            audio.runAudio(mediaPlayer)
-        }
-        binding.answer3.setOnClickListener {
-            audio.runAudio(mediaPlayer)
-        }
-        binding.answer4.setOnClickListener {
-            audio.runAudio(mediaPlayer)
-        }
-
     }
 
     private fun leaveQuestion() {
