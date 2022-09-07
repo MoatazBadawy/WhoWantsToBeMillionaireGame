@@ -46,6 +46,11 @@ class QuestionViewModel : ViewModel() {
     private val _numberOfQuestion = MutableLiveData(counter)
     val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
 
+    var index=0
+    var coinsCount=listOf(0, 500, 1000, 2000, 3000, 5000, 7500, 10000, 12500, 15000, 25000, 50000, 100000, 250000, 500000, 1000000)
+    private val _coins = MutableLiveData(coinsCount[0])
+    val coins: LiveData<Int> get() = _coins
+
     private lateinit var disposableTimer: Disposable
     private val _timer = MutableLiveData("30")
     val timer: LiveData<String> = _timer
@@ -105,6 +110,7 @@ class QuestionViewModel : ViewModel() {
         setShuffledAnswers(quiz)
         prepareTimer()
         increaseCounter(counter++)
+        increasCoins(index++)
     }
 
     private fun setShuffledAnswers(quiz: Quiz) {
@@ -118,6 +124,10 @@ class QuestionViewModel : ViewModel() {
 
     private fun increaseCounter(counter: Int) {
         _numberOfQuestion.postValue(counter)
+    }
+
+    private fun increasCoins(index: Int) {
+        _coins.postValue(coinsCount[index])
     }
 
     fun onAnswerClickListener(answer: Answer) {
