@@ -1,6 +1,11 @@
 package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
+import android.media.MediaPlayer
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContentProviderCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
@@ -8,6 +13,7 @@ import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBi
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel
 import com.example.android.whowantstobemillionaire.utils.helper.disable
+import com.example.android.whowantstobemillionaire.utils.Audio
 
 class QuestionFragment :
     BaseFragment<FragmentQustionBinding>
@@ -15,14 +21,45 @@ class QuestionFragment :
 
     private val quizViewModel: QuestionViewModel by viewModels()
 
+    private val audio = Audio()
+    private lateinit var mediaPlayer: MediaPlayer
+
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        initAudio()
         leaveQuestion()
         losingNavigate()
         resultNavigate()
         onClickOnce()
+    }
+
+    private fun initAudio() {
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.question_audio)
+        audio.runAudio(mediaPlayer)
+    }
+
+    private fun errorSound() {
+        audio.pauseAudio(mediaPlayer)
+        audio.runAudio(MediaPlayer.create(requireContext(), R.raw.error_audio))
+    }
+
+    private fun onClick() {
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.home_audio)
+        binding.answer1.setOnClickListener {
+            audio.runAudio(mediaPlayer)
+        }
+        binding.answer2.setOnClickListener {
+            audio.runAudio(mediaPlayer)
+        }
+        binding.answer3.setOnClickListener {
+            audio.runAudio(mediaPlayer)
+        }
+        binding.answer4.setOnClickListener {
+            audio.runAudio(mediaPlayer)
+        }
+
     }
 
     private fun leaveQuestion() {
@@ -37,7 +74,10 @@ class QuestionFragment :
         quizViewModel.losingNavigate.observe(
             viewLifecycleOwner
         ) {
-            if (it) navigateToLosingFragment()
+            if (it) {
+                errorSound()
+                navigateToLosingFragment()
+            }
         }
     }
 
@@ -92,5 +132,10 @@ class QuestionFragment :
             }
         }
         dialog.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.pauseAudio(mediaPlayer)
     }
 }
