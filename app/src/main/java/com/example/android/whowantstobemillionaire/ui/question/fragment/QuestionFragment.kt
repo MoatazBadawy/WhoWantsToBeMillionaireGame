@@ -23,35 +23,6 @@ class QuestionFragment :
         losingNavigate()
         resultNavigate()
         onClickOnce()
-
-
-    }
-
-    private fun navigateToLosingFragment() {
-        requireView().findNavController().navigate(R.id.action_questionFragment_to_losingFragment)
-    }
-
-    private fun navigateToResultFragment() {
-        requireView().findNavController().navigate(R.id.action_questionFragment_to_resultFragment)
-    }
-
-    private fun changeQuestionHelperOnClick() {
-        binding.changeQuestion.disable()
-    }
-
-    private fun backQuizAlertDialog() {
-        val dialog = AlertDialog.Builder(requireContext())
-        dialog.apply {
-            setTitle("Exit")
-            setMessage("Do you really want to withdraw from the competition?")
-            setPositiveButton("yes") { _, _ ->
-                requireView().findNavController().popBackStack()
-            }
-            setNegativeButton("No") { it, _ ->
-                it.cancel()
-            }
-        }
-        dialog.show()
     }
 
     private fun leaveQuestion() {
@@ -84,5 +55,32 @@ class QuestionFragment :
         ) {
             if (it) changeQuestionHelperOnClick()
         }
+    }
+
+    private fun navigateToLosingFragment() {
+        requireView().findNavController().navigate(R.id.action_questionFragment_to_losingFragment)
+    }
+
+    private fun navigateToResultFragment() {
+        requireView().findNavController().navigate(R.id.action_questionFragment_to_resultFragment)
+    }
+
+    private fun changeQuestionHelperOnClick() {
+        binding.changeQuestion.disable()
+    }
+
+    private fun backQuizAlertDialog() {
+        val dialog = AlertDialog.Builder(requireContext())
+        dialog.apply {
+            setTitle("Exit")
+            setMessage("Do you really want to withdraw from the competition?")
+            setPositiveButton("yes") { _, _ ->
+                requireView().findNavController().popBackStack()
+            }
+            setNegativeButton("No") { it, _ ->
+                it.cancel()
+            }
+        }
+        dialog.show()
     }
 }

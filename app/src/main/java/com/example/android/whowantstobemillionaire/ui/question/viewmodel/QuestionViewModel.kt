@@ -127,10 +127,9 @@ class QuestionViewModel : ViewModel() {
             wrongAnswer()
         else
             finishAnswers()
-
     }
 
-    private fun succeedAnswer(){
+    private fun succeedAnswer() {
         _answerState.postValue(AnswerState.CORRECT_ANSWER)
 
         Observable.timer(1, TimeUnit.SECONDS).subscribe {
@@ -140,12 +139,12 @@ class QuestionViewModel : ViewModel() {
         }.add(disposable)
     }
 
-    private fun wrongAnswer(){
+    private fun wrongAnswer() {
         disposableTimer.dispose()
         _resultNavigate.postValue(true)
     }
 
-    private fun finishAnswers(){
+    private fun finishAnswers() {
         _answerState.postValue(AnswerState.WRONG_ANSWER)
         Observable.timer(1, TimeUnit.SECONDS).subscribe {
             disposableTimer.dispose()
@@ -153,7 +152,7 @@ class QuestionViewModel : ViewModel() {
         }.add(disposable)
     }
 
-     private fun prepareTimer() {
+    private fun prepareTimer() {
         disposableTimer = Observable.intervalRange(
             0, 31, 1, 1, TimeUnit.SECONDS
         ).map { TIMER - it }
@@ -184,11 +183,10 @@ class QuestionViewModel : ViewModel() {
             in 6..10 -> onChangeQuestion(1)
 
             in 12..16 -> onChangeQuestion(2)
-
         }
     }
 
-    private fun onChangeQuestion(index :Int){
+    private fun onChangeQuestion(index: Int) {
         allQuestion.removeAt(questionIndex)
         allQuestion.add(questionToReplace[index])
         questionToReplace.removeAt(index)
