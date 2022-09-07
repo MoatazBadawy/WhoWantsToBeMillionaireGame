@@ -121,29 +121,39 @@ class QuestionViewModel : ViewModel() {
     }
 
     fun onAnswerClickListener(answer: Answer) {
-        if (answer.isCorrect && questionIndex < 15) {
-            _answerState.postValue(AnswerState.CORRECT_ANSWER)
+        if (answer.isCorrect && questionIndex < 15)
+            succeedAnswer()
+        else if (questionIndex == 15)
+            wrongAnswer()
+        else
+            finishAnswers()
 
-            Observable.timer(1, TimeUnit.SECONDS).subscribe {
-                _answerState.postValue(AnswerState.DEFAULT)
-                disposableTimer.dispose()
-                setCurrentQuestion(allQuestion[questionIndex])
-            }.add(disposable)
-
-        } else if (questionIndex == 15) {
-            disposableTimer.dispose()
-            _resultNavigate.postValue(true)
-
-        } else {
-            _answerState.postValue(AnswerState.WRONG_ANSWER)
-            Observable.timer(1, TimeUnit.SECONDS).subscribe {
-                disposableTimer.dispose()
-                _losingNavigate.postValue(true)
-            }.add(disposable)
-        }
     }
 
-    private fun prepareTimer() {
+    private fun succeedAnswer(){
+        _answerState.postValue(AnswerState.CORRECT_ANSWER)
+
+        Observable.timer(1, TimeUnit.SECONDS).subscribe {
+            _answerState.postValue(AnswerState.DEFAULT)
+            disposableTimer.dispose()
+            setCurrentQuestion(allQuestion[questionIndex])
+        }.add(disposable)
+    }
+
+    private fun wrongAnswer(){
+        disposableTimer.dispose()
+        _resultNavigate.postValue(true)
+    }
+
+    private fun finishAnswers(){
+        _answerState.postValue(AnswerState.WRONG_ANSWER)
+        Observable.timer(1, TimeUnit.SECONDS).subscribe {
+            disposableTimer.dispose()
+            _losingNavigate.postValue(true)
+        }.add(disposable)
+    }
+
+     private fun prepareTimer() {
         disposableTimer = Observable.intervalRange(
             0, 31, 1, 1, TimeUnit.SECONDS
         ).map { TIMER - it }
@@ -169,31 +179,22 @@ class QuestionViewModel : ViewModel() {
 
     fun changeQuestionByDifficulty() {
         when (questionIndex) {
-            in 0..4 -> {
-                allQuestion.removeAt(questionIndex)
-                allQuestion.add(questionToReplace[0])
-                questionToReplace.removeAt(0)
-                disposableTimer.dispose()
-                _clickOnce.postValue(true)
-                setCurrentQuestion(allQuestion[questionIndex])
-            }
-            in 6..10 -> {
-                allQuestion.removeAt(questionIndex)
-                allQuestion.add(questionToReplace[1])
-                questionToReplace.removeAt(1)
-                disposableTimer.dispose()
-                _clickOnce.postValue(true)
-                setCurrentQuestion(allQuestion[questionIndex])
-            }
-            in 12..16 -> {
-                allQuestion.removeAt(questionIndex)
-                allQuestion.add(questionToReplace[2])
-                questionToReplace.removeAt(2)
-                disposableTimer.dispose()
-                _clickOnce.postValue(true)
-                setCurrentQuestion(allQuestion[questionIndex])
-            }
+            in 0..4 -> onChangeQuestion(0)
+
+            in 6..10 -> onChangeQuestion(1)
+
+            in 12..16 -> onChangeQuestion(2)
+
         }
+    }
+
+    private fun onChangeQuestion(index :Int){
+        allQuestion.removeAt(questionIndex)
+        allQuestion.add(questionToReplace[index])
+        questionToReplace.removeAt(index)
+        disposableTimer.dispose()
+        _clickOnce.postValue(true)
+        setCurrentQuestion(allQuestion[questionIndex])
     }
 
     override fun onCleared() {

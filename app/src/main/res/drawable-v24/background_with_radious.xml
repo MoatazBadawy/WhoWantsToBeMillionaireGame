@@ -6,8 +6,10 @@
         android:viewportWidth="232"
         android:viewportHeight="76"/>
     <corners android:radius="16dp" />
-    <solid android:color="@color/light_blue_black" />
+    <solid android:color="@color/light_blue_black"  />
+
     <stroke
         android:width="3dp"
         android:color="#D1B000" />
+
 </shape>

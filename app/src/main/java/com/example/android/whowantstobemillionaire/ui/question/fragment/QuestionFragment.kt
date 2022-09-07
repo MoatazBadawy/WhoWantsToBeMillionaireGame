@@ -9,36 +9,22 @@ import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel
 import com.example.android.whowantstobemillionaire.utils.helper.disable
 
-class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_qustion) {
+class QuestionFragment :
+    BaseFragment<FragmentQustionBinding>
+        (R.layout.fragment_qustion) {
+
     private val quizViewModel: QuestionViewModel by viewModels()
 
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        quizViewModel.leaveQuestion.observe(
-            viewLifecycleOwner
-        ) {
-            if (it) backQuizAlertDialog()
-        }
+        leaveQuestion()
+        losingNavigate()
+        resultNavigate()
+        onClickOnce()
 
-        quizViewModel.losingNavigate.observe(
-            viewLifecycleOwner
-        ) {
-            if (it) navigateToLosingFragment()
-        }
 
-        quizViewModel.resultNavigate.observe(
-            viewLifecycleOwner
-        ) {
-            if (it) navigateToResultFragment()
-        }
-
-        quizViewModel.clickOnce.observe(
-            viewLifecycleOwner
-        ) {
-            if (it) changeQuestionHelperOnClick()
-        }
     }
 
     private fun navigateToLosingFragment() {
@@ -66,5 +52,37 @@ class QuestionFragment : BaseFragment<FragmentQustionBinding>(R.layout.fragment_
             }
         }
         dialog.show()
+    }
+
+    private fun leaveQuestion() {
+        quizViewModel.leaveQuestion.observe(
+            viewLifecycleOwner
+        ) {
+            if (it) backQuizAlertDialog()
+        }
+    }
+
+    private fun losingNavigate() {
+        quizViewModel.losingNavigate.observe(
+            viewLifecycleOwner
+        ) {
+            if (it) navigateToLosingFragment()
+        }
+    }
+
+    private fun resultNavigate() {
+        quizViewModel.resultNavigate.observe(
+            viewLifecycleOwner
+        ) {
+            if (it) navigateToResultFragment()
+        }
+    }
+
+    private fun onClickOnce() {
+        quizViewModel.clickOnce.observe(
+            viewLifecycleOwner
+        ) {
+            if (it) changeQuestionHelperOnClick()
+        }
     }
 }
