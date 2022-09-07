@@ -173,7 +173,7 @@
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/answer1"
+                    android:id="@+id/coins1"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginTop="6dp"
@@ -181,6 +181,7 @@
                     android:elevation="1dp"
                     android:focusable="false"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[0])}"
                     android:padding="16dp"
                     android:text="@{questionViewModel.answers[0].answer}"
@@ -201,6 +202,7 @@
                     android:layout_marginTop="12dp"
                     android:checkable="true"
                     android:elevation="1dp"
+                    android:textAlignment="center"
                     android:focusable="false"
                     android:gravity="center"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[1])}"
@@ -225,6 +227,7 @@
                     android:elevation="1dp"
                     android:focusable="false"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[2])}"
                     android:padding="16dp"
                     android:text="@{questionViewModel.answers[2].answer}"
@@ -248,6 +251,7 @@
                     android:focusable="false"
                     android:checkable="true"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
                     android:padding="16dp"
                     android:text="@{questionViewModel.answers[3].answer}"
