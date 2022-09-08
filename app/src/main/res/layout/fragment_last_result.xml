@@ -13,16 +13,35 @@
         android:background="@drawable/qustion_background"
         tools:context=".ui.lastresult.LastResultFragment">
 
+        <TextView
+            android:id="@+id/lastCoin"
+            android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
+            android:textStyle="bold"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_height="wrap_content"
+            android:elevation="1dp"
+            android:text="Last coins that You won "
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
             android:layout_width="384dp"
-            android:layout_height="636dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="18dp"
             android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/start_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastCoin"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -36,6 +55,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="1,000,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -44,8 +64,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="1,000,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins1"
@@ -57,6 +76,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="500,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -65,8 +85,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="500,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins2"
@@ -78,6 +97,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="250,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -86,8 +106,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="250,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins3"
@@ -99,6 +118,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="100,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -107,8 +127,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="100,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins4"
@@ -120,6 +139,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="50,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -128,8 +148,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="50,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins5"
@@ -141,6 +160,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="25,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -149,8 +169,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="25,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins6"
@@ -162,6 +181,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="15,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -170,8 +190,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="15,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins7"
@@ -183,6 +202,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="12,500"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -191,8 +211,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="12,500" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins8"
@@ -204,6 +223,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="10,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -212,8 +232,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="10,000" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins9"
@@ -226,6 +245,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="7,500"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -234,8 +254,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="7,500" />
+                app:chipStrokeWidth="3dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins10"
@@ -248,6 +267,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
+                android:text="5,000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -256,29 +276,7 @@
                 app:chipBackgroundColor="@color/light_blue_black"
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="5,000" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/coins11"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="2dp"
-                android:checkable="true"
-                android:elevation="1dp"
-                android:focusable="false"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:checkedIconVisible="false"
-                app:chipBackgroundColor="@color/light_blue_black"
-                app:chipCornerRadius="16dp"
-                app:chipStrokeColor="@color/golden_light"
-                app:chipStrokeWidth="3dp"
-                tools:text="3,000" />
+                app:chipStrokeWidth="3dp" />
 
 
         </com.google.android.material.chip.ChipGroup>

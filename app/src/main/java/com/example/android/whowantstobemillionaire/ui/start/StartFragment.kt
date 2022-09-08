@@ -63,8 +63,9 @@ class StartFragment : BaseFragment<FragmentStartBinding>
 
     @SuppressLint("SetTextI18n")
     private fun loadLastResult() {
-        val result = shared.loadLastResult(requireActivity())
-        binding.resultBtn.text = "Last Coins You Won is ${result} $"
+        Navigation.findNavController(recy).navigate(R.id.action_startFragment_to_lastResultFragment)
+//        val result = shared.loadLastResult(requireActivity())
+//        binding.resultBtn.text = "Last Coins You Won is ${result} $"
     }
 
     override fun onDestroy() {

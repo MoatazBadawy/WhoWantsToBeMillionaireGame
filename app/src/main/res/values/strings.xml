@@ -15,7 +15,7 @@
     <string name="now_you_loss_1_000_000">Now you loss $1,000,000</string>
     <string name="this_means_that_you_will_remain_broke_for_the_rest_of_your_life">This means that you will remain broke for the rest of your life</string>
     <string name="now_you_can_call_yourself_a_millionaire">Now you can call yourself a millionaire</string>
-    <string name="now_you_have_1_000_000">Now you have $1,000,000</string>
+    <string name="now_you_have_1_000_000">Now you have </string>
     <string name="congratulations">Congratulations</string>
     <string name="exit_text">Exit</string>
     <string name="about_us">About us</string>
@@ -24,4 +24,5 @@
     <string name="names">Moataz Mohamed \nMahmoud Morsy \nBahaa Elramlawi \nRasha N. Al-aswad \nAmeer Mustafa Slman \nMohammed Najm \nSalah Hasan AL_Kafaji \nMohammed Bin Hussain</string>
     <string name="_15">/ 15</string>
     <string name="_50_50">50 : 50</string>
+    <string name="now_you_have">Now you have</string>
 </resources>
