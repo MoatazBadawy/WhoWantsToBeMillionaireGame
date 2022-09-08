@@ -9,8 +9,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     override fun onCreateView() {
         binding.backButton.setOnClickListener { v ->
             findNavController(v).navigate(R.id.action_resultFragment_to_startFragment)
-            findNavController(v).popBackStack(R.id.startFragment, false)
+            findNavController(v).navigate(R.id.startFragment)
         }
+
+
 
         binding.playAgainButton.setOnClickListener { v ->
             findNavController(v).navigate(R.id.action_resultFragment_to_questionFragment)

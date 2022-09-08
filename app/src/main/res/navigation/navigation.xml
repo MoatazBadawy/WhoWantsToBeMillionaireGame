@@ -43,7 +43,9 @@
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/action_resultFragment_to_questionFragment"
-            app:destination="@id/questionFragment" />
+            app:destination="@id/questionFragment"
+            app:popUpTo="@id/questionFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_resultFragment_to_startFragment"
             app:destination="@id/startFragment"
@@ -62,10 +64,12 @@
         tools:layout="@layout/fragment_losing">
         <action
             android:id="@+id/action_losingFragment_to_questionFragment"
-            app:destination="@id/questionFragment" />
+            app:destination="@id/questionFragment"
+            app:popUpTo="@id/questionFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_losingFragment_to_startFragment"
-            app:destination="@id/startFragment"
+            app:destination="@id/losingFragment"
             app:popUpTo="@id/startFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -73,8 +77,7 @@
         android:id="@+id/lastResultFragment"
         android:name="com.example.android.whowantstobemillionaire.ui.lastresult.LastResultFragment"
         android:label="LastResultFragment"
-        tools:layout="@layout/fragment_last_result"
-        >
+        tools:layout="@layout/fragment_last_result">
         <action
             android:id="@+id/action_lastResultFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
