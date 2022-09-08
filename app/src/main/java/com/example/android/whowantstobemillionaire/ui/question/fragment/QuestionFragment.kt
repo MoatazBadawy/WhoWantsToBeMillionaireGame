@@ -2,7 +2,6 @@ package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
 import android.media.MediaPlayer
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
@@ -113,7 +112,6 @@ class QuestionFragment :
         binding.removeTwoAnswers.disable()
     }
 
-
     private fun backQuizAlertDialog() {
         val dialog = AlertDialog.Builder(requireContext())
         dialog.apply {
@@ -133,6 +131,7 @@ class QuestionFragment :
         super.onDestroy()
         audio.pauseAudio(mediaPlayer)
     }
+
     override fun onStop() {
         super.onStop()
         audio.pauseAudio(mediaPlayer)
