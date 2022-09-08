@@ -13,49 +13,73 @@
         android:background="@drawable/qustion_background"
         tools:context=".ui.lastresult.LastResultFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
+
         <TextView
             android:id="@+id/lastCoin"
             android:layout_width="match_parent"
-            android:layout_marginTop="50dp"
-            android:textStyle="bold"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:elevation="1dp"
-            android:text="Last coins that You won "
             android:gravity="center"
+            android:text="@string/last_coins_that_you_won"
             android:textColor="@color/white"
             android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/guideline" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.22" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
             android:layout_width="384dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/start_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.777"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastCoin"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="@id/guideline4"
+            app:layout_constraintStart_toStartOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/guideline1"
             app:selectionRequired="true"
             app:singleSelection="true">
 
+
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins"
-                android:layout_width="375dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="6dp"
                 android:checkable="true"
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="1,000,000"
+                android:text="@string/_1_000_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -68,7 +92,7 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/coins1"
-                android:layout_width="350dp"
+                android:layout_width="345dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="2dp"
@@ -76,7 +100,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="500,000"
+                android:text="@string/_500_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -97,7 +121,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="250,000"
+                android:text="@string/_250_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -118,7 +142,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="100,000"
+                android:text="@string/_100_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -139,7 +163,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="50,000"
+                android:text="@string/_50_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -160,7 +184,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="25,000"
+                android:text="@string/_25_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -181,7 +205,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="15,000"
+                android:text="@string/_15_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -202,7 +226,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="12,500"
+                android:text="@string/_12_500"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -223,7 +247,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="10,000"
+                android:text="@string/_10_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -245,7 +269,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="7,500"
+                android:text="@string/_7_500"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -267,7 +291,7 @@
                 android:elevation="1dp"
                 android:focusable="false"
                 android:gravity="center"
-                android:text="5,000"
+                android:text="@string/_5_000"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -277,23 +301,29 @@
                 app:chipCornerRadius="16dp"
                 app:chipStrokeColor="@color/golden_light"
                 app:chipStrokeWidth="3dp" />
-
-
         </com.google.android.material.chip.ChipGroup>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_btn"
             android:layout_width="190dp"
             android:layout_height="65dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/change_background"
             android:text="@string/start"
             android:textColor="@drawable/change_text_color"
             android:textSize="19sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -140,12 +140,14 @@ class QuestionViewModel : ViewModel() {
         if (answer.isCorrect && questionIndex < 5)
             succeedAnswer()
 
-        else if (!answer.isCorrect && questionIndex in 5..15)
+        else if (!answer.isCorrect && questionIndex in 5..14)
             releaseCoins()
-
-        else if (questionIndex == 15)
+        else if (answer.isCorrect && questionIndex in 5..14)
+            succeedAnswer()
+        else if (questionIndex == 15) {
+            increaseCoins(currentCoin++)
             finishAnswers()
-
+        }
         else
             wrongAnswer()
     }
@@ -216,6 +218,7 @@ class QuestionViewModel : ViewModel() {
             in 11..16 -> onChangeQuestion(2)
         }
     }
+
 
     private fun onChangeQuestion(index: Int) {
         allQuestion.removeAt(questionIndex)

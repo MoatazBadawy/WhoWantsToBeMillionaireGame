@@ -8,7 +8,7 @@
     <string name="start">Start Game</string>
     <string name="submit">submit</string>
     <string name="unfortunately">Unfortunately!</string>
-    <string name="about_text">This game is a simulation of one of the famous TV shows in the world (The Millionaire). We hope that you like this simulation in all its details except for the million dollars. We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. I hope you enjoy with us.</string>
+    <string name="about_text">This game is a simulation of one of the famous TV shows in the world (The Millionaire). \n We hope that you like this simulation in all its details except for the million dollars. \n We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. \n I hope you enjoy with us.</string>
     <string name="play_again">PLAY AGAIN</string>
     <string name="exit">EXIT</string>
     <string name="oooops_bad_news">Oooops, Bad News</string>
@@ -25,4 +25,16 @@
     <string name="_15">/ 15</string>
     <string name="_50_50">50 : 50</string>
     <string name="now_you_have">Now you have</string>
+    <string name="_1_000_000">1,000,000</string>
+    <string name="_500_000">500,000</string>
+    <string name="_250_000">250,000</string>
+    <string name="_50_000">50,000</string>
+    <string name="_25_000">25,000</string>
+    <string name="_10_000">10,000</string>
+    <string name="_7_500">7,500</string>
+    <string name="_5_000">5,000</string>
+    <string name="_12_500">12,500</string>
+    <string name="_15_000">15,000</string>
+    <string name="_100_000">100,000</string>
+    <string name="last_coins_that_you_won">Last coins that You won</string>
 </resources>
