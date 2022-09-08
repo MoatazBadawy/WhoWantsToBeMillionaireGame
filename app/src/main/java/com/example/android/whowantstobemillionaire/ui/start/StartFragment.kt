@@ -7,16 +7,13 @@ import androidx.navigation.Navigation
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentStartBinding
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
-import com.example.android.whowantstobemillionaire.utils.Audio
-import com.example.android.whowantstobemillionaire.utils.helper.PrefForLastCoinsYouWin
+import com.example.android.whowantstobemillionaire.utils.helper.Audio
 
 class StartFragment : BaseFragment<FragmentStartBinding>
     (R.layout.fragment_start) {
 
     private val audio = Audio()
     private lateinit var mediaPlayer: MediaPlayer
-
-    var shared = PrefForLastCoinsYouWin()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView() {
@@ -57,7 +54,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>
             audio.muteAudio(requireContext())
             binding.sound.setImageResource(R.drawable.ic_audio_off)
         } else {
-            audio.unmuteAudio(requireContext())
+            audio.unMuteAudio(requireContext())
             binding.sound.setImageResource(R.drawable.ic_audio_on)
         }
     }

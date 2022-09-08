@@ -8,15 +8,14 @@ import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.utils.helper.PrefForLastCoinsYouWin
 
 class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_result) {
-    var shared= PrefForLastCoinsYouWin()
+    private var shared = PrefForLastCoinsYouWin()
+
     override fun onCreateView() {
         loadLastResult()
         binding.backButton.setOnClickListener { v ->
             findNavController(v).navigate(R.id.action_resultFragment_to_startFragment)
-            findNavController(v).navigate(R.id.startFragment)
+            findNavController(v).popBackStack(R.id.startFragment, false)
         }
-
-
 
         binding.playAgainButton.setOnClickListener { v ->
             findNavController(v).navigate(R.id.action_resultFragment_to_questionFragment)
@@ -27,6 +26,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     @SuppressLint("SetTextI18n")
     private fun loadLastResult() {
         val result = shared.loadLastResult(requireActivity())
-        binding.yourCoins.text="${result} $"
+        binding.yourCoins.text = "$result $"
     }
 }

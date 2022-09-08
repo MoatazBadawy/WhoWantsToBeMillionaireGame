@@ -47,7 +47,7 @@ class QuestionViewModel : ViewModel() {
     private val _numberOfQuestion = MutableLiveData(counter)
     val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
 
-    var currentCoin = 0
+    private var currentCoin = 0
     private var coinsCount = COINS
     private val _coins = MutableLiveData(coinsCount[0])
     val coins: LiveData<Int> get() = _coins

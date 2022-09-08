@@ -71,9 +71,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_losingFragment_to_startFragment"
-            app:destination="@id/losingFragment"
-            app:popUpTo="@id/startFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/lastResultFragment"

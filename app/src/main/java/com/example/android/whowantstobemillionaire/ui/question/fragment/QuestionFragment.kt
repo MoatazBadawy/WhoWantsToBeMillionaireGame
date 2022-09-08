@@ -1,11 +1,8 @@
 package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
-import android.media.MediaPlayer
 import android.graphics.Color
-import android.icu.text.CaseMap
-import android.opengl.Matrix.length
-import android.os.Message
+import android.media.MediaPlayer
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -15,7 +12,7 @@ import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBinding
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel
-import com.example.android.whowantstobemillionaire.utils.Audio
+import com.example.android.whowantstobemillionaire.utils.helper.Audio
 import com.example.android.whowantstobemillionaire.utils.helper.PrefForLastCoinsYouWin
 import com.example.android.whowantstobemillionaire.utils.helper.disable
 
@@ -28,7 +25,7 @@ class QuestionFragment :
     private val audio = Audio()
     private lateinit var mediaPlayer: MediaPlayer
 
-    var shared = PrefForLastCoinsYouWin()
+    private var shared = PrefForLastCoinsYouWin()
 
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
@@ -125,15 +122,17 @@ class QuestionFragment :
 
             val message = SpannableString("Do you really want to withdraw from the competition?")
             message.setSpan(
-                ForegroundColorSpan(Color.WHITE),0,message.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                ForegroundColorSpan(Color.WHITE),
+                0,
+                message.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             val title = SpannableString("Exit")
             title.setSpan(
-                ForegroundColorSpan(Color.WHITE),0,title.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                ForegroundColorSpan(Color.WHITE), 0, title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             setTitle(title)
-            setMessage(message).
-            setPositiveButton("yes") { _, _ ->
+            setMessage(message).setPositiveButton("yes") { _, _ ->
                 requireView().findNavController().popBackStack()
             }
             setNegativeButton("No") { it, _ ->

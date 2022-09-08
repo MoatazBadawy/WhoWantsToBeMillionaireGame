@@ -11,7 +11,7 @@ import com.google.android.material.chip.Chip
 class LastResultFragment :
     BaseFragment<FragmentLastResultBinding>
         (R.layout.fragment_last_result) {
-    var shared = PrefForLastCoinsYouWin()
+    private var shared = PrefForLastCoinsYouWin()
 
     override fun onCreateView() {
         binding.lifecycleOwner = viewLifecycleOwner

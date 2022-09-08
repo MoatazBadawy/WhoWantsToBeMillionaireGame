@@ -66,5 +66,5 @@ fun changeAnswerVisibility(chip: Chip, answer: String?) {
 
 @BindingAdapter(value = ["htmlText"])
 fun TextView.setHtmlText(string: String?) {
-    text = HtmlCompat.fromHtml(string?:"", HtmlCompat.FROM_HTML_MODE_COMPACT)
+    text = HtmlCompat.fromHtml(string ?: "", HtmlCompat.FROM_HTML_MODE_COMPACT)
 }

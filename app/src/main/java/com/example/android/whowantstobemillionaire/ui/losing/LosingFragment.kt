@@ -1,6 +1,5 @@
 package com.example.android.whowantstobemillionaire.ui.losing
 
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentLosingBinding
@@ -10,7 +9,7 @@ class LosingFragment : BaseFragment<FragmentLosingBinding>(R.layout.fragment_los
     override fun onCreateView() {
         binding.backButton.setOnClickListener { v ->
             findNavController(v).navigate(R.id.action_losingFragment_to_startFragment)
-            findNavController(v).navigate(R.id.startFragment)
+            findNavController(v).popBackStack(R.id.startFragment, false)
         }
 
         binding.playAgainButton.setOnClickListener { v ->
