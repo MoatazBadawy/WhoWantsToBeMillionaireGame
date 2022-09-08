@@ -190,7 +190,6 @@ class QuestionViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Log.d("time", it.toString())
                 _timer.postValue(it.toString())
                 onTimeIsFinished()
 
