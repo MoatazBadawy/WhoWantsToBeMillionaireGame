@@ -137,12 +137,12 @@ class QuestionViewModel : ViewModel() {
     }
 
     fun onAnswerClickListener(answer: Answer) {
-        if (answer.isCorrect && questionIndex < 5)
+        if (answer.isCorrect && questionIndex < 6)
             succeedAnswer()
 
-        else if (!answer.isCorrect && questionIndex in 5..14)
+        else if (!answer.isCorrect && questionIndex in 6..14)
             releaseCoins()
-        else if (answer.isCorrect && questionIndex in 5..14)
+        else if (answer.isCorrect && questionIndex in 6..14)
             succeedAnswer()
         else if (questionIndex == 15) {
             increaseCoins(currentCoin++)

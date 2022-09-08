@@ -111,6 +111,7 @@ class QuestionFragment :
         binding.removeTwoAnswers.disable()
     }
 
+
     private fun backQuizAlertDialog() {
         val dialog = AlertDialog.Builder(requireContext())
         dialog.apply {
