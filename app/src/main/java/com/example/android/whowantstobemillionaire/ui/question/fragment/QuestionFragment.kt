@@ -9,6 +9,7 @@ import com.example.android.whowantstobemillionaire.databinding.FragmentQustionBi
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel
 import com.example.android.whowantstobemillionaire.utils.Audio
+import com.example.android.whowantstobemillionaire.utils.helper.PrefForLastCoinsYouWin
 import com.example.android.whowantstobemillionaire.utils.helper.disable
 
 class QuestionFragment :
@@ -20,10 +21,13 @@ class QuestionFragment :
     private val audio = Audio()
     private lateinit var mediaPlayer: MediaPlayer
 
+    var shared = PrefForLastCoinsYouWin()
+
     override fun onCreateView() {
         binding.questionViewModel = quizViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        saveCoins()
         initAudio()
         leaveQuestion()
         losingNavigate()
@@ -39,6 +43,15 @@ class QuestionFragment :
     private fun errorSound() {
         audio.pauseAudio(mediaPlayer)
         audio.runAudio(MediaPlayer.create(requireContext(), R.raw.error_audio))
+    }
+
+    private fun saveCoins() {
+        quizViewModel.coins.observe(viewLifecycleOwner) { coins ->
+            shared.saveLastResult(
+                requireActivity(),
+                coins
+            )
+        }
     }
 
     private fun leaveQuestion() {

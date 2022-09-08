@@ -9,6 +9,7 @@ import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.AnswerState
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.COINS
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.ERROR
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
@@ -45,6 +46,11 @@ class QuestionViewModel : ViewModel() {
     private var counter = 1
     private val _numberOfQuestion = MutableLiveData(counter)
     val numberOfQuestion: LiveData<Int> get() = _numberOfQuestion
+
+    var currentCoin = 0
+    private var coinsCount = COINS
+    private val _coins = MutableLiveData(coinsCount[0])
+    val coins: LiveData<Int> get() = _coins
 
     private lateinit var disposableTimer: Disposable
     private val _timer = MutableLiveData("30")
@@ -109,6 +115,7 @@ class QuestionViewModel : ViewModel() {
         prepareTimer()
         if (!isReplaced) {
             increaseCounter(counter++)
+            increaseCoins(currentCoin++)
         }
     }
 
@@ -125,13 +132,22 @@ class QuestionViewModel : ViewModel() {
         _numberOfQuestion.postValue(counter)
     }
 
+    private fun increaseCoins(currentCoins: Int) {
+        _coins.postValue(coinsCount[currentCoins])
+    }
+
     fun onAnswerClickListener(answer: Answer) {
-        if (answer.isCorrect && questionIndex < 15)
+        if (answer.isCorrect && questionIndex < 5)
             succeedAnswer()
+
+        else if (!answer.isCorrect && questionIndex in 5..15)
+            releaseCoins()
+
         else if (questionIndex == 15)
-            wrongAnswer()
-        else
             finishAnswers()
+
+        else
+            wrongAnswer()
     }
 
     private fun succeedAnswer() {
@@ -144,17 +160,27 @@ class QuestionViewModel : ViewModel() {
         }.add(disposable)
     }
 
-    private fun wrongAnswer() {
-        disposableTimer.dispose()
-        _resultNavigate.postValue(true)
+    private fun releaseCoins() {
+        _answerState.postValue(AnswerState.WRONG_ANSWER)
+
+        Observable.timer(1, TimeUnit.SECONDS).subscribe {
+            disposableTimer.dispose()
+            _resultNavigate.postValue(true)
+        }.add(disposable)
     }
 
-    private fun finishAnswers() {
+    private fun wrongAnswer() {
         _answerState.postValue(AnswerState.WRONG_ANSWER)
+
         Observable.timer(1, TimeUnit.SECONDS).subscribe {
             disposableTimer.dispose()
             _losingNavigate.postValue(true)
         }.add(disposable)
+    }
+
+    private fun finishAnswers() {
+        disposableTimer.dispose()
+        _resultNavigate.postValue(true)
     }
 
     private fun prepareTimer() {

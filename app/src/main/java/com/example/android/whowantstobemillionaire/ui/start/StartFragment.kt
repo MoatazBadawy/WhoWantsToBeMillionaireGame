@@ -10,12 +10,15 @@ import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.databinding.FragmentStartBinding
 import com.example.android.whowantstobemillionaire.ui.base.BaseFragment
 import com.example.android.whowantstobemillionaire.utils.Audio
+import com.example.android.whowantstobemillionaire.utils.helper.PrefForLastCoinsYouWin
 
 class StartFragment : BaseFragment<FragmentStartBinding>
     (R.layout.fragment_start) {
 
     private val audio = Audio()
     private lateinit var mediaPlayer: MediaPlayer
+
+    var shared= PrefForLastCoinsYouWin()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView() {
@@ -61,9 +64,8 @@ class StartFragment : BaseFragment<FragmentStartBinding>
 
     @SuppressLint("SetTextI18n")
     private fun loadLastResult() {
-        val sharedPref = requireActivity().getSharedPreferences("SaveResult", Context.MODE_PRIVATE)
-        val result = sharedPref.getInt("number", 0)
-        binding.resultBtn.text = "last result = $result"
+        val result= shared.loadLastResult(requireActivity())
+        binding.resultBtn.text ="Last Coins You Won is ${result} $"
     }
 
     override fun onDestroy() {
