@@ -25,19 +25,27 @@ class LastResultFragment :
 
     private fun loadLastResult() {
         val result = shared.loadLastResult(requireActivity())
+
         binding.chipGroup.children.forEach {
             val chip = it as Chip
-            if (result == 5000 && chip.id == R.id.coins10) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 7500 && chip.id == R.id.coins9) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 10000 && chip.id == R.id.coins8) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 12500 && chip.id == R.id.coins7) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 15000 && chip.id == R.id.coins6) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 25000 && chip.id == R.id.coins5) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 50000 && chip.id == R.id.coins4) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 100000 && chip.id == R.id.coins3) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 250000 && chip.id == R.id.coins2) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 500000 && chip.id == R.id.coins1) chip.setChipBackgroundColorResource(R.color.golden_light)
-            if (result == 1000000 && chip.id == R.id.coins) chip.setChipBackgroundColorResource(R.color.golden_light)
+            when (result) {
+                5000 -> goldenLight(chip, R.id.coins10)
+                7500 -> goldenLight(chip, R.id.coins9)
+                10000 -> goldenLight(chip, R.id.coins8)
+                12500 -> goldenLight(chip, R.id.coins7)
+                15000 -> goldenLight(chip, R.id.coins6)
+                25000 -> goldenLight(chip, R.id.coins5)
+                50000 -> goldenLight(chip, R.id.coins4)
+                100000 -> goldenLight(chip, R.id.coins3)
+                250000 -> goldenLight(chip, R.id.coins2)
+                500000 -> goldenLight(chip, R.id.coins1)
+                1000000 -> goldenLight(chip, R.id.coins)
+            }
         }
+    }
+
+    private fun goldenLight(chip: Chip, id: Int) {
+        if (chip.id == id)
+            chip.setChipBackgroundColorResource(R.color.golden_light)
     }
 }
