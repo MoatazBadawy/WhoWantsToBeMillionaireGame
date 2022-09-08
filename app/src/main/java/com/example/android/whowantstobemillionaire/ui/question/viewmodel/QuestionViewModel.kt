@@ -1,12 +1,19 @@
 package com.example.android.whowantstobemillionaire.ui.question.viewmodel
 
+import android.annotation.SuppressLint
+import android.app.Application
+import android.content.Context
+import android.media.MediaPlayer
 import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.android.whowantstobemillionaire.R
 import com.example.android.whowantstobemillionaire.data.model.Quiz
 import com.example.android.whowantstobemillionaire.data.model.QuizResponse
 import com.example.android.whowantstobemillionaire.data.repository.QuizRepository
+
 import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.AnswerState
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.COINS
@@ -15,6 +22,7 @@ import com.example.android.whowantstobemillionaire.utils.helper.Constants.STOP_T
 import com.example.android.whowantstobemillionaire.utils.helper.Constants.TIMER
 import com.example.android.whowantstobemillionaire.utils.helper.add
 import com.example.android.whowantstobemillionaire.utils.state.State
+import com.google.android.material.internal.ContextUtils.getActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -76,6 +84,8 @@ class QuestionViewModel : ViewModel() {
         onTimeIsFinished()
     }
 
+
+
     private fun getQuiz() {
         repository.getAllQuestions()
             .subscribeOn(Schedulers.io())
@@ -124,7 +134,6 @@ class QuestionViewModel : ViewModel() {
             Answer(it, false)
         }?.plus(Answer(quiz.correctAnswer!!, true))?.shuffled()
         _answers.postValue(listOfAnswers!!)
-
         Log.v("QuizModel", quiz.correctAnswer.toString())
     }
 
@@ -136,6 +145,7 @@ class QuestionViewModel : ViewModel() {
         _coins.postValue(coinsCount[currentCoins])
     }
 
+    @SuppressLint("RestrictedApi")
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect && questionIndex < 5)
             succeedAnswer()
@@ -190,7 +200,6 @@ class QuestionViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Log.d("time", it.toString())
                 _timer.postValue(it.toString())
                 onTimeIsFinished()
 
