@@ -19,26 +19,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/play_again_button"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="98dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="68dp"
-        android:background="@drawable/button_background"
-        android:text="@string/play_again"
-        android:textColor="@color/white"
-        android:textSize="21sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.663" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <TextView
         android:id="@+id/textView"
@@ -58,8 +39,6 @@
         app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.458"
+        app:layout_constraintVertical_bias="0.52"
         app:lineHeight="29sp" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
