@@ -2,6 +2,7 @@ package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
 import android.media.MediaPlayer
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
@@ -82,13 +83,13 @@ class QuestionFragment :
     }
 
     private fun onClickOnce() {
-        quizViewModel.clickOnce.observe(
+        quizViewModel.changeQuestionClickOnce.observe(
             viewLifecycleOwner
         ) {
             if (it) changeQuestionHelperOnClick()
         }
 
-        quizViewModel.removeClickOnce.observe(
+        quizViewModel.removeQuestionClickOnce.observe(
             viewLifecycleOwner
         ) {
             if (it) remove2AnswersOnClick()

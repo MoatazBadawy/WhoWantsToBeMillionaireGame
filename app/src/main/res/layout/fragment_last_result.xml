@@ -18,25 +18,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.08" />
+            app:layout_constraintGuide_percent="0.05" />
 
 
         <TextView
             android:id="@+id/lastCoin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:elevation="1dp"
             android:gravity="center"
             android:text="@string/last_coins_that_you_won"
             android:textColor="@color/white"
-            android:textSize="50sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline" />
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintVertical_bias="0.144" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:layout_width="wrap_content"
@@ -59,13 +62,15 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
-            android:layout_width="384dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="@id/guideline4"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/guideline1"
+            app:layout_constraintVertical_bias="0.61"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -263,8 +268,8 @@
                 android:layout_width="190dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="98dp"
-                android:layout_marginRight="50dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginRight="50dp"
                 android:checkable="true"
                 android:elevation="1dp"
                 android:focusable="false"
@@ -285,8 +290,8 @@
                 android:layout_width="170dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="110dp"
-                android:layout_marginRight="100dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginRight="100dp"
                 android:checkable="true"
                 android:elevation="1dp"
                 android:focusable="false"
@@ -313,8 +318,8 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_btn"
             android:layout_width="190dp"
-            android:layout_height="65dp"
-            android:layout_marginBottom="20dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/change_background"
             android:text="@string/start"
             android:textColor="@drawable/change_text_color"
@@ -323,7 +328,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+            app:layout_constraintVertical_bias="0.98" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

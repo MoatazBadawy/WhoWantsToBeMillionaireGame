@@ -5,7 +5,6 @@ import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.example.android.whowantstobemillionaire.R
-import com.example.android.whowantstobemillionaire.utils.helper.Answer
 import com.example.android.whowantstobemillionaire.utils.helper.AnswerState
 import com.example.android.whowantstobemillionaire.utils.state.State
 import com.google.android.material.chip.Chip
@@ -32,20 +31,20 @@ fun changeBackgroundColor(chipGroup: ChipGroup, answerState: AnswerState?) {
     val selectedID = chipGroup.checkedChipId
     chipGroup.children.forEach { chip ->
         chip as Chip
-        when(answerState){
-            AnswerState.CORRECT_ANSWER ->{
-                if(selectedID == chip.id){
+        when (answerState) {
+            AnswerState.CORRECT_ANSWER -> {
+                if (selectedID == chip.id) {
                     chip.setChipBackgroundColorResource(R.color.green)
                 }
             }
 
-            AnswerState.WRONG_ANSWER ->{
-                if(selectedID == chip.id){
+            AnswerState.WRONG_ANSWER -> {
+                if (selectedID == chip.id) {
                     chip.setChipBackgroundColorResource(R.color.red)
                 }
             }
 
-            else ->{
+            else -> {
                 chip.setChipBackgroundColorResource(R.color.light_blue_black)
             }
         }
@@ -56,9 +55,9 @@ fun changeBackgroundColor(chipGroup: ChipGroup, answerState: AnswerState?) {
 
 @BindingAdapter(value = ["app:changeAnswerVisibility"])
 fun changeAnswerVisibility(chip: Chip, answer: String?) {
-    if(answer.isNullOrEmpty()){
+    if (answer.isNullOrEmpty()) {
         chip.visibility = View.INVISIBLE
-    }else{
+    } else {
         chip.visibility = View.VISIBLE
     }
 }

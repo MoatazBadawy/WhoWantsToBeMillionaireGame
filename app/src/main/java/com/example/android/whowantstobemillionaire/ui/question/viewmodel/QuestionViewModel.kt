@@ -65,11 +65,11 @@ class QuestionViewModel : ViewModel() {
     private val _leaveQuestion = MutableLiveData(false)
     val leaveQuestion: LiveData<Boolean> get() = _leaveQuestion
 
-    private val _clickOnce = MutableLiveData(false)
-    val clickOnce: LiveData<Boolean> get() = _clickOnce
+    private val _changeQuestionClickOnce = MutableLiveData(false)
+    val changeQuestionClickOnce: LiveData<Boolean> get() = _changeQuestionClickOnce
 
-    private val _removeClickOnce = MutableLiveData(false)
-    val removeClickOnce: LiveData<Boolean> get() = _removeClickOnce
+    private val _removeQuestionClickOnce = MutableLiveData(false)
+    val removeQuestionClickOnce: LiveData<Boolean> get() = _removeQuestionClickOnce
 
     init {
         getQuiz()
@@ -139,7 +139,6 @@ class QuestionViewModel : ViewModel() {
     fun onAnswerClickListener(answer: Answer) {
         if (answer.isCorrect && questionIndex < 6)
             succeedAnswer()
-
         else if (!answer.isCorrect && questionIndex in 6..14)
             releaseCoins()
         else if (answer.isCorrect && questionIndex in 6..14)
@@ -147,8 +146,7 @@ class QuestionViewModel : ViewModel() {
         else if (questionIndex == 15) {
             increaseCoins(currentCoin++)
             finishAnswers()
-        }
-        else
+        } else
             wrongAnswer()
     }
 
@@ -212,20 +210,17 @@ class QuestionViewModel : ViewModel() {
     fun changeQuestionByDifficulty() {
         when (questionIndex) {
             in 0..4 -> onChangeQuestion(0)
-
-            in 6..10 -> onChangeQuestion(1)
-
-            in 11..16 -> onChangeQuestion(2)
+            in 5..9 -> onChangeQuestion(1)
+            in 10..14 -> onChangeQuestion(2)
         }
     }
-
 
     private fun onChangeQuestion(index: Int) {
         allQuestion.removeAt(questionIndex)
         allQuestion.add(questionToReplace[index])
         questionToReplace.removeAt(index)
         disposableTimer.dispose()
-        _clickOnce.postValue(true)
+        _changeQuestionClickOnce.postValue(true)
         setCurrentQuestion(questionIndex, true)
     }
 
@@ -242,7 +237,7 @@ class QuestionViewModel : ViewModel() {
                 }
                 index++
             }
-            _removeClickOnce.postValue(true)
+            _removeQuestionClickOnce.postValue(true)
             _answers.postValue(listOfAnswers)
         }
     }

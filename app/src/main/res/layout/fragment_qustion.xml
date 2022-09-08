@@ -266,7 +266,6 @@
                     tools:text="D" />
             </com.google.android.material.chip.ChipGroup>
 
-
             <ImageButton
                 android:id="@+id/change_question"
                 android:layout_width="100dp"
