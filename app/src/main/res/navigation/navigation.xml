@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_homeFragment"
-            app:destination="@id/questionFragment" />
+            app:destination="@id/questionFragment"
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_startFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
