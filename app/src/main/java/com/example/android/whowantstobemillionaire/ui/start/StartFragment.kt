@@ -1,6 +1,5 @@
 package com.example.android.whowantstobemillionaire.ui.start
 
-import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -36,7 +35,8 @@ class StartFragment : BaseFragment<FragmentStartBinding>
         }
 
         binding.resultBtn.setOnClickListener {
-            loadLastResult()
+            Navigation.findNavController(it)
+                .navigate(R.id.action_startFragment_to_lastResultFragment)
         }
 
         binding.sound.setOnClickListener {
@@ -59,13 +59,6 @@ class StartFragment : BaseFragment<FragmentStartBinding>
             audio.unmuteAudio(requireContext())
             binding.sound.setImageResource(R.drawable.ic_audio_on)
         }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun loadLastResult() {
-        Navigation.findNavController(recy).navigate(R.id.action_startFragment_to_lastResultFragment)
-//        val result = shared.loadLastResult(requireActivity())
-//        binding.resultBtn.text = "Last Coins You Won is ${result} $"
     }
 
     override fun onDestroy() {
