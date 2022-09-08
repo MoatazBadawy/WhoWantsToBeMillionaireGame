@@ -1,7 +1,6 @@
 package com.example.android.whowantstobemillionaire.ui.start
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -18,7 +17,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>
     private val audio = Audio()
     private lateinit var mediaPlayer: MediaPlayer
 
-    var shared= PrefForLastCoinsYouWin()
+    var shared = PrefForLastCoinsYouWin()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView() {
@@ -64,8 +63,8 @@ class StartFragment : BaseFragment<FragmentStartBinding>
 
     @SuppressLint("SetTextI18n")
     private fun loadLastResult() {
-        val result= shared.loadLastResult(requireActivity())
-        binding.resultBtn.text ="Last Coins You Won is ${result} $"
+        val result = shared.loadLastResult(requireActivity())
+        binding.resultBtn.text = "Last Coins You Won is ${result} $"
     }
 
     override fun onDestroy() {
