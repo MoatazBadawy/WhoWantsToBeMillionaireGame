@@ -9,7 +9,6 @@ class LosingFragment : BaseFragment<FragmentLosingBinding>(R.layout.fragment_los
     override fun onCreateView() {
         binding.backButton.setOnClickListener { v ->
             findNavController(v).navigate(R.id.action_losingFragment_to_startFragment)
-            findNavController(v).popBackStack(R.id.startFragment, false)
         }
 
         binding.playAgainButton.setOnClickListener { v ->
