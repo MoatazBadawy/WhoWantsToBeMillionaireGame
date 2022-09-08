@@ -88,10 +88,10 @@
                 android:elevation="1dp"
                 android:gravity="center"
                 android:padding="@dimen/question_text_padding"
-                android:text="@{questionViewModel.currentQuestion.question}"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                app:htmlText="@{questionViewModel.currentQuestion.question}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +186,6 @@
                     android:focusable="false"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[0])}"
                     android:padding="16dp"
-                    android:text="@{`A. ` + questionViewModel.answers[0].answer}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -196,6 +195,7 @@
                     app:chipCornerRadius="16dp"
                     app:chipStrokeColor="@color/golden_light"
                     app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`A. ` + questionViewModel.answers[0].answer}"
                     tools:text="A" />
 
                 <com.google.android.material.chip.Chip
@@ -208,7 +208,6 @@
                     android:focusable="false"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[1])}"
                     android:padding="16dp"
-                    android:text="@{`B. ` + questionViewModel.answers[1].answer}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -218,6 +217,7 @@
                     app:chipCornerRadius="16dp"
                     app:chipStrokeColor="@color/golden_light"
                     app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`B. ` + questionViewModel.answers[1].answer}"
                     tools:text="B" />
 
                 <com.google.android.material.chip.Chip
@@ -230,7 +230,6 @@
                     android:focusable="false"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[2])}"
                     android:padding="16dp"
-                    android:text="@{`C. ` + questionViewModel.answers[2].answer}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -240,6 +239,7 @@
                     app:chipCornerRadius="16dp"
                     app:chipStrokeColor="@color/golden_light"
                     app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`C. ` + questionViewModel.answers[2].answer}"
                     tools:text="C" />
 
                 <com.google.android.material.chip.Chip
@@ -253,7 +253,6 @@
                     android:focusable="false"
                     android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
                     android:padding="16dp"
-                    android:text="@{`D. ` + questionViewModel.answers[3].answer}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -263,6 +262,7 @@
                     app:chipCornerRadius="16dp"
                     app:chipStrokeColor="@color/golden_light"
                     app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`D. ` + questionViewModel.answers[3].answer}"
                     tools:text="D" />
             </com.google.android.material.chip.ChipGroup>
 

@@ -1,6 +1,8 @@
 package com.example.android.whowantstobemillionaire.ui.question.adapter
 
 import android.view.View
+import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
@@ -60,4 +62,9 @@ fun changeAnswerVisibility(chip: Chip, answer: String?) {
     } else {
         chip.visibility = View.VISIBLE
     }
+}
+
+@BindingAdapter(value = ["htmlText"])
+fun TextView.setHtmlText(string: String?) {
+    text = HtmlCompat.fromHtml(string?:"", HtmlCompat.FROM_HTML_MODE_COMPACT)
 }
