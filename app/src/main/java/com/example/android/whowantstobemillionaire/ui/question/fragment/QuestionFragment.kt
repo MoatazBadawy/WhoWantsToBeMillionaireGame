@@ -2,6 +2,13 @@ package com.example.android.whowantstobemillionaire.ui.question.fragment
 
 import android.app.AlertDialog
 import android.media.MediaPlayer
+import android.graphics.Color
+import android.icu.text.CaseMap
+import android.opengl.Matrix.length
+import android.os.Message
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.android.whowantstobemillionaire.R
@@ -113,10 +120,19 @@ class QuestionFragment :
     }
 
     private fun backQuizAlertDialog() {
-        val dialog = AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext(), R.style.MyDialogTheme)
         dialog.apply {
-            setTitle("Exit")
-            setMessage("Do you really want to withdraw from the competition?")
+
+            val message = SpannableString("Do you really want to withdraw from the competition?")
+            message.setSpan(
+                ForegroundColorSpan(Color.WHITE),0,message.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            val title = SpannableString("Exit")
+            title.setSpan(
+                ForegroundColorSpan(Color.WHITE),0,title.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            setTitle(title)
+            setMessage(message).
             setPositiveButton("yes") { _, _ ->
                 requireView().findNavController().popBackStack()
             }

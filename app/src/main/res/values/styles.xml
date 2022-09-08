@@ -45,4 +45,9 @@
         <item name="colorOnSurface">@color/light_green</item>
         <item name="colorSecondary">@color/green</item>
     </style>
+
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/main_color</item>
+
+    </style>
 </resources>
