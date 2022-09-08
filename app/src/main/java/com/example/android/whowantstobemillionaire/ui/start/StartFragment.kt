@@ -46,6 +46,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun firstRunAudio(mediaPlayer: MediaPlayer) {
+        mediaPlayer.isLooping = true
         audio.runAudio(mediaPlayer)
         binding.sound.setImageResource(R.drawable.ic_audio_on)
     }
@@ -63,6 +64,11 @@ class StartFragment : BaseFragment<FragmentStartBinding>
 
     override fun onDestroy() {
         super.onDestroy()
+        audio.pauseAudio(mediaPlayer)
+    }
+
+    override fun onStop() {
+        super.onStop()
         audio.pauseAudio(mediaPlayer)
     }
 }

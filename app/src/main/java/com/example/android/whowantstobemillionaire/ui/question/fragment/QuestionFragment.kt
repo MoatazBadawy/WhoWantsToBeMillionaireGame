@@ -38,6 +38,7 @@ class QuestionFragment :
 
     private fun initAudio() {
         mediaPlayer = MediaPlayer.create(requireContext(), R.raw.question_audio)
+        mediaPlayer.isLooping = true
         audio.runAudio(mediaPlayer)
     }
 
@@ -130,6 +131,10 @@ class QuestionFragment :
 
     override fun onDestroy() {
         super.onDestroy()
+        audio.pauseAudio(mediaPlayer)
+    }
+    override fun onStop() {
+        super.onStop()
         audio.pauseAudio(mediaPlayer)
     }
 }
