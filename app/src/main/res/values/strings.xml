@@ -5,7 +5,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome">Let`s play and win up to 1000,000 $</string>
-    <string name="start">Start Game</string>
+    <string name="start">New Game</string>
     <string name="submit">submit</string>
     <string name="unfortunately">Unfortunately!</string>
     <string name="about_text">This game is a simulation of one of the famous TV shows in the world (The Millionaire). \n We hope that you like this simulation in all its details except for the million dollars. \n We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. \n I hope you enjoy with us.</string>
@@ -37,5 +37,6 @@
     <string name="_12_500">12,500</string>
     <string name="_15_000">15,000</string>
     <string name="_100_000">100,000</string>
-    <string name="last_coins_that_you_won">Last coins that You won</string>
+    <string name="last_coins_that_you_won">Last coins You won</string>
+    <string name="try_again">TRY AGAIN</string>
 </resources>

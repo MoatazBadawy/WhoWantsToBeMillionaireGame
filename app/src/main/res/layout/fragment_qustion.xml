@@ -33,7 +33,7 @@
                 android:id="@+id/exit_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="18dp"
                 android:background="@drawable/leave_rectangle"
                 android:onClick="@{() -> questionViewModel.onLeaveClickListener()}"
@@ -44,14 +44,14 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="32dp"
                 android:src="@drawable/qustion_logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coins"
                 tools:ignore="ContentDescription" />
 
             <ImageView
@@ -92,11 +92,10 @@
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:htmlText="@{questionViewModel.currentQuestion.question}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/chipGroup"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.35000002"
                 tools:text="What is the first letter in the English language?" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -104,7 +103,7 @@
                 android:layout_width="65dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/leave_rectangle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -113,7 +112,7 @@
                 android:id="@+id/coins"
                 android:layout_width="65dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/leave_rectangle"
                 android:text="@{questionViewModel.coins.toString()}"
                 android:textColor="@color/white"
@@ -124,11 +123,11 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_dollar"
+                app:layout_constraintBottom_toBottomOf="@+id/coins"
                 app:layout_constraintEnd_toStartOf="@+id/coins"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/coins"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -167,12 +166,13 @@
                 android:id="@+id/chipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="42dp"
-                android:layout_marginEnd="42dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
                 app:changeBackgroundColor="@{questionViewModel.answerState}"
+                app:layout_constraintBottom_toTopOf="@+id/change_question"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/question_text"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 
@@ -270,9 +270,8 @@
                 android:id="@+id/change_question"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="76dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/background_with_radious"
                 android:elevation="1dp"
                 android:gravity="center"
@@ -284,19 +283,15 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/remove_two_answers"
-                app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/chipGroup"
                 tools:ignore="ContentDescription" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/remove_two_answers"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="83dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="228dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/background_with_radious"
                 android:elevation="1dp"
                 android:gravity="center"
@@ -307,10 +302,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="@+id/chipGroup" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include

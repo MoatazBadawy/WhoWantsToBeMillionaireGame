@@ -21,6 +21,8 @@
     <dimen name="large_space">24dp</dimen>
     <dimen name="font_size">18sp</dimen>
     <dimen name="header_font_size">32sp</dimen>
+    <dimen name="main_btn_width">200dp</dimen>
+    <dimen name="main_btn_height">60dp</dimen>
 
 
 </resources>
