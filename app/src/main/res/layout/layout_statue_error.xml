@@ -5,35 +5,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-
     <ImageView
         android:id="@+id/lottieWinAnimationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:src="@drawable/ic_internet_connection"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/play_again_button"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="98dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/button_background"
-        android:text="@string/try_again"
-        android:textColor="@color/white"
-        android:textSize="21sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -55,6 +37,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.537"
         app:lineHeight="29sp" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
