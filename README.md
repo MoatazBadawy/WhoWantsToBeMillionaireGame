@@ -23,11 +23,11 @@ This game is a simulation of one of the famous TV shows in the world (The Millio
 
 ## App Images 
 Splach | Home | Question | Helper
---- | --- | --- | 
+--- | --- | --- | --- |
 ![](https://i.ibb.co/Rv8TLG4/photo-2022-09-09-14-28-32.jpg) | ![](https://i.ibb.co/kQhHcpQ/photo-2022-09-09-14-28-44.jpg) | ![](https://i.ibb.co/fvcZyLb/photo-2022-09-09-14-28-47.jpg) | ![](https://i.ibb.co/sJnQwCC/photo-2022-09-09-14-29-32.jpg)
 
 | Top result | losing | Win | About
---- | --- | --- |
+--- | --- | --- | --- |
 ![](https://i.ibb.co/ZN91kP7/photo-2022-09-09-14-36-06.jpg) | ![](https://i.ibb.co/Z65K3vV/photo-2022-09-09-14-30-49.jpg) | ![](https://i.ibb.co/thMfm4B/photo-2022-09-09-14-34-09.jpg) | ![](https://i.ibb.co/k98H6xP/photo-2022-09-09-14-29-40.jpg)
 <br />
  
