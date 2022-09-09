@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/qustion_background"
+        tools:context=".ui.lastresult.LastResultFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+
+        <TextView
+            android:id="@+id/lastCoin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:text="@string/last_coins_that_you_won"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintVertical_bias="0.144" />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastCoin"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:text="@string/_1_000_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins1"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:checkable="true"
+                android:elevation="1dp"
+                android:focusable="false"
+                android:text="@string/_500_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins2"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:text="@string/_250_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins3"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:text="@string/_100_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins4"
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="40dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_50_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins5"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_25_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins6"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="60dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_15_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins7"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="65dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_12_500"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins8"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="70dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_10_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins9"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="75dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_7_500"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/coins10"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="80dp"
+                android:checkable="true"
+                android:elevation="4dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="@string/_5_000"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/light_blue_black"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="@color/golden_light"
+                app:chipStrokeWidth="2dp" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/start_btn"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/change_background"
+            android:text="@string/start"
+            android:textColor="@drawable/change_text_color"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

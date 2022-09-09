@@ -1,12 +1,42 @@
 <resources>
-    <string name="app_name">WhoWantsToBeMillionaire</string>
+    <string name="app_name">Millionaire</string>
     <string name="questin_holder">In 2017, which player became the leading run scorer of all tie in women\'s ODI cricket?</string>
     <string name="question">Question</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome">Let`s play and win up to 1000,000 $</string>
-    <string name="start">Start Game</string>
+    <string name="start">New Game</string>
     <string name="submit">submit</string>
     <string name="unfortunately">Unfortunately!</string>
-
+    <string name="about_text">This game is a simulation of one of the famous TV shows in the world (The Millionaire). \n We hope that you like this simulation in all its details except for the million dollars. \n We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. \n I hope you enjoy with us.</string>
+    <string name="play_again">PLAY AGAIN</string>
+    <string name="exit">EXIT</string>
+    <string name="oooops_bad_news">Oooops, Bad News</string>
+    <string name="now_you_loss_1_000_000">Now you loss $1,000,000</string>
+    <string name="this_means_that_you_will_remain_broke_for_the_rest_of_your_life">This means that you will remain broke for the rest of your life</string>
+    <string name="now_you_can_call_yourself_a_millionaire">Now you can call yourself a millionaire</string>
+    <string name="now_you_have_1_000_000">Now you have </string>
+    <string name="congratulations">Congratulations</string>
+    <string name="internet_fetching">no internet connection please check your wifi</string>
+    <string name="exit_text">Exit</string>
+    <string name="about_us">About us</string>
+    <string name="results">Last Result</string>
+    <string name="developed_by">Developed By :</string>
+    <string name="names">Moataz Mohamed \nMahmoud Morsy \nBahaa Elramlawi \nRasha N. Al-aswad \nAmeer Mustafa Slman \nMohammed Najm \nSalah Hasan AL_Kafaji \nMohammed Bin Hussain</string>
+    <string name="_15">/ 15</string>
+    <string name="_50_50">50 : 50</string>
+    <string name="now_you_have">Now you have</string>
+    <string name="_1_000_000">1,000,000</string>
+    <string name="_500_000">500,000</string>
+    <string name="_250_000">250,000</string>
+    <string name="_50_000">50,000</string>
+    <string name="_25_000">25,000</string>
+    <string name="_10_000">10,000</string>
+    <string name="_7_500">7,500</string>
+    <string name="_5_000">5,000</string>
+    <string name="_12_500">12,500</string>
+    <string name="_15_000">15,000</string>
+    <string name="_100_000">100,000</string>
+    <string name="last_coins_that_you_won">Last coins You won</string>
+    <string name="try_again">TRY AGAIN</string>
 </resources>

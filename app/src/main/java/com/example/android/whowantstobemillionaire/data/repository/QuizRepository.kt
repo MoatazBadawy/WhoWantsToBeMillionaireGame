@@ -1,29 +1,60 @@
 package com.example.android.whowantstobemillionaire.data.repository
 
-import com.example.android.whowantstobemillionaire.data.request.QuizRequest
-import com.example.android.whowantstobemillionaire.util.statue.NetworkState
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import com.example.android.whowantstobemillionaire.data.model.QuizResponse
+import com.example.android.whowantstobemillionaire.data.network.APIClient
+import com.example.android.whowantstobemillionaire.utils.helper.Constants.MAX_QUESTION_NUMBER
+import com.example.android.whowantstobemillionaire.utils.helper.DifficultyLevels
+import com.example.android.whowantstobemillionaire.utils.state.State
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.Response
 
 class QuizRepository {
-    fun getQuiz(difficulty: String) =
-        getNetworkState { QuizRequest.apiQuizService.getQuiz(difficulty = difficulty) }
+    fun getAllQuestions(): Observable<State<QuizResponse>> {
+        return wrapperWithState {
+            callQuestion(DifficultyLevels.EASY.level).subscribeOn(Schedulers.io())
+                .zipWith(callQuestion(DifficultyLevels.MEDIUM.level).subscribeOn(Schedulers.io()),
+                    BiFunction { firstResponse: Response<QuizResponse>,
+                                 secondResponse: Response<QuizResponse> ->
+                        combineResult(firstResponse, secondResponse)
+                    })
+                .zipWith(
+                    callQuestion(DifficultyLevels.HARD.level)
+                ) { firstResponse: Response<QuizResponse>,
+                    secondResponse: Response<QuizResponse> ->
+                    combineResult(firstResponse, secondResponse)
+                }.toObservable()
+        }
+    }
 
-    private fun <T> getNetworkState(getResponse: () -> Observable<Response<T>>): Observable<NetworkState<T>> {
-        return Observable.create { state ->
-                state.onNext(NetworkState.Loading)
-                val result = getResponse()
-                result.subscribe {
-                    if (it.isSuccessful) {
-                        state.onNext(NetworkState.Success(it.body()))
-                    } else {
-                        state.onNext(NetworkState.Error(it.message()))
-                    }
-                }
+    private fun callQuestion(difficulty: String): Single<Response<QuizResponse>> {
+        return APIClient.apiQuizService.getQuiz(
+            amount = MAX_QUESTION_NUMBER,
+            difficulty = difficulty
+        )
+    }
+
+    private fun combineResult(
+        firstResponse: Response<QuizResponse>,
+        secondResponse: Response<QuizResponse>
+    ): Response<QuizResponse> {
+        firstResponse.body().apply {
+            secondResponse.body()?.quizzes?.let {
+                this?.quizzes?.addAll(it)
             }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        }
+        return firstResponse
+    }
+
+    private fun <T> wrapperWithState(function: () -> Observable<Response<T>>): Observable<State<T>> {
+        return function().map {
+            if (it.isSuccessful) {
+                State.Success(it.body())
+            } else {
+                State.Error(it.message())
+            }
+        }
     }
 }

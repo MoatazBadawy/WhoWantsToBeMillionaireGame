@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.android.whowantstobemillionaire.ui.question.adapter.Binding_AdapterKt" />
+
+        <variable
+            name="questionViewModel"
+            type="com.example.android.whowantstobemillionaire.ui.question.viewmodel.QuestionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/qustion_background"
+        tools:context=".ui.main.MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:successState="@{questionViewModel.questionResponse}">
+
+            <ImageButton
+                android:id="@+id/exit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/leave_rectangle"
+                android:onClick="@{() -> questionViewModel.onLeaveClickListener()}"
+                android:src="@drawable/ic_quit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/qustion_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coins"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/timer_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:background="@drawable/ciricle_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/question_text"
+                app:layout_constraintTop_toTopOf="@+id/question_text"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/timer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:elevation="1dp"
+                android:text="@{questionViewModel.timer}"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/timer_background"
+                app:layout_constraintStart_toStartOf="@+id/timer_background"
+                app:layout_constraintTop_toTopOf="@+id/timer_background"
+                tools:text="25" />
+
+            <TextView
+                android:id="@+id/question_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_qustion"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:padding="@dimen/question_text_padding"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:htmlText="@{questionViewModel.currentQuestion.question}"
+                app:layout_constraintBottom_toTopOf="@+id/chipGroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="What is the first letter in the English language?" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/timer_button"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/leave_rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/coins"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/leave_rectangle"
+                android:text="@{questionViewModel.coins.toString()}"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/exit_button"
+                app:layout_constraintStart_toEndOf="@+id/timer_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_dollar"
+                app:layout_constraintBottom_toBottomOf="@+id/coins"
+                app:layout_constraintEnd_toStartOf="@+id/coins"
+                app:layout_constraintTop_toTopOf="@+id/coins"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/num_question_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:elevation="4dp"
+                android:text="@{questionViewModel.numberOfQuestion.toString()}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/timer_button"
+                app:layout_constraintEnd_toStartOf="@+id/fifteen"
+                app:layout_constraintHorizontal_bias="0.62"
+                app:layout_constraintStart_toStartOf="@+id/timer_button"
+                app:layout_constraintTop_toTopOf="@+id/timer_button"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/fifteen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
+                android:elevation="4dp"
+                android:text="@string/_15"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/timer_button"
+                app:layout_constraintEnd_toEndOf="@+id/timer_button"
+                app:layout_constraintTop_toTopOf="@+id/timer_button" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                app:changeBackgroundColor="@{questionViewModel.answerState}"
+                app:layout_constraintBottom_toTopOf="@+id/change_question"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/coins1"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="6dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[0])}"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[0].answer}"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`A. ` + questionViewModel.answers[0].answer}"
+                    tools:text="A" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[1])}"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[1].answer}"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`B. ` + questionViewModel.answers[1].answer}"
+                    tools:text="B" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[2])}"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[2].answer}"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`C. ` + questionViewModel.answers[2].answer}"
+                    tools:text="C" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/answer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:checkable="true"
+                    android:elevation="1dp"
+                    android:focusable="false"
+                    android:onClick="@{() -> questionViewModel.onAnswerClickListener(questionViewModel.answers[3])}"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:changeAnswerVisibility="@{questionViewModel.answers[3].answer}"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/light_blue_black"
+                    app:chipCornerRadius="16dp"
+                    app:chipStrokeColor="@color/golden_light"
+                    app:chipStrokeWidth="3dp"
+                    app:htmlText="@{`D. ` + questionViewModel.answers[3].answer}"
+                    tools:text="D" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <ImageButton
+                android:id="@+id/change_question"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.changeQuestionByDifficulty()}"
+                android:padding="16dp"
+                android:src="@drawable/ic_repeat_once"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/chipGroup"
+                tools:ignore="ContentDescription" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/remove_two_answers"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/background_with_radious"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:onClick="@{() -> questionViewModel.remove2Answers()}"
+                android:padding="16dp"
+                android:text="@string/_50_50"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/chipGroup" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/loading_layout"
+            layout="@layout/layout_statue_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadingState="@{questionViewModel.questionResponse}" />
+
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/layout_statue_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:errorState="@{questionViewModel.questionResponse}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

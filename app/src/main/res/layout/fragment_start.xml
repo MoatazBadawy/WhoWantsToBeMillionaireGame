@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,45 +10,96 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_color">
+        android:background="@drawable/start_background">
 
-        <TextView
-            android:id="@+id/welcome_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="140dp"
-            android:text="@string/welcome"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textAlignment="center" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_start"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.137"
+            tools:ignore="ContentDescription" />
 
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/start"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintGuide_percent="0.48" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_question_answers"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginHorizontal="51dp"
+            android:background="@color/white"
+            android:elevation="0dp"
+            app:cardCornerRadius="@dimen/dimes_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_btn"
-            android:layout_width="160dp"
-            android:layout_height="65dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="60dp"
-            android:background="@drawable/start_button_background"
+            android:layout_width="@dimen/main_btn_width"
+            android:layout_height="@dimen/main_btn_height"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/change_background"
             android:text="@string/start"
-            android:textColor="@color/main_color"
-            android:textSize="14sp" />
+            android:textColor="@drawable/change_text_color"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/result_btn"
+            android:layout_width="@dimen/main_btn_width"
+            android:layout_height="@dimen/main_btn_height"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/change_background"
+            android:padding="5dp"
+            android:text="@string/results"
+            android:textColor="@drawable/change_text_color"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toBottomOf="@+id/start_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/about_btn"
+            android:layout_width="@dimen/main_btn_width"
+            android:layout_height="@dimen/main_btn_height"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/change_background"
+            android:text="@string/about_us"
+            android:textColor="@drawable/change_text_color"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toBottomOf="@+id/result_btn" />
+
+        <ImageButton
+            android:id="@+id/sound"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ciricle_button"
+            android:elevation="2dp"
+            android:src="@drawable/ic_audio_on"
+            app:layout_constraintEnd_toEndOf="@+id/card_question_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_question_answers"
+            app:layout_constraintTop_toBottomOf="@+id/about_btn"
+            tools:ignore="ContentDescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

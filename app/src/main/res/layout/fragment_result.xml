@@ -10,135 +10,124 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_blue_black">
-
+        android:background="@drawable/background">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_width="411dp"
+            android:layout_height="844dp"
             android:layout_marginHorizontal="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/winning_animation" />
+            app:lottie_rawRes="@raw/money_animation" />
 
-        <TextView
-            android:id="@+id/primary_result_textView"
+        <ImageButton
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="18dp"
+            android:background="@drawable/leave_rectangle"
+            android:src="@drawable/ic_quit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieWinAnimationView"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back_button"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/gold_badge" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/sansita"
+            android:text="@string/congratulations"
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
-            tools:text="Congratulations!" />
+            app:layout_constraintTop_toBottomOf="@+id/lottieWinAnimationView"
+            app:lineHeight="29sp" />
 
         <TextView
-            android:id="@+id/secondary_result_textView"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:alpha=".7"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            tools:text="You finished the challenge for this day"
-            app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
-            app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
-            app:layout_constraintTop_toBottomOf="@+id/primary_result_textView" />
-
-
-        <TextView
-            android:id="@+id/correct_answers_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:alpha=".7"
-            android:text="CORRECT ANSWERS"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/secondary_result_textView" />
-
-        <TextView
-            android:id="@+id/total_correct_answers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/correct_answers_title"
-            tools:text="20 / 20" />
-
-        <TextView
-            android:id="@+id/earned_money_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="EARNED MONEY"
-            android:alpha=".7"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_correct_answers" />
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/money_view"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/earned_money_title">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="12dp"
-                android:src="@drawable/ic_dollar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/earned_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <android.widget.Button
-            android:id="@+id/play_again"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_corners"
-            android:text="Play again"
+            android:layout_marginEnd="16dp"
+            android:text="@string/now_you_have"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/money_view" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:lineHeight="29sp" />
 
+        <TextView
+            android:id="@+id/your_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:lineHeight="29sp"
+            tools:text="5000$" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="@string/now_you_can_call_yourself_a_millionaire"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/your_coins" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/play_again_button"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/button_background"
+            android:text="@string/play_again"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

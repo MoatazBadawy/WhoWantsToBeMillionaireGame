@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_marginEnd="@dimen/medium_space"
+            android:background="@drawable/leave_rectangle"
+            android:src="@drawable/ic_quit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_logo"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back_button"
+            app:layout_constraintVertical_bias="0.041"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/about_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_space"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/small_space"
+            android:fontFamily="@font/sansita"
+            android:gravity="center"
+            android:text="@string/about_text"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size"
+            app:flow_verticalAlign="top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <TextView
+            android:id="@+id/developed_names"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sansita"
+            android:gravity="center"
+            android:text="@string/developed_by"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_font_size"
+            android:textStyle="bold"
+            app:flow_verticalAlign="top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/about_text" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="@dimen/medium_space"
+            android:fontFamily="@font/sansita"
+            android:gravity="center"
+            android:text="@string/names"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size"
+            app:flow_verticalAlign="top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/developed_names"
+            app:layout_constraintVertical_bias="0.0"
+            app:lineHeight="25sp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+    </data>
+</layout>
