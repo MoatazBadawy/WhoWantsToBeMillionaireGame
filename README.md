@@ -11,26 +11,24 @@
 <br />
 
 ## Overview 
-An interactive islamic app that lets users discover Biography of the Prophet Muhammed, Watch videos, set wallpaper Images, download and reading books.
-- Ability to read articles and brochures.
-- Ability to copy and share hadiths with others.
-- Watch and view Islamic videos through Youtube player API.
-- The ability to search in the hadiths of the Prophet.
-- Download images and set them as wallpapers for your device, whether for the home screen or lock screen through the application
-- A selection of books with the ability to read directly and download them
+This game is a simulation of one of the famous TV shows in the world (The Millionaire). We hope that you like this simulation in all its details except for the million dollars. We are a group of bankrupts... I mean programmers. We made this game as one of the lessons of the chance course. \n I hope you enjoy with us.
+- Enthusiastic atmosphere to answer questions.
+- The competition to win a million dollars.
+- Change the question as an aid.
+- Delete two answers to make it easier to play.
 <br />
 
 <a href='https://play.google.com/store/apps/details?id=com.moataz.afternoonhadeeth&hl=ar&gl=US'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="170px"/></a>
 <br />
 
-## App Images 🌹
-Home | Videos | Hadiths 
+## App Images 
+Splach | Home | Question | Helper
 --- | --- | --- | 
-![](https://i.ibb.co/J7Dgpy4/homePage.jpg) | ![](https://i.ibb.co/pWxsw3h/videos.jpg) | ![](https://i.ibb.co/WzkKR7N/hadith.jpg) | 
+![](https://i.ibb.co/Rv8TLG4/photo-2022-09-09-14-28-32.jpg) | ![](https://i.ibb.co/kQhHcpQ/photo-2022-09-09-14-28-44.jpg) | ![](https://i.ibb.co/fvcZyLb/photo-2022-09-09-14-28-47.jpg) | ![](https://i.ibb.co/sJnQwCC/photo-2022-09-09-14-29-32.jpg)
 
-| Wallpapers | Books | DisplayBook (Scrolled)
+| Top result | losing | Win | About
 --- | --- | --- |
-![](https://i.ibb.co/ChFc9jH/wallpapers.jpg) | ![](https://i.ibb.co/FbtQ69F/books.jpg) | ![](https://i.ibb.co/khq2hfK/displaybook.jpg)
+![](https://i.ibb.co/ZN91kP7/photo-2022-09-09-14-36-06.jpg) | ![](https://i.ibb.co/Z65K3vV/photo-2022-09-09-14-30-49.jpg) | ![](https://i.ibb.co/thMfm4B/photo-2022-09-09-14-34-09.jpg) | ![](https://i.ibb.co/k98H6xP/photo-2022-09-09-14-29-40.jpg)
 <br />
  
   
@@ -53,7 +51,6 @@ Home | Videos | Hadiths
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [RxJava](https://github.com/ReactiveX/RxJava) - Java VM implementation of Reactive Extensions: a library for composing asynchronous and event-based programs by using observable sequences.
 - [Retrofit](https://github.com/square/retrofit) - A type-safe HTTP client for Android and Kotlin.
-- [OkHttp](https://square.github.io/okhttp/) - HTTP is the way modern applications network. It’s how we exchange data & media. Doing HTTP efficiently makes your stuff load faster and saves bandwidth.
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
 - [Jetpack Navigation](https://developer.android.com/jetpack/compose/navigation) - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
@@ -61,4 +58,4 @@ Home | Videos | Hadiths
 
 ## Contributing 🤝
 
-If you'd like to contribute, please take a look at the [PRs Welcome](https://github.com/MoatazBadawy/Sunset-hadith/labels) label on the issue tracker. For new features, please open an issue to discuss it before beginning implementation.
+If you'd like to contribute, please take a look at the [PRs Welcome](https://github.com/MoatazBadawy/WhoWantsToBeMillionaireGame/labels) label on the issue tracker. For new features, please open an issue to discuss it before beginning implementation.
